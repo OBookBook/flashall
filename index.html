@@ -4784,6 +4784,7 @@
             audioVar = totalAudioRandom[randomArray[totalRandomCount]];
             audioVar.load();
             audioVar.volume = 0.3;
+            audioVar.muted = true;
             audioVar.play();
             audioVar.addEventListener('canplaythrough', () => {
                 audioVar.currentTime = 0;
