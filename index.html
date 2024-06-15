@@ -4766,6 +4766,7 @@
             for (let i = 0; i < titleArray[grade - 1].length; i++) {
                 if (subTitle5.textContent == titleArray[grade - 1][i]) {
                     audioVar = audioJson[grade - 1][titleArray[grade - 1][i]][parseInt(contentOrder.textContent.substring(0, 1)) - 1];
+                    audioVar.load();
                     audioVar.volume = 0.3;
                     audioVar.play();
                     audioVar.loop = false;
@@ -4775,6 +4776,7 @@
         }
         else {
             audioVar = totalAudioRandom[randomArray[totalRandomCount]];
+            audioVar.load();
             audioVar.volume = 0.3;
             audioVar.play();
             audioVar.loop = false;
