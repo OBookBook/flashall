@@ -4768,7 +4768,13 @@
                     audioVar = audioJson[grade - 1][titleArray[grade - 1][i]][parseInt(contentOrder.textContent.substring(0, 1)) - 1];
                     audioVar.load();
                     audioVar.volume = 0.3;
+                    audioVar.muted = true;
                     audioVar.play();
+                    audioVar.addEventListener('canplaythrough', () => {
+                        audioVar.currentTime = 0;
+                        audioVar.muted = false;
+                        audioVar.play();
+                }, { once: true });
                     audioVar.loop = false;
                     break;
                 }
@@ -4779,6 +4785,11 @@
             audioVar.load();
             audioVar.volume = 0.3;
             audioVar.play();
+            audioVar.addEventListener('canplaythrough', () => {
+                audioVar.currentTime = 0;
+                audioVar.muted = false;
+                audioVar.play();
+            }, { once: true });
             audioVar.loop = false;
         }
     })
