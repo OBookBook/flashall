@@ -4761,39 +4761,38 @@
 
     var audioVar;
 
-    document.getElementById('audioBtn').addEventListener('click', function () {
-        if (selectionTitle5.textContent != "完全ランダムで学習") {
-            for (let i = 0; i < titleArray[grade - 1].length; i++) {
-                if (subTitle5.textContent == titleArray[grade - 1][i]) {
-                    audioVar = audioJson[grade - 1][titleArray[grade - 1][i]][parseInt(contentOrder.textContent.substring(0, 1)) - 1];
-                    audioVar.load();
-                    audioVar.volume = 0.3;
-                    audioVar.muted = true;
+    document.getElementById('audioBtn').addEventListener('click', function() {
+    if (selectionTitle5.textContent != "完全ランダムで学習") {
+        for (let i = 0; i < titleArray[grade - 1].length; i++) {
+            if (subTitle5.textContent == titleArray[grade - 1][i]) {
+                audioVar = audioJson[grade - 1][titleArray[grade - 1][i]][parseInt(contentOrder.textContent.substring(0, 1)) - 1];
+                audioVar.volume = 0.3;
+                audioVar.loop = false;
+                audioVar.load();
+                audioVar.muted = true;
+                audioVar.play();
+                audioVar.addEventListener('canplaythrough', () => {
+                    audioVar.currentTime = 0;
+                    audioVar.muted = false;
                     audioVar.play();
-                    audioVar.addEventListener('canplaythrough', () => {
-                        audioVar.currentTime = 0;
-                        audioVar.muted = false;
-                        audioVar.play();
                 }, { once: true });
-                    audioVar.loop = false;
-                    break;
-                }
+                break;
             }
         }
-        else {
-            audioVar = totalAudioRandom[randomArray[totalRandomCount]];
-            audioVar.load();
-            audioVar.volume = 0.3;
-            audioVar.muted = true;
+    } else {
+        audioVar = totalAudioRandom[randomArray[totalRandomCount]];
+        audioVar.volume = 0.3;
+        audioVar.loop = false;
+        audioVar.load();
+        audioVar.muted = true;
+        audioVar.play();
+        audioVar.addEventListener('canplaythrough', () => {
+            audioVar.currentTime = 0;
+            audioVar.muted = false;
             audioVar.play();
-            audioVar.addEventListener('canplaythrough', () => {
-                audioVar.currentTime = 0;
-                audioVar.muted = false;
-                audioVar.play();
-            }, { once: true });
-            audioVar.loop = false;
-        }
-    })
+        }, { once: true });
+    }
+});
 
     document.addEventListener('mousedown', handleMouseDown);
     document.addEventListener('mousemove', handleMouseMove);
