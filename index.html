@@ -1,0 +1,4847 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
+    <title>Frash Card</title>
+</head>
+<script>
+    var titleArray = Array(5);
+    const audioJson = Array(5);
+    const englishContentJson = Array(5);
+    const japaneseContentJson = Array(5);
+    var grade = 5;
+
+    titleArray[0] = [
+        "1. That would be",
+        "2. Sorry to",
+        "3. What if",
+        "4. Aren't you gonna",
+        "5. though",
+        "6. There's no point",
+        "7. The more",
+        "8. I had",
+        "9. There's [thing]",
+        "10. There’s gotta",
+        "11. Make sure to",
+        "12. just(1)",
+        "13. just(2)",
+        "14. Sounds like",
+        "15. Seems like",
+        "16. I was wondering if we/I",
+        "17. I was wondering if you",
+        "18. I’d appreciate it",
+        "19. I've ever",
+        "20. as long as",
+        "21. Is there anything",
+        "22. You are such",
+        "23. Do I have to",
+        "24. Are you sure",
+        "25. It's just that",
+        "26. It's not that",
+        "27. The last thing I wanna",
+        "28. Just because",
+        "29. It's only a matter",
+        "30. Let's say",
+        "31. Since when",
+        "32. Do you happen to",
+        "33. Mind if I",
+        "34. There's something wrong",
+        "35. It turned out",
+        "36. You(1)",
+        "37. You(2)",
+        "38. You(3)",
+        "39. You wanna",
+    ];
+
+    titleArray[1] = [
+        "1. I am not sure if",
+        "2. I don't know what",
+        "3. I don't know",
+        "4. I wonder what",
+        "5. I wonder",
+        "6. You mean",
+        "7. Do you have any idea",
+        "8. No wonder",
+        "9. I have",
+        "10. I have been",
+        "11. I've never",
+        "12. Have you ever",
+        "13. Isn't it/Wasn't it",
+        "14. Didn't you/Doesn't it",
+        "15. Aren't you/Weren't you",
+        "16. Right",
+        "17. You are -ing, right",
+        "18. The one who",
+        "19. We should",
+        "20. Maybe we could",
+        "21. Could",
+        "22. Should've",
+        "23. Didn't I tell you",
+        "24. Didn't you say",
+        "25. Why didn't I",
+        "26. Why would you",
+        "27. How could you",
+        "28. How can you",
+    ];
+
+    titleArray[2] = [
+        "1. What",
+        "2. What a",
+        "3. What about",
+        "4. What kind of",
+        "5. What can I",
+        "6. Where",
+        "7. When",
+        "8. What time",
+        "9. Which",
+        "10. Who",
+        "11. Whose",
+        "12. Why",
+        "13. What makes you",
+        "14. What do you think",
+        "15. Why don't you",
+        "16. cuz",
+        "17. How",
+        "18. How is",
+        "19. How much",
+        "20. How many",
+        "21. How long",
+        "22. How often",
+        "23. How about",
+        "24. I wish",
+        "25. I'm pretty sure",
+        "26. I know",
+        "27. I happen to",
+        "28. I can't believe",
+        "29. I tend to",
+        "30. I can't be bothered to",
+        "31. I'm not sure",
+        "32. I didn't mean to",
+        "33. I didn't expect",
+        "34. I'm supposed to",
+        "35. That's what",
+        "36. That's how",
+        "37. That's why",
+    ];
+
+    titleArray[3] = [
+        "1. Must be",
+        "2. Must have been",
+        "3. I'm gonna",
+        "4. I'm not gonna",
+        "5. Gonna",
+        "6. I'm -ing",
+        "7. I'm glad",
+        "8. I hope",
+        "9. I'll have",
+        "10. Let me",
+        "11. Why don't we",
+        "12. Let's not",
+        "13. Don't",
+        "14. Don't be",
+        "15. You can",
+        "16. You can't",
+        "17. Be careful not",
+        "18. That sounds",
+        "19. Feel like -ing",
+        "20. Feel like",
+        "21. I'm thinking of",
+        "22. I'm starting to",
+        "23. Getting",
+        "24. Look forward to",
+        "25. You look",
+        "26. It's hard to",
+        "27. It's so that",
+        "28. Is it okay if I",
+    ];
+
+    titleArray[4] = [
+        "1. I like to",
+        "2. I wanna",
+        "3. I wanted to",
+        "4. I want you to",
+        "5. I wanted you to",
+        "6. I don't wanna",
+        "7. I don't want you to",
+        "8. You wanna",
+        "9. I'd like",
+        "10. I'd like to",
+        "11. Would you like",
+        "12. Would you like to",
+        "13. I need",
+        "14. I gotta",
+        "15. I'm gonna have to",
+        "16. You don't have to",
+        "17. I have",
+        "18. I don't have",
+        "19. Do you have",
+        "20. You know",
+        "21. You can",
+        "22. I can't/You can't",
+        "23. Can you/Could you",
+        "24. Could you tell me",
+        "25. Can I/Could I",
+        "26. Should I",
+        "27. Maybe I'll",
+        "28. Then I'll",
+        "29. Did you know",
+        "30. Maybe you should",
+        "31. Maybe you shouldn't",
+        "32. You might wanna"
+    ];
+</script>
+
+<body>
+    <div class="first-screen" style="display: flex;" id="first-page">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <p style="color: #05a5a9; font-size: 38px; font-weight: 700; margin: 0px; margin-left: 10px;">Frash Cards
+            </p>
+            <img src="img/menu.png" class="icon" onclick="goFirst()">
+        </div>
+        <div style="display: flex; align-items: center; flex-direction: column;">
+            <div class="select-item" onclick="goGrade(5)">
+                <img src="img/folder.png" style="width: 60px; height: 70px;">
+                <p style="color: black; font-size: 22px; font-weight: 600; margin: 0px;">Masa検5級</p>
+            </div>
+            <div class="select-item" onclick="goGrade(4)">
+                <img src="img/folder.png" style="width: 60px; height: 70px;">
+                <p style="color: black; font-size: 22px; font-weight: 600; margin: 0px;">Masa検4級</p>
+            </div>
+            <div class="select-item" onclick="goGrade(3)">
+                <img src="img/folder.png" style="width: 60px; height: 70px;">
+                <p style="color: black; font-size: 22px; font-weight: 600; margin: 0px;">Masa検3級</p>
+            </div>
+            <div class="select-item" onclick="goGrade(2)">
+                <img src="img/folder.png" style="width: 60px; height: 70px;">
+                <p style="color: black; font-size: 22px; font-weight: 600; margin: 0px;">Masa検2級</p>
+            </div>
+            <div class="select-item" onclick="goGrade(1)">
+                <img src="img/folder.png" style="width: 60px; height: 70px;">
+                <p style="color: black; font-size: 22px; font-weight: 600; margin: 0px;">Masa検1級</p>
+            </div>
+            <div class="select-item" onclick="goTotalRandom(5)">
+                <img src="img/folder.png" style="width: 60px; height: 70px;">
+                <p style="color: black; font-size: 22px; font-weight: 600; margin: 0px;">Masa検5級テスト</p>
+            </div>
+            <div class="select-item" onclick="goTotalRandom(4)">
+                <img src="img/folder.png" style="width: 60px; height: 70px;">
+                <p style="color: black; font-size: 22px; font-weight: 600; margin: 0px;">Masa検4級テスト</p>
+            </div>
+            <div class="select-item" onclick="goTotalRandom(3)">
+                <img src="img/folder.png" style="width: 60px; height: 70px;">
+                <p style="color: black; font-size: 22px; font-weight: 600; margin: 0px;">Masa検3級テスト</p>
+            </div>
+            <div class="select-item" onclick="goTotalRandom(2)">
+                <img src="img/folder.png" style="width: 60px; height: 70px;">
+                <p style="color: black; font-size: 22px; font-weight: 600; margin: 0px;">Masa検2級テスト</p>
+            </div>
+            <div class="select-item" onclick="goTotalRandom(1)">
+                <img src="img/folder.png" style="width: 60px; height: 70px;">
+                <p style="color: black; font-size: 22px; font-weight: 600; margin: 0px;">Masa検1級テスト</p>
+            </div>
+            <div style="margin-top: 30px;"></div>
+        </div>
+    </div>
+    <div class="first-screen" style="display: none;" id="second-page">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <p style="color: #05a5a9; font-size: 36px; font-weight: 700; margin: 0px;margin-left: 10px;" id="grade1">
+                Masa検5級</p>
+            <img src="img/menu.png" class="icon" onclick="goFirst()">
+        </div>
+        <div style="display: flex; align-items: center; flex-direction: column;">
+            <div class="select-item" onclick="goMain(grade,1)">
+                <img src="img/finger.png" style="width: 60px; height: 70px;">
+                <p style="color: black; font-size: 20px; font-weight: 600; margin: 0px;">順番通りに学習</p>
+            </div>
+            <div class="select-item" onclick="goMain(grade,2)">
+                <img src="img/finger.png" style="width: 60px; height: 70px;">
+                <p style="color: black; font-size: 20px; font-weight: 600; margin: 0px;">項目ランダムで学習</p>
+            </div>
+            <div class="select-item" onclick="goMain(grade,3)">
+                <img src="img/finger.png" style="width: 60px; height: 70px;">
+                <p style="color: black; font-size: 20px; font-weight: 600; margin: 0px;">完全ランダムで学習</p>
+            </div>
+        </div>
+    </div>
+    <div class="first-screen" style="display: none;" id="third-page">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <p style="color: #05a5a9; font-size: 36px; font-weight: 700; margin: 0px;margin-left: 10px;" id="grade2">
+                Masa検5級
+            </p>
+            <img src="img/menu.png" class="icon" onclick="goFirst()">
+        </div>
+        <div style="display: flex; align-items: center; flex-direction: column;" id="main-page">
+            <p style="color: black; font-size: 28px; font-weight: 600; margin: 0px;margin-left: 10px; margin-top: 20px; text-decoration-line: underline;"
+                id="selection-title-5">
+                順番通りに学習</p>
+        </div>
+    </div>
+    <div class="first-screen" style="display: none;" id="fourth-page">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <p style="color: #05a5a9; font-size: 36px; font-weight: 700; margin: 0px;margin-left: 10px;" id="grade3">
+                Masa検5級</p>
+            <img src="img/menu.png" class="icon" onclick="goFirst()">
+        </div>
+        <p style="color: black; font-size: 20px; font-weight: 700; margin: 0px;margin-left: 10px; margin-top: 30px;"
+            id="sub_title_5">1. I like to</p>
+        <div style="display: block;transition: opacity 1s ease-in-out, transform 1s ease-in-out;transform: translateX(0); z-index: 0;"
+            id="japanese_content" onclick="goEnglishContent()">
+            <div class="content-item">
+                <div>
+                    <p style="color: black; font-size: 20px; font-weight: 700; margin: 0px;" id="content_order">1/6</p>
+                </div>
+                <div style="display: flex; justify-content: center; align-items: center; margin-top: 50px;">
+                    <p style="color: black; font-size: 20px; font-weight: 600; margin: 0px; text-align: center;"
+                        id="main_content">
+                        英語を勉強するのが好き</p>
+                </div>
+            </div>
+        </div>
+        <div style="display: none; position: relative; transition: opacity 1s ease-in-out, transform 1s ease-in-out;transform: translateX(0);"
+            id="english_content">
+            <div class="content-item" onclick="goJapaneseContent()">
+                <div>
+                    <p style="color: black; font-size: 20px; font-weight: 700; margin: 0px;" id="english_content_order">
+                        1/6</p>
+                </div>
+                <div style="display: flex; justify-content: center; align-items: center; margin-top: 50px;">
+                    <p style="color: black; font-size: 20px; font-weight: 500; margin: 0px; text-align: center;"
+                        id="english_main_content">
+                        I like to study English.</p>
+                </div>
+            </div>
+            <div style="position: absolute; bottom: 0px;left: 10px;">
+                <img src="img/audio.png" style="width: 50px; height: 50px;" id="audioBtn">
+            </div>
+        </div>
+        <div style="display: none;" id="success_content">
+            <div class="content-item" style="position: relative;">
+                <img src="img/success.PNG"
+                    style="width: 200px; height: 120px;position: absolute; bottom: 80px;left: 50px;">
+                <img src="img/flower_left.png"
+                    style="width: 70px; height: 70px;position: absolute; bottom: 0px;left: 10px;">
+                <img src="img/flower_right.png"
+                    style="width: 70px; height: 70px;position: absolute; bottom: 0px;right: 10px;">
+            </div>
+        </div>
+        <div style="display: none;" id="final_content">
+            <div class="content-item" style="position: relative;">
+                <p
+                    style="color: black; font-size: 48px; font-weight: 500; margin: 0px;margin-top: 50px; text-align: center;">
+                    終了する</p>
+                <img src="img/end_btn.PNG"
+                    style="width: 50px; height: 50px;position: absolute; bottom: 10px;right: 10px;"
+                    onclick="finishPractice()">
+            </div>
+        </div>
+        <div style="position: relative; margin-top: 20px; display: none;" id="button_group">
+            <img src="img/left-arrow.PNG" id="leftArrow"
+                style="width: 50px; height: 30px; position: absolute; left: 0px; display: block;" onclick="goOneMore()">
+            <img src="img/right-arrow.PNG" id="rightArrow"
+                style="width: 50px; height: 30px;position: absolute; right: 0px;" onclick="goNext()">
+        </div>
+        <div style="position: relative; margin-top: 20px; display: none;" id="button_side">
+            <img src="img/right-arrow.PNG" style="width: 50px; height: 30px;position: absolute; right: 0px;"
+                onclick="goNextPart()">
+        </div>
+
+    </div>
+</body>
+
+<script>
+
+    // Grade 1
+    const japaneseContentThatWouldBe1 = {
+        "1/6": "それはありがたいわ。",
+        "2/6": "そうしてもらえるとありがたいわ",
+        "3/6": "そうしてもらえると助かる。",
+        "4/6": "ぜひお願いします",
+        "5/6": "それは完璧だよ！",
+        "6/6": "それはめっちゃいいプランだよ！"
+    };
+
+    const englishContentThatWouldBe1 = {
+        "1/6": "That would be great!",
+        "2/6": "That would be nice!",
+        "3/6": "That would be helpful.",
+        "4/6": "That would be much appreciated.",
+        "5/6": "That would be perfect.",
+        "6/6": "That would be a great plan!"
+    };
+
+    const japaneseContentSorryTo1 = {
+        "1/6": "迷惑かけちゃってごめんね。",
+        "2/6": "遅れちゃってごめんね。",
+        "3/6": "待たせちゃっててごめんね",
+        "4/6": "待たせちゃってごめんね。",
+        "5/6": "こんなに遅い時間に電話してごめんね。",
+        "6/6": "お話し中ごめんなんだけど。"
+    };
+
+    const englishContentSorryTo1 = {
+        "1/6": "Sorry to bother you.",
+        "2/6": "Sorry to be late.",
+        "3/6": "Sorry to keep you waiting.",
+        "4/6": "Sorry to have kept you waiting.",
+        "5/6": "Sorry to call you so late.",
+        "6/6": "Sorry to interrupt you, but"
+    };
+
+    const japaneseContentWhatIf1 = {
+        "1/6": "もし試験に落ちたらどうしよう？",
+        "2/6": "彼が僕のこと嫌っていたらどうしよう。",
+        "3/6": "明日寝坊しちゃったらどうしよう。",
+        "4/6": "道に迷ったらどうしよう。",
+        "5/6": "渋滞だったらどうするの？",
+        "6/6": "もし上手くいかなかったらどうするの？"
+    };
+
+    const englishContentWhatIf1 = {
+        "1/6": "What if I fail the test?",
+        "2/6": "What if he doesn’t like me?",
+        "3/6": "What if I oversleep tomorrow?",
+        "4/6": "What if I get lost?",
+        "5/6": "What if there is traffic?",
+        "6/6": "What if it doesn’t work out?"
+    };
+
+    const japaneseContentArentYouGonna1 = {
+        "1/6": "図書館行かないの？",
+        "2/6": "今日出かけないの？",
+        "3/6": "寝ないの？",
+        "4/6": "来ないの？",
+        "5/6": "手洗わないの？",
+        "6/6": "謝らないの？"
+    };
+
+    const englishContentArentYouGonna1 = {
+        "1/6": "Aren’t you gonna go to the library?",
+        "2/6": "Aren’t you gonna go out today?",
+        "3/6": "Aren’t you gonna go to sleep?",
+        "4/6": "Aren’t you gonna come?",
+        "5/6": "Aren’t you gonna wash your hands?",
+        "6/6": "Aren’t you gonna say sorry?"
+    };
+
+    const japaneseContentThough1 = {
+        "1/6": "ちょっと高かったけどね。",
+        "2/6": "ちょっと寒かったけどね。",
+        "3/6": "あんまり上手じゃないけどね。",
+        "4/6": "あんまり話せはしないですけど。",
+        "5/6": "ただちょっと汚かったけどね。",
+        "6/6": "ちょっと大きいかもしれないけど。"
+    };
+
+    const englishContentThough1 = {
+        "1/6": "It was a bit expensive, though.",
+        "2/6": "It was a bit cold, though.",
+        "3/6": "I’m not really good at it, though.",
+        "4/6": "I can’t speak fluently, though.",
+        "5/6": "It was a bit dirty, though.",
+        "6/6": "It might be a little bit big, though."
+    };
+
+    const japaneseContentThereIsNoPointIn1 = {
+        "1/6": "今それを心配しても意味はない",
+        "2/6": "パソコン持ってる意味ないじゃん。",
+        "3/6": "怒っても意味ないじゃん。",
+        "4/6": "このミーティング無駄じゃない？",
+        "5/6": "そんなことする意味なくない？",
+        "6/6": "この授業意味ある？"
+    };
+
+    const englishContentThereIsNoPointIn1 = {
+        "1/6": "There’s no point in worrying about it now.",
+        "2/6": "There’s no point in having a computer.",
+        "3/6": "There’s no point in getting angry.",
+        "4/6": "What’s the point of this meeting?",
+        "5/6": "What’s the point of doing that?",
+        "6/6": "What’s the point of this class?"
+    };
+
+    const japaneseContentTheMoreTheMore1 = {
+        "1/6": "考えれば考えるほど落ち込んでしまった。",
+        "2/6": "勉強すればするほど君の英語はよくなるよ。",
+        "3/6": "寝れば寝るほど、疲れるんだよね。",
+        "4/6": "お金があればあるほど嬉しい。",
+        "5/6": "知れば知るほどその国が好きになった。",
+        "6/6": "見れば見るほど、その映画が好きになった。"
+    };
+
+    const englishContentTheMoreTheMore1 = {
+        "1/6": "The more I thought about it, the more I got depressed.",
+        "2/6": "The more you study, the better your English will be.",
+        "3/6": "The more I sleep, the more I get tired.",
+        "4/6": "The more I have money, the happier I am.",
+        "5/6": "The more I learned about the country, the more I liked it.",
+        "6/6": "The more I saw the movie, the more I liked it."
+    };
+
+    const japaneseContentIHaveNounPastParticiple1 = {
+        "1/6": "昨日髪を切ってもらった。",
+        "2/6": "自転車が盗まれちゃった。",
+        "3/6": "パソコンを修理してもらった。",
+        "4/6": "コートをキレイにしてもらった。",
+        "5/6": "お母さんに携帯を取り上げられた。",
+        "6/6": "ネイル塗ってもらったの？"
+    };
+
+    const englishContentIHaveNounPastParticiple1 = {
+        "1/6": "I had my hair cut yesterday.",
+        "2/6": "I had my bike stolen.",
+        "3/6": "I had my computer repaired.",
+        "4/6": "I had my coat cleaned.",
+        "5/6": "I had my phone taken away by my mother.",
+        "6/6": "Did you have your nails painted?"
+    };
+
+    const japaneseContentTheresThing1 = {
+        "1/6": "君に言わなきゃいけないことがある。",
+        "2/6": "ちょっとやらなきゃいけないことがあって。",
+        "3/6": "なにも心配することはないよ。",
+        "4/6": "何もいうことはない。",
+        "5/6": "今日はやることがたくさんある。",
+        "6/6": "やらなきゃいけないことがたくさんある。"
+    };
+
+    const englishContentTheresThing1 = {
+        "1/6": "There’s something I have to tell you.",
+        "2/6": "There’s something I have to do.",
+        "3/6": "There’s nothing to worry about.",
+        "4/6": "There’s nothing to say.",
+        "5/6": "There’s a lot of things I have to do today.",
+        "6/6": "There’s a lot of things on my plate."
+    };
+
+    const japaneseContentTheresGottaBe1 = {
+        "1/6": "他の方法があるはずだ。",
+        "2/6": "もっといい方法があるはずだ",
+        "3/6": "もっと効率的な勉強法があるはずだ",
+        "4/6": "なんか怪しいことがあるに違いない",
+        "5/6": "彼はきっとやばいやつだと思うよ。",
+        "6/6": "何か僕らができることがあるはず！"
+    };
+
+    const englishContentTheresGottaBe1 = {
+        "1/6": "There should be another way.",
+        "2/6": "There’s gotta be a better way.",
+        "3/6": "There’s gotta be a more efficient way of studying.",
+        "4/6": "There’s gotta be something shady about it.",
+        "5/6": "There’s gotta be something wrong with him.",
+        "6/6": "There's gotta be something we can do!"
+    };
+
+    const japaneseContentMakeSureTo1 = {
+        "1/6": "9時に絶対に来てね。",
+        "2/6": "宿題を必ず今日提出してね。",
+        "3/6": "絶対に出かける時鍵を閉めてね。",
+        "4/6": "5分前には到着するように。",
+        "5/6": "出かけるときは電気消してね。",
+        "6/6": "食べるときは必ず手を洗うこと。"
+    };
+
+    const englishContentMakeSureTo1 = {
+        "1/6": "Make sure to get there by 9.",
+        "2/6": "Make sure to submit your homework today.",
+        "3/6": "Make sure to lock the key before you leave.",
+        "4/6": "Make sure to arrive 5 minutes in advance.",
+        "5/6": "Make sure to turn off the light when you go out.",
+        "6/6": "Make sure to wash your hands before eating."
+    };
+
+    const japaneseContentJust1 = {
+        "1/6": "ちょうど宿題が終わったよ。",
+        "2/6": "ちょうど食べ終わったよ。",
+        "3/6": "ちょうど仕事が終わったよ。",
+        "4/6": "ちょうど家を出たばっかだよ。",
+        "5/6": "じゃあ、ここにちょうど引っ越してきたのか。",
+        "6/6": "じゃあ、ちょうど英語始めたばっかなのか。"
+    };
+
+    const englishContentJust1 = {
+        "1/6": "I just finished my homework.",
+        "2/6": "I just finished eating.",
+        "3/6": "I just finished my work.",
+        "4/6": "I just left home.",
+        "5/6": "So, you just moved here.",
+        "6/6": "So, you just started to study English."
+    };
+
+    const japaneseContentJust2_1 = {
+        "1/6": "とにかくよこしな。",
+        "2/6": "とにかくほっといてよ。",
+        "3/6": "とにかく終わらせろ。",
+        "4/6": "とにかく彼に謝りなよ。",
+        "5/6": "ただ無視しなよ。",
+        "6/6": "普通にはっきり言ってよ。"
+    };
+
+    const englishContentJust2_1 = {
+        "1/6": "Just give it to me.",
+        "2/6": "Just leave me alone.",
+        "3/6": "Just get it done.",
+        "4/6": "Just apologize to him.",
+        "5/6": "Just ignore it.",
+        "6/6": "Just spit it out."
+    };
+
+    const japaneseContentSoundsLike1 = {
+        "1/6": "すごく楽しかったようだね。",
+        "2/6": "卓球がすごく好きなんだね。",
+        "3/6": "彼のことが好きじゃないようだね。",
+        "4/6": "彼女は君に怒っているみたいだよ。",
+        "5/6": "すごく楽しそう。",
+        "6/6": "いいね。"
+    };
+
+    const englishContentSoundsLike1 = {
+        "1/6": "Sounds like you had a lot of fun.",
+        "2/6": "Sounds like you love table tennis.",
+        "3/6": "Sounds like you don’t like him.",
+        "4/6": "Sounds like she’s mad at you.",
+        "5/6": "That sounds like a lot of fun.",
+        "6/6": "Sounds good."
+    };
+
+    const japaneseContentSeemsLike1 = {
+        "1/6": "彼は今日来ないみたいだね。",
+        "2/6": "彼は体調が悪いみたいだね。",
+        "3/6": "全部うまくいっているみたいだね。",
+        "4/6": "仲良くしているみたいだね。",
+        "5/6": "もう仲良くなったみたいだね。",
+        "6/6": "この曲は有名みたいだね。"
+    };
+
+    const englishContentSeemsLike1 = {
+        "1/6": "Seems like he’s not coming today.",
+        "2/6": "Seems like he’s feeling under the weather.",
+        "3/6": "Seems like everything is going well.",
+        "4/6": "Seems like you guys are getting along.",
+        "5/6": "Seems like you guys hit it off.",
+        "6/6": "Seems like this song is very popular."
+    };
+
+    const japaneseContentIWasWonderingIfWeICould1 = {
+        "1/6": "ランチでも行きたいなって思ってたんだけど。",
+        "2/6": "映画でもどうかなって思ってたんだけど。",
+        "3/6": "ちょっと話せないかなって思ってたんだけど。",
+        "4/6": "君にコーヒーでもおごりたいなって思ってたんだけど。",
+        "5/6": "この後ラーメンとかいきたいなとか思ってたんだけど。",
+        "6/6": "あなたのことお祝いしたいなって思ってたんだけど。"
+    };
+
+    const englishContentIWasWonderingIfWeICould1 = {
+        "1/6": "I was wondering if we could have lunch or something.",
+        "2/6": "I was wondering if we could see a movie or something.",
+        "3/6": "I was wondering if I could talk to you for a moment.",
+        "4/6": "I was wondering if I could buy you a cup of coffee.",
+        "5/6": "I was wondering if we could have ramen after this.",
+        "6/6": "I was wondering if I could cerebrate you."
+    };
+
+    const japaneseContentIWasWonderingIfYouCould1 = {
+        "1/6": "手伝ってくれたらなって思ってたんだけど",
+        "2/6": "ちょっとお金貸してくれたらなって、、",
+        "3/6": "ひとつ頼み事を聞いてくれないかなって、、",
+        "4/6": "一緒に来てくれないかなって思ってたんだけど",
+        "5/6": "車を貸してくれたらなって思ってたんだけど",
+        "6/6": "充電器かしてくれると助かる。"
+    };
+
+    const englishContentIWasWonderingIfYouCould1 = {
+        "1/6": "I was wondering if you could give me a hand.",
+        "2/6": "I was wondering if you could lend me some money.",
+        "3/6": "I was wondering if you could do me a favor.",
+        "4/6": "I was wondering if you could come with me.",
+        "5/6": "I was wondering if you could lend me your car.",
+        "6/6": "I was wondering if you could lend me a charger."
+    };
+
+    const japaneseContentIdAppreciateItIfYouCould1 = {
+        "1/6": "手伝ってくれるとありがたいです。",
+        "2/6": "車を貸してくれるとありがたいです。",
+        "3/6": "子供達を迎えに行ってくれると嬉しい。",
+        "4/6": "日程を変更していただけると嬉しいです。",
+        "5/6": "皿洗いしてくれるとありがたい。",
+        "6/6": "少しお金を貸してくれるとありがたい。"
+    };
+
+    const englishContentIdAppreciateItIfYouCould1 = {
+        "1/6": "I’d appreciate it if you could give me a hand.",
+        "2/6": "I’d appreciate it if you could lend me your car.",
+        "3/6": "I’d appreciate it if you could pick up the kids.",
+        "4/6": "I’d appreciate it if you could reschedule.",
+        "5/6": "I’d appreciate it if you could wash the dishes.",
+        "6/6": "I’d appreciate it if you could lend me some money."
+    };
+
+    const japaneseContentTheSuperlativeIveEver1 = {
+        "1/6": "今まで食べた中で一番の寿司だよ。",
+        "2/6": "今まで見た映画で一番だった。",
+        "3/6": "今までもらった中で一番のプレゼントだよ。",
+        "4/6": "今まで食べたチーズケーキで一番だった。",
+        "5/6": "そんな素敵なこと言われたことない。",
+        "6/6": "そんな馬鹿な発言聞いたことない。"
+    };
+
+    const englishContentTheSuperlativeIveEver1 = {
+        "1/6": "This is the best sushi I’ve ever had.",
+        "2/6": "This was the best movie I’ve ever seen.",
+        "3/6": "This is the best present I’ve ever got.",
+        "4/6": "That was the best cheesecake I’ve ever had.",
+        "5/6": "That’s the most beautiful thing somebody has ever said to me.",
+        "6/6": "That’s the stupidest thing I’ve ever heard."
+    };
+
+    const japaneseContentAsLongAs1 = {
+        "1/6": "すきなだけここにいていいよ。",
+        "2/6": "時間の許す限り寝ていたかった。",
+        "3/6": "お世話するんだったら、ペット飼ってもいいよ。",
+        "4/6": "君が行くならぼくも行くよ。",
+        "5/6": "宿題終わらせたらいいよ。",
+        "6/6": "雨が降ってなかったらピクニックに行くんだ。"
+    };
+
+    const englishContentAsLongAs1 = {
+        "1/6": "You can stay here as long as you like.",
+        "2/6": "I wanted to sleep as long as time allowed.",
+        "3/6": "You can have pets as long as you take care of them.",
+        "4/6": "As long as you’re going, I’ll go too.",
+        "5/6": "That’s fine as long as you finish your homework.",
+        "6/6": "We’re going on a picnic as long as it’s not raining."
+    };
+
+    const japaneseContentIsThereAnything1 = {
+        "1/6": "僕ができることはなんかある？",
+        "2/6": "なにか手伝えることはある？",
+        "3/6": "なんかほしいものある？",
+        "4/6": "なんか言いたいことある？",
+        "5/6": "なんかしたいことある？",
+        "6/6": "彼に言っておきたこととかある？"
+    };
+
+    const englishContentIsThereAnything1 = {
+        "1/6": "Is there anything I can do?",
+        "2/6": "Is there anything I can help you with?",
+        "3/6": "Is there anything you want?",
+        "4/6": "Is there anything you wanna say?",
+        "5/6": "Is there anything you wanna do?",
+        "6/6": "Is there anything you wanna tell him?"
+    };
+
+    const japaneseContentYoureSuchA1 = {
+        "1/6": "君は本当に努力家だな。",
+        "2/6": "君は本当にいい人だな。",
+        "3/6": "君は優しいなー。",
+        "4/6": "君は本当に最低だな。",
+        "5/6": "彼はとってもいい人だよ。",
+        "6/6": "彼は目立ちたがりだよな。"
+    };
+
+    const englishContentYoureSuchA1 = {
+        "1/6": "You’re such a hard worker.",
+        "2/6": "You’re such a nice person.",
+        "3/6": "You’re such a kind person.",
+        "4/6": "You’re such a jerk.",
+        "5/6": "He’s such a good person.",
+        "6/6": "He’s such a show-off."
+    };
+
+    const japaneseContentDoIHaveTo1 = {
+        "1/6": "今日中に送らないといけないですか？",
+        "2/6": "これ運ばないといけないですか？",
+        "3/6": "今彼に電話しないとだめですか？",
+        "4/6": "なんでこんなことしなきゃいけないの？",
+        "5/6": "どうして謝らなきゃいけないの？",
+        "6/6": "なんでこんな宿題しなきゃいけないの？"
+    };
+
+    const englishContentDoIHaveTo1 = {
+        "1/6": "Do I have to send it to you today?",
+        "2/6": "Do I have to carry this?",
+        "3/6": "Do I have to call him now?",
+        "4/6": "Why do I have to do this?",
+        "5/6": "Why do I have to apologize?",
+        "6/6": "Why do I have to do this homework?"
+    };
+
+    const japaneseContentAreYouSure1 = {
+        "1/6": "本当に授業サボっていいの？",
+        "2/6": "本当に行くの？",
+        "3/6": "本当に捨てていいの？",
+        "4/6": "本当に来なくていいの？",
+        "5/6": "本当に彼女に言わなくていいの？",
+        "6/6": "本当に買わなくていいの？"
+    };
+
+    const englishContentAreYouSure1 = {
+        "1/6": "Are you sure you wanna skip the class?",
+        "2/6": "Are you sure you wanna go?",
+        "3/6": "Are you sure you wanna throw this away?",
+        "4/6": "Are you sure you don’t wanna come?",
+        "5/6": "Are you sure you don’t wanna tell her?",
+        "6/6": "Are you sure you don’t wanna buy this?"
+    };
+
+    const japaneseContentItsJustThat1 = {
+        "1/6": "ただ忙しかっただけなんだ。",
+        "2/6": "ただこういうのは好きじゃないんだ",
+        "3/6": "ただこれを伝えたかっただけなんだ",
+        "4/6": "行くのが面倒くさいってだけなんだ",
+        "5/6": "ただ、今は金欠でして、、",
+        "6/6": "ただ今は彼に会いたくないってだけなんだ"
+    };
+
+    const englishContentItsJustThat1 = {
+        "1/6": "It’s just that I was busy.",
+        "2/6": "It’s just that I don’t like this kind of thing.",
+        "3/6": "It’s just that I wanted to tell you this.",
+        "4/6": "It’s just that I can’t be bothered to go.",
+        "5/6": "It’s just that I’m broke.",
+        "6/6": "It’s just that I don’t wanna see him now."
+    };
+
+    const japaneseContentItsNotThat1 = {
+        "1/6": "彼のことが嫌いなわけではないよ",
+        "2/6": "あなたを信頼してないわけではないよ",
+        "3/6": "行きたくないってわけではないよ",
+        "4/6": "海外に住みたくないわけではないよ",
+        "5/6": "面倒くさいわけではないんだ。",
+        "6/6": "怒っているわけではないんだ。"
+    };
+
+    const englishContentItsNotThat1 = {
+        "1/6": "It’s not that I don’t like him.",
+        "2/6": "It’s not that I don’t trust you.",
+        "3/6": "It’s not that I don’t wanna go.",
+        "4/6": "It’s not that I don’t wanna live abroad.",
+        "5/6": "It’s not that I can’t be bothered.",
+        "6/6": "It’s not that I’m angry."
+    };
+
+    const japaneseContentTheLastThingIWantToDoIs1 = {
+        "1/6": "あきらめることだけは絶対にしたくない",
+        "2/6": "彼を傷つけることだけは絶対にしたくない",
+        "3/6": "手術だけは絶対にしたくない",
+        "4/6": "別れるということは絶対にしたくない",
+        "5/6": "納豆だけは絶対に食べたくない",
+        "6/6": "彼を怒らせることだけはしたくない"
+    };
+
+    const englishContentTheLastThingIWantToDoIs1 = {
+        "1/6": "The last thing I wanna do is give up.",
+        "2/6": "The last thing I wanna do is hurt him.",
+        "3/6": "The last thing I wanna do is get surgery.",
+        "4/6": "Breaking up is the last thing I wanna do.",
+        "5/6": "Eating natto is the last thing I wanna do.",
+        "6/6": "Making him angry is the last thing I wanna do."
+    };
+
+    const japaneseContentJustBecauseDoesntMean1 = {
+        "1/6": "海外に行ったからと言って英語がペラペラに話せるわけではないよ。",
+        "2/6": "資格をたくさん持っているからと言っていい会社に入れるとは限らないよ。",
+        "3/6": "毎日10時間以上勉強したからといって試験に受かるとは限らないよ",
+        "4/6": "謝ったからと言って全部OKってわけじゃないから。",
+        "5/6": "グーグルにそう書いてあるからといって、その情報が正しいとは限らないよ。",
+        "6/6": "年上だからといってあなたの方が偉いわけではないからね。"
+    };
+
+    const englishContentJustBecauseDoesntMean1 = {
+        "1/6": "Just because you go abroad, doesn’t mean you’ll be able to speak English.",
+        "2/6": "Just because you have a lot of qualifications, doesn’t mean you’ll get into a good company.",
+        "3/6": "Just because you study for more than 10 hours every day, doesn’t mean you’ll pass the test.",
+        "4/6": "Just because you apologize doesn't mean everything is okay.",
+        "5/6": "Just because that's what it says on Google, doesn't mean it's true.",
+        "6/6": "Just because you're older than me doesn't mean you're my boss.",
+    };
+
+    const japaneseContentItsOnlyAMatterOfTime1 = {
+        "1/6": "時間の問題だよ",
+        "2/6": "彼にばれるのは時間の問題だ。",
+        "3/6": "彼らが別れるのは時間の問題だよ",
+        "4/6": "壊れるのは時間の問題だよ",
+        "5/6": "二人が結婚するのは時間の問題だね",
+        "6/6": "先生に怒られるのも時間の問題だね"
+    };
+
+    const englishContentItsOnlyAMatterOfTime1 = {
+        "1/6": "It’s only a matter of time.",
+        "2/6": "It’s only a matter of time before he finds out.",
+        "3/6": "It’s only a matter of time before they break up.",
+        "4/6": "It’s only a matter of time before it breaks.",
+        "5/6": "It’s only a matter of time before they get married.",
+        "6/6": "It’s only a matter of time before you get scolded by the teacher."
+    };
+
+    const japaneseContentLetsSay1 = {
+        "1/6": "世界中のどこへでも自由に行けるとしよう",
+        "2/6": "1万円を道で見つけたとしよう",
+        "3/6": "彼が君のことを好きだと仮定しよう",
+        "4/6": "仮に30分かかるとしよう",
+        "5/6": "彼女にデートに誘って断られたとしよう",
+        "6/6": "僕が半額を出すとしよう。"
+    };
+
+    const englishContentLetsSay1 = {
+        "1/6": "Let’s say you’re free to go anywhere in the world.",
+        "2/6": "Let’s say you find 10,000 yen on the ground.",
+        "3/6": "Let’s say he likes you.",
+        "4/6": "Let’s say it takes 30 minutes.",
+        "5/6": "Let’s say you ask her out and she says no.",
+        "6/6": "Let’s say I pay half the money."
+    };
+
+    const japaneseContentSinceWhen1 = {
+        "1/6": "いつからベジタリアンになったの？",
+        "2/6": "いつから府中市に住んでいるの？",
+        "3/6": "いつからそんなにゴルフが上手になったんだ？",
+        "4/6": "いつからここに来てるの？",
+        "5/6": "いつから英語を勉強してるの？",
+        "6/6": "いつからピアノを習っているの？"
+    };
+
+    const englishContentSinceWhen1 = {
+        "1/6": "Since when did you become vegetarian?",
+        "2/6": "Since when did you live in Fuchu?",
+        "3/6": "Since when did you become so good at playing golf?",
+        "4/6": "Since when have you been here?",
+        "5/6": "Since when have you been learning English?",
+        "6/6": "Since when have you been learning piano?"
+    };
+
+    const japaneseContentDoYouHappenTo1 = {
+        "1/6": "もしかして充電器持ってたりする？",
+        "2/6": "もしかして時間わかったりする？",
+        "3/6": "彼が今どこにいるか知ってたりする？",
+        "4/6": "彼の電話番号知ってたりする？",
+        "5/6": "もしかして日本語話しますか？",
+        "6/6": "彼女の誕生日覚えてたりする？"
+    };
+
+    const englishContentDoYouHappenTo1 = {
+        "1/6": "Do you happen to have a charger?",
+        "2/6": "Do you happen to have the time?",
+        "3/6": "Do you happen to know where he’s now?",
+        "4/6": "Do you happen to know his phone number?",
+        "5/6": "Do you happen to speak Japanese?",
+        "6/6": "Do you happen to remember her birthday?"
+    };
+
+    const japaneseContentMindIfI1 = {
+        "1/6": "ここに座ってもいいですか？",
+        "2/6": "僕も入ってもいいですか？",
+        "3/6": "一緒に行ってもいいですか？",
+        "4/6": "ここスキップしてもいい？",
+        "5/6": "質問してもいいですか？",
+        "6/6": "後で電話してもいいですか？"
+    };
+
+    const englishContentMindIfI1 = {
+        "1/6": "Mind if I sit here?",
+        "2/6": "Mind if I join you?",
+        "3/6": "Mind if I go with you?",
+        "4/6": "Mind if I skip this part?",
+        "5/6": "Mind I ask you a question?",
+        "6/6": "Mind if I call you later?"
+    };
+
+    const japaneseContentTheresSomethingWrongWith1 = {
+        "1/6": "彼なんかおかしいんだけど",
+        "2/6": "パソコン壊れたかも",
+        "3/6": "冷蔵庫の調子がちょっとおかしい",
+        "4/6": "自転車がなんかおかしい",
+        "5/6": "これなんかおかしい",
+        "6/6": "どうしたの？"
+    };
+
+    const englishContentTheresSomethingWrongWith1 = {
+        "1/6": "There’s something wrong with him.",
+        "2/6": "There’s something wrong with my computer.",
+        "3/6": "There’s something wrong with the fridge.",
+        "4/6": "There’s something wrong with my bike.",
+        "5/6": "There’s something wrong with this.",
+        "6/6": "Is something wrong?"
+    };
+
+    const japaneseContentItTurnedOut1 = {
+        "1/6": "彼は最初第一印象が悪かったがすごくいいやつであることが分かった。",
+        "2/6": "ジェットコースターは避けていたけどすごく楽しいことが分かった。",
+        "3/6": "納豆は一度も食べたことなかったけどすごくおいしいことが分かった。",
+        "4/6": "雨が降ると思ったけど、結局は晴れだった。",
+        "5/6": "あのレストランはぼったくりだと思ってたけど、すごく美味しいことがわかった。",
+        "6/6": "最初は怖かったけど、実際ネイティブと話すのは楽しかった。",
+    };
+
+    const englishContentItTurnedOut1 = {
+        "1/6": "We got off on the wrong foot, but it turned out he was actually a nice guy.",
+        "2/6": "I shied away from the roller coaster, but it turned out it was actually a lot of fun.",
+        "3/6": "I’d never eaten natto before, but it turned out it was really good.",
+        "4/6": "I thought it was gonna rain, but it turned out it was sunny.",
+        "5/6": "I thought the restaurant was a rip-off, but it turned out it's so delicious.",
+        "6/6": "It was scary first,but it turned out it was so much fun to talk to native speakers.",
+    };
+
+    const japaneseContentYou1 = {
+        "1/6": "東京出身なの？",
+        "2/6": "大学生なの？",
+        "3/6": "確信してるの？",
+        "4/6": "これ知ってたの？",
+        "5/6": "英語勉強してるの？",
+        "6/6": "本気で言っているの？"
+    };
+
+    const englishContentYou1 = {
+        "1/6": "You’re from Tokyo?",
+        "2/6": "You’re a university student?",
+        "3/6": "You’re sure about that?",
+        "4/6": "You know about this?",
+        "5/6": "You study English?",
+        "6/6": "You really mean that?"
+    };
+
+    const japaneseContentYou2_1 = {
+        "1/6": "出かけるの？",
+        "2/6": "仕事辞めるの？",
+        "3/6": "留学に行くの？",
+        "4/6": "今朝寝坊しちゃったの？",
+        "5/6": "スマホ家に忘れたの？",
+        "6/6": "彼に昨日会ったの？"
+    };
+
+    const englishContentYou2_1 = {
+        "1/6": "You’re leaving?",
+        "2/6": "You’re quitting your job?",
+        "3/6": "You’re studying abroad?",
+        "4/6": "You overslept this morning?",
+        "5/6": "You left your phone at home?",
+        "6/6": "You saw him yesterday?"
+    };
+
+    const japaneseContentYou3_1 = {
+        "1/6": "昨日は仕事に行かなかったの？",
+        "2/6": "昨夜は寝なかったの？",
+        "3/6": "間に合わなかった？",
+        "4/6": "これ食べたことないの？",
+        "5/6": "スキーしたことないの？",
+        "6/6": "カフェで勉強したことないの？"
+    };
+
+    const englishContentYou3_1 = {
+        "1/6": "You didn’t go to work yesterday?",
+        "2/6": "You didn’t sleep last night?",
+        "3/6": "You didn’t make it?",
+        "4/6": "You’ve never eaten this?",
+        "5/6": "You’ve never tried skiing before?",
+        "6/6": "You’ve never studied at a café?"
+    };
+
+    const japaneseContentYouWanna1 = {
+        "1/6": "君も来る？",
+        "2/6": "僕の充電器使う？",
+        "3/6": "今週の月曜日遊ぶ？",
+        "4/6": "ちょっと飲む？",
+        "5/6": "僕のペン使う？",
+        "6/6": "僕の家来る？"
+    };
+
+    const englishContentYouWanna1 = {
+        "1/6": "You wanna come?",
+        "2/6": "You wanna use my charger?",
+        "3/6": "You wanna hang out this Monday?",
+        "4/6": "You wanna drink some?",
+        "5/6": "You wanna use my pen?",
+        "6/6": "You wanna come over?"
+    };
+
+    //Grade 2
+    const japaneseContentImNotSureIf2 = {
+        "1/6": "今夜出かけられるか分からないな。",
+        "2/6": "旅行行けるか分からない。",
+        "3/6": "図書館開いてるか分からない。",
+        "4/6": "彼が来るのか分からない。",
+        "5/6": "試験に受かったか分からない。",
+        "6/6": "試合に勝てるかどうか分からない。"
+    };
+
+    const englishContentImNotSureIf2 = {
+        "1/6": "I’m not sure if I can go out tonight.",
+        "2/6": "I’m not sure if I can go on a trip.",
+        "3/6": "I’m not sure if the library is open.",
+        "4/6": "I’m not sure if he will come.",
+        "5/6": "I’m not sure if I passed the test.",
+        "6/6": "I’m not sure if I can win the game."
+    };
+
+    const japaneseContentIDontKnowWhat2 = {
+        "1/6": "何をしたらいいか分からない。",
+        "2/6": "なんて言ったらいいか分からない。",
+        "3/6": "何を勉強したらいいか分からない。",
+        "4/6": "君が何を言ってるのか分からない。",
+        "5/6": "彼が何が欲しいのか分からない。",
+        "6/6": "何が起こってるのか分からない。"
+    };
+
+    const englishContentIDontKnowWhat2 = {
+        "1/6": "I don’t know what to do.",
+        "2/6": "I don’t know what to say.",
+        "3/6": "I don’t know what to study.",
+        "4/6": "I don’t know what you’re talking about.",
+        "5/6": "I don’t know what he wants.",
+        "6/6": "I don’t know what’s going on."
+    };
+
+    const japaneseContentIDontKnowQuestionTo2 = {
+        "1/6": "これどうやって使うのか分からない。",
+        "2/6": "なんて言ったらいいか分からないけど、、",
+        "3/6": "どうやって単語を覚えればいいか分からない。",
+        "4/6": "いつ始めればいいか分からない。",
+        "5/6": "どこに行けばいいか分からない。",
+        "6/6": "どっちを選んだらいいか分からない。"
+    };
+
+    const englishContentIDontKnowQuestionTo2 = {
+        "1/6": "I don’t know how to use this.",
+        "2/6": "I don’t know how to say this, but",
+        "3/6": "I don’t know how to memorize words.",
+        "4/6": "I don’t know when to start.",
+        "5/6": "I don’t know where to go.",
+        "6/6": "I don’t know which to choose."
+    };
+
+    const japaneseContentIWonderWhatIf2 = {
+        "1/6": "あいつは今何をしているんだろう。",
+        "2/6": "彼は何がほしいんだろう。",
+        "3/6": "昨夜彼女はなんて言ってたんだろう。",
+        "4/6": "明日晴れるかな。",
+        "5/6": "彼女これ気に入ってくれるかな。",
+        "6/6": "カギ閉めたっけな"
+    };
+
+    const englishContentIWonderWhatIf2 = {
+        "1/6": "I wonder what he’s doing now.",
+        "2/6": "I wonder what he wants.",
+        "3/6": "I wonder what she said last night.",
+        "4/6": "I wonder if it’ll be sunny tomorrow.",
+        "5/6": "I wonder if she likes it.",
+        "6/6": "I wonder if I locked the key."
+    };
+
+    const japaneseContentIWonderQuestion2 = {
+        "1/6": "彼女はなんであんなに怒ってたんだろう。",
+        "2/6": "なんで彼は昨日静かだったんだろう。",
+        "3/6": "彼は今どこにいるんだろ。",
+        "4/6": "彼はいつ来るんだろう。",
+        "5/6": "今何時だろう。",
+        "6/6": "どっちを選ぼうかな。"
+    };
+
+    const englishContentIWonderQuestion2 = {
+        "1/6": "I wonder why she was so angry.",
+        "2/6": "I wonder why he kept quiet yesterday.",
+        "3/6": "I wonder where he is now.",
+        "4/6": "I wonder when he will come.",
+        "5/6": "I wonder what time it is.",
+        "6/6": "I wonder which I should choose."
+    };
+
+    const japaneseContentYouMean2 = {
+        "1/6": "僕の職業がなにかって？",
+        "2/6": "僕が何の食べ物が一番好きかって？",
+        "3/6": "昨日何したかって？",
+        "4/6": "つまりは明日大阪に行くってこと？",
+        "5/6": "えっ？もう一生禁煙するってこと？",
+        "6/6": "えっ？今日外食するってこと？"
+    };
+
+    const englishContentYouMean2 = {
+        "1/6": "You mean what I do?",
+        "2/6": "You mean which food I like best?",
+        "3/6": "You mean what I did yesterday?",
+        "4/6": "You mean you’re going to Osaka tomorrow?",
+        "5/6": "You mean you’re gonna stop smoking for good?",
+        "6/6": "You mean we’re gonna eat out today?"
+    };
+
+    const japaneseContentDoYouHaveAnyIdea2 = {
+        "1/6": "僕の鍵どこにあるか分かる？",
+        "2/6": "彼が今どこにいるか分かる？",
+        "3/6": "なんで彼女がやめたか分かる？",
+        "4/6": "なんで彼が怒っているか分かる？",
+        "5/6": "これがなんだか分かる？",
+        "6/6": "全く分からない。"
+    };
+
+    const englishContentDoYouHaveAnyIdea2 = {
+        "1/6": "Do you have any idea where my key is?",
+        "2/6": "Do you have any idea where he is now?",
+        "3/6": "Do you have any idea why she quit?",
+        "4/6": "Do you have any idea why he’s upset?",
+        "5/6": "Do you have any idea what it is?",
+        "6/6": "I have no idea."
+    };
+
+    const japaneseContentNoWonder2 = {
+        "1/6": "だから眠そうなわけだ。",
+        "2/6": "君が怒るのも無理はない。",
+        "3/6": "どうりで彼はすごく英語が上手なわけだ。",
+        "4/6": "子供達がはしゃぐのも当然だよ。",
+        "5/6": "どうりで君が彼のことを嫌ってるわけだ。",
+        "6/6": "遅れてしまうのも当然だね。"
+    };
+
+    const englishContentNoWonder2 = {
+        "1/6": "No wonder you look tired.",
+        "2/6": "No wonder you got angry.",
+        "3/6": "No wonder he speaks English so well.",
+        "4/6": "No wonder the children get so excited.",
+        "5/6": "No wonder you don’t like him.",
+        "6/6": "No wonder you were late."
+    };
+
+    const japaneseContentIve2 = {
+        "1/6": "そこに一回行ったことがあるよ。",
+        "2/6": "これ一回だけ食べたことある。",
+        "3/6": "前に彼女に会ったことあるよ。",
+        "4/6": "京都には行ったことあるよ。",
+        "5/6": "ニューヨーク住んでたことあるよ。",
+        "6/6": "このレストランは何回も行ったことあるよ。"
+    };
+
+    const englishContentIve2 = {
+        "1/6": "I’ve been there once.",
+        "2/6": "I’ve had this once.",
+        "3/6": "I’ve seen her before.",
+        "4/6": "I’ve been to Kyoto.",
+        "5/6": "I’ve lived in New York.",
+        "6/6": "I’ve been to this restaurant many times."
+    };
+
+    const japaneseContentIveBeen2 = {
+        "1/6": "自分の部屋を1時間掃除している。",
+        "2/6": "5年間英語を勉強しています。",
+        "3/6": "彼を1時間ずっと待っています。",
+        "4/6": "結婚についてずっと考えてる。",
+        "5/6": "10年間テニスをしています。",
+        "6/6": "5年ほど勤めています。"
+    };
+
+    const englishContentIveBeen2 = {
+        "1/6": "I’ve been cleaning my room for 1 hour.",
+        "2/6": "I’ve been studying English for 5 years.",
+        "3/6": "I’ve been waiting for him for an hour.",
+        "4/6": "I’ve been thinking about marriage.",
+        "5/6": "I’ve been playing tennis for 10 years.",
+        "6/6": "I’ve been working there for 5 years."
+    };
+
+    const japaneseContentIveNever2 = {
+        "1/6": "一回もそこ行ったことない。",
+        "2/6": "一回もこれ食べたことない。",
+        "3/6": "一回も海外行ったことないんだよね。",
+        "4/6": "そういう経験は一回もないな。",
+        "5/6": "一回も彼女に会ったことない。",
+        "6/6": "その曲一回も聞いたことない。"
+    };
+
+    const englishContentIveNever2 = {
+        "1/6": "I’ve never been there.",
+        "2/6": "I’ve never had this one.",
+        "3/6": "I’ve never been to other countries.",
+        "4/6": "I’ve never had that experience.",
+        "5/6": "I’ve never seen her before.",
+        "6/6": "I’ve never listened to the song."
+    };
+
+    const japaneseContentHaveYouEver2 = {
+        "1/6": "今まで海外行ったことある？",
+        "2/6": "コロナかかったことある？",
+        "3/6": "この本読んだことある？",
+        "4/6": "お皿洗った？",
+        "5/6": "宿題やった？",
+        "6/6": "レポート終わらせた？"
+    };
+
+    const englishContentHaveYouEver2 = {
+        "1/6": "Have you ever been to other countries?",
+        "2/6": "Have you ever caught the coronavirus?",
+        "3/6": "Have you ever read this book?",
+        "4/6": "Have you washed the dishes?",
+        "5/6": "Have you done your homework?",
+        "6/6": "Have you finished your report?"
+    };
+
+    const japaneseContentIsntItWasntIt2 = {
+        "1/6": "ここすごく暑くない？",
+        "2/6": "えっすごくちっちゃくない？",
+        "3/6": "便利じゃない？",
+        "4/6": "めっちゃ辛くなかった？",
+        "5/6": "めっちゃつまんなくなかった？",
+        "6/6": "ちょっと高くなかった？"
+    };
+
+    const englishContentIsntItWasntIt2 = {
+        "1/6": "It’s too hot in here, isn’t it?",
+        "2/6": "It’s too small, isn’t it?",
+        "3/6": "It’s convenient, isn’t it?",
+        "4/6": "It was too hot, wasn’t it?",
+        "5/6": "It was so boring, wasn’t it?",
+        "6/6": "It was a bit expensive, wasn’t it?"
+    };
+
+    const japaneseContentDidntYouDoesntIt2 = {
+        "1/6": "昨日その映画見たでしょ？",
+        "2/6": "僕に嘘ついたでしょ？",
+        "3/6": "英語の勉強サボったでしょ？",
+        "4/6": "スマホなくしたんでしょ？",
+        "5/6": "面白そうじゃない？",
+        "6/6": "難しそうじゃない？"
+    };
+
+    const englishContentDidntYouDoesntIt2 = {
+        "1/6": "You saw the movie yesterday, didn’t you?",
+        "2/6": "You lied to me, didn’t you?",
+        "3/6": "You were slacking off when you were studying English, weren't you?",
+        "4/6": "You lost your phone, didn’t you?",
+        "5/6": "It sounds interesting, doesn’t it?",
+        "6/6": "It sounds difficult, doesn’t it?"
+    };
+
+    const japaneseContentArentYouWerentYou2 = {
+        "1/6": "あなたはすごく優しいね。",
+        "2/6": "あなたは努力家だね。",
+        "3/6": "あなたってまじめだね。",
+        "4/6": "授業中寝てたでしょ？",
+        "5/6": "ずっとゲームしてたでしょ？",
+        "6/6": "単語覚えてたでしょ？"
+    };
+
+    const englishContentArentYouWerentYou2 = {
+        "1/6": "You’re so kind, aren’t you?",
+        "2/6": "You’re so hard-working, aren’t you?",
+        "3/6": "You’re so earnest, aren’t you?",
+        "4/6": "You were sleeping during the class, weren’t you?",
+        "5/6": "You were playing the game, weren’t you?",
+        "6/6": "You were memorizing the words, weren’t you?"
+    };
+
+    const japaneseContentRight2 = {
+        "1/6": "昨日TOEIC受けたよね？",
+        "2/6": "今日って金曜日だよね？",
+        "3/6": "一人2000円だよね？",
+        "4/6": "明日って君の誕生日だよね？",
+        "5/6": "これ君のスマホだよね？",
+        "6/6": "トマト嫌いだよね？"
+    };
+
+    const englishContentRight2 = {
+        "1/6": "You took the TOEIC test yesterday, right?",
+        "2/6": "It’s Friday today, right?",
+        "3/6": "2000 yen per person, right?",
+        "4/6": "Tomorrow is your birthday, right?",
+        "5/6": "It’s your phone, right?",
+        "6/6": "You don’t like tomatoes, right?"
+    };
+
+    const japaneseContentYoureIngRight2 = {
+        "1/6": "10分後に家出るんだよね？",
+        "2/6": "東京に引っ越すんだよね？",
+        "3/6": "今週末その映画見に行くんだよね？",
+        "4/6": "今日は家にいるんだよね？",
+        "5/6": "今日はカフェに行くんだよね？",
+        "6/6": "来月オーストラリアに行くんだよね？"
+    };
+
+    const englishContentYoureIngRight2 = {
+        "1/6": "You’re leaving in 10 minutes, right?",
+        "2/6": "You’re moving to Tokyo, right?",
+        "3/6": "You’re seeing the movie this weekend, right?",
+        "4/6": "You’re staying home today, right?",
+        "5/6": "You’re going to a café today, right?",
+        "6/6": "You’re going to Australia next month, right?"
+    };
+
+    const japaneseContentTheOneWho2 = {
+        "1/6": "僕が君のプリンを食べたんだ。",
+        "2/6": "僕が窓を割ったんだ。",
+        "3/6": "彼が君のお金を盗んだんだよ。",
+        "4/6": "悪いのは彼だよ。",
+        "5/6": "君が始めたんでしょ！",
+        "6/6": "知っているのは君だけだよ。"
+    };
+
+    const englishContentTheOneWho2 = {
+        "1/6": "I’m the one who ate your pudding.",
+        "2/6": "I’m the one who broke the window.",
+        "3/6": "He is the one who stole your money.",
+        "4/6": "He is the one who is to blame.",
+        "5/6": "You’re the one who started it.",
+        "6/6": "You’re the only one who knows."
+    };
+
+    const japaneseContentWeShould2 = {
+        "1/6": "今週末映画見ようよ！",
+        "2/6": "今日はイタリアン料理を食べようよ！",
+        "3/6": "いつか遊ぼうよ！",
+        "4/6": "今度一緒にお昼食べようよ。",
+        "5/6": "夏休みさ、旅行に行こうよ。",
+        "6/6": "明日カラオケ行こう。"
+    };
+
+    const englishContentWeShould2 = {
+        "1/6": "We should see a movie this weekend.",
+        "2/6": "We should eat Italian food today.",
+        "3/6": "We should hang out sometime.",
+        "4/6": "We should have lunch together.",
+        "5/6": "We should go on a trip during this summer break.",
+        "6/6": "We should go to karaoke tomorrow."
+    };
+
+    const japaneseContentMaybeWeCould2 = {
+        "1/6": "カラオケ行ってもいいかもね。",
+        "2/6": "ピザ食べてもいいかもね。",
+        "3/6": "家にいてネットフリックス見てもいいもね。",
+        "4/6": "明日レッスンをしてもいいかもね。",
+        "5/6": "なにか違うことをしてもいいかもね。",
+        "6/6": "いつか会ってもいいかもね。"
+    };
+
+    const englishContentMaybeWeCould2 = {
+        "1/6": "Maybe we could go to karaoke.",
+        "2/6": "Maybe we could eat pizza.",
+        "3/6": "Maybe we could stay home and watch Netflix.",
+        "4/6": "Maybe we could have a lesson tomorrow.",
+        "5/6": "Maybe we could do something different.",
+        "6/6": "Maybe we could catch up sometime."
+    };
+
+    const japaneseContentCould2 = {
+        "1/6": "レストランは閉まっているかも。",
+        "2/6": "もしかしたらそれ僕の財布かも。",
+        "3/6": "それMasaのかも。",
+        "4/6": "映画を見てもいいかもね。",
+        "5/6": "マックに行ってもいいかもね。",
+        "6/6": "僕なら直せるかも。"
+    };
+
+    const englishContentCould2 = {
+        "1/6": "The restaurant could be closed.",
+        "2/6": "That could be my wallet.",
+        "3/6": "That could be Masa’s.",
+        "4/6": "Maybe we could see a movie.",
+        "5/6": "Maybe we could go to the McDonald's.",
+        "6/6": "Maybe I could fix this."
+    };
+
+    const japaneseContentShouldve2 = {
+        "1/6": "君に言うべきだった。",
+        "2/6": "アラームをかけるべきだった。",
+        "3/6": "お金をためておくべきだった。",
+        "4/6": "買わなきゃよかった。",
+        "5/6": "あんなに食べなきゃよかった。",
+        "6/6": "それを言うべきじゃなかった。"
+    };
+
+    const englishContentShouldve2 = {
+        "1/6": "I should’ve told you.",
+        "2/6": "I should’ve set the alarm.",
+        "3/6": "I should’ve saved more money.",
+        "4/6": "I shouldn’t have bought it.",
+        "5/6": "I shouldn’t have eaten so much.",
+        "6/6": "I shouldn’t have said that."
+    };
+
+    const japaneseContentDidntITellYou2 = {
+        "1/6": "テストに合格したって言ってなかったけ？",
+        "2/6": "英語の勉強始めたって言ってなかったけ？",
+        "3/6": "転職したの言ってなかったけ？",
+        "4/6": "言ってなかったけ？今日は休みだよ。",
+        "5/6": "言ってなかったけ。お昼はいらないよ。",
+        "6/6": "言ってなかったっけ？まだ僕大学生だよ。"
+    };
+
+    const englishContentDidntITellYou2 = {
+        "1/6": "Didn’t I tell you I passed the test?",
+        "2/6": "Didn’t I tell you I started to study English?",
+        "3/6": "Didn’t I tell you I changed jobs?",
+        "4/6": "Didn’t I tell you? Today is my day off.",
+        "5/6": "Didn’t I tell you? I don’t need lunch.",
+        "6/6": "Didn't I tell you? I'm still an university student."
+    };
+
+    const japaneseContentDidntYouSay2 = {
+        "1/6": "転職するって言ってなかったけ？",
+        "2/6": "引っ越すって言ってなかったけ？",
+        "3/6": "アイフォン買うって言ってなかったっけ？",
+        "4/6": "英語話せるって言ってなかったけ？",
+        "5/6": "トマト嫌いって言ってなかったけ？",
+        "6/6": "来ないって言ってなかったっけ？"
+    };
+
+    const englishContentDidntYouSay2 = {
+        "1/6": "Didn’t you say you were gonna change jobs?",
+        "2/6": "Didn’t you say you were gonna move out?",
+        "3/6": "Didn’t you say you were gonna buy an iPhone?",
+        "4/6": "Didn’t you say you could speak English?",
+        "5/6": "Didn’t you say you don’t like tomatoes?",
+        "6/6": "Didn’t you say you were not gonna come?"
+    };
+
+    const japaneseContentWhyDidntI2 = {
+        "1/6": "なんでそれを思いつかなかったんだろう。",
+        "2/6": "なんで見えなかったんだろう。",
+        "3/6": "なんで気が付かなかったんだろう。",
+        "4/6": "なんで地震気が付かなかったんだろう。",
+        "5/6": "なんで身長高くならなかったんだろう。",
+        "6/6": "なんで鍵をかけなかったんだろう。"
+    };
+
+    const englishContentWhyDidntI2 = {
+        "1/6": "Why didn’t I think about it?",
+        "2/6": "Why didn’t I see it?",
+        "3/6": "Why didn’t I notice that?",
+        "4/6": "Why didn’t I feel the earthquake?",
+        "5/6": "Why didn’t I get tall?",
+        "6/6": "Why didn't I lock the key?"
+    };
+
+    const japaneseContentWhyWouldYou2 = {
+        "1/6": "なんでそんなことしたの？",
+        "2/6": "なんで僕に嘘をついたの？",
+        "3/6": "なんでお金を盗んだの？",
+        "4/6": "なんでそんなこと言ったの？",
+        "5/6": "なんでそれ捨てちゃったの？",
+        "6/6": "なんでそんなこと言うんですか？"
+    };
+
+    const englishContentWhyWouldYou2 = {
+        "1/6": "Why would you do that?",
+        "2/6": "Why would you lie to me?",
+        "3/6": "Why would you steal the money?",
+        "4/6": "Why would you say that?",
+        "5/6": "Why would you get rid of it?",
+        "6/6": "Why would you say such a thing?"
+    };
+
+    const japaneseContentHowCouldYou2 = {
+        "1/6": "なんでそんなことしたの？/ ひどいよ。",
+        "2/6": "なんで嘘なんか僕についたの…",
+        "3/6": "なんで僕に隠したりしたの…",
+        "4/6": "どうしてそれを彼女に言っちゃったんだ…",
+        "5/6": "なんでそんなこと…",
+        "6/6": "なんでお金を盗んじゃったの？"
+    };
+
+    const englishContentHowCouldYou2 = {
+        "1/6": "How could you do that?",
+        "2/6": "How could you lie to me?",
+        "3/6": "How could you have kept this from me?",
+        "4/6": "How could you tell her that?",
+        "5/6": "How could you…",
+        "6/6": "How could you steal the money?"
+    };
+
+    const japaneseContentHowCanYou2 = {
+        "1/6": "なんで食べられるの？",
+        "2/6": "よくそんなこと言えるね。",
+        "3/6": "なんで信じられるの？",
+        "4/6": "なんでそんな確信できるの？",
+        "5/6": "なんで彼のこと知らないの！？",
+        "6/6": "なんで来ないの！？"
+    };
+
+    const englishContentHowCanYou2 = {
+        "1/6": "How can you eat that?",
+        "2/6": "How can you say that?",
+        "3/6": "How can you believe that?",
+        "4/6": "How can you be so sure?",
+        "5/6": "How can you not know him?",
+        "6/6": "How can you not come?"
+    };
+
+    //Grade 3
+    const japaneseContentWhat3 = {
+        "1/6": "趣味はなんですか？",
+        "2/6": "普段は朝ごはんは何を食べているの？",
+        "3/6": "昨日は何をした？",
+        "4/6": "夜ご飯何を食べた？",
+        "5/6": "どうするの？",
+        "6/6": "彼になんて言うの？"
+    };
+
+    const englishContentWhat3 = {
+        "1/6": "What do you like to do in your free time?",
+        "2/6": "What do you usually have for breakfast?",
+        "3/6": "What did you do yesterday?",
+        "4/6": "What did you have for dinner?",
+        "5/6": "What are you gonna do?",
+        "6/6": "What are you gonna say to him?"
+    };
+
+    const japaneseContentWhatA3 = {
+        "1/6": "驚いた！",
+        "2/6": "なんて嬉しいサプライズ！",
+        "3/6": "なんていい日なんだ。",
+        "4/6": "なんてぼったくりなんだ。",
+        "5/6": "なんて綺麗な景色なんだ",
+        "6/6": "世間は狭いな。"
+    };
+
+    const englishContentWhatA3 = {
+        "1/6": "What a surprise.",
+        "2/6": "What a nice surprise.",
+        "3/6": "What a great day.",
+        "4/6": "What a rip-off.",
+        "5/6": "What a beautiful landscape!",
+        "6/6": "What a small world."
+    };
+
+    const japaneseContentWhatAbout3 = {
+        "1/6": "車はどうするの？",
+        "2/6": "レッスンはどうするの？",
+        "3/6": "月曜日のテストはどうするの？",
+        "4/6": "Masaはどうするの？",
+        "5/6": "服はどうするの？",
+        "6/6": "息子さんはどうするんですか？"
+    };
+
+    const englishContentWhatAbout3 = {
+        "1/6": "What about the car?",
+        "2/6": "What about the lesson?",
+        "3/6": "What about the test on Monday?",
+        "4/6": "What about Masa?",
+        "5/6": "What about the clothes?",
+        "6/6": "What about your son?"
+    };
+
+    const japaneseContentWhatKindOf3 = {
+        "1/6": "どんな飲み物がほしい？",
+        "2/6": "なんのスポーツが好き？",
+        "3/6": "どんな種類の本が好きなの？",
+        "4/6": "それってどんな感じのレストランなの？",
+        "5/6": "これはどんな感じのワインなんですか？",
+        "6/6": "これはどんな種類のお茶ですか？"
+    };
+
+    const englishContentWhatKindOf3 = {
+        "1/6": "What kind of drink do you want?",
+        "2/6": "What kind of sport do you like?",
+        "3/6": "What kind of book do you like?",
+        "4/6": "What kind of restaurant is that?",
+        "5/6": "What kind of wine is this?",
+        "6/6": "What kind of tea is this?"
+    };
+
+    const japaneseContentWhatCanI3 = {
+        "1/6": "なんて呼んだらいい？",
+        "2/6": "要件は何？",
+        "3/6": "なんて言ったらいいのかな…",
+        "4/6": "何をしたらいいのかな",
+        "5/6": "なんて言ったらいいのかな",
+        "6/6": "何を見たらいいのかな"
+    };
+
+    const englishContentWhatCanI3 = {
+        "1/6": "What can I call you?",
+        "2/6": "What can I do for you?",
+        "3/6": "What can I say?",
+        "4/6": "What should I do?",
+        "5/6": "What should I say?",
+        "6/6": "What should I watch?"
+    };
+
+    const japaneseContentWhere3 = {
+        "1/6": "僕のスマホどこだ？",
+        "2/6": "どこに住んでるの？",
+        "3/6": "どこに行くの？",
+        "4/6": "どこに行ってたの？",
+        "5/6": "セーターはどこですか？",
+        "6/6": "お手洗いってどこですか？"
+    };
+
+    const englishContentWhere3 = {
+        "1/6": "Where’s my phone?",
+        "2/6": "Where do you live?",
+        "3/6": "Where are you going?",
+        "4/6": "Where have you been?",
+        "5/6": "Where can I find a sweater?",
+        "6/6": "Where can I find a restroom?"
+    };
+
+    const japaneseContentWhen3 = {
+        "1/6": "いつが休みなの？",
+        "2/6": "普段はいつ英語を勉強してるの？",
+        "3/6": "いつが都合がつく？",
+        "4/6": "いつ大阪に旅行に行くんだっけ？",
+        "5/6": "いつその映画見たの？",
+        "6/6": "いつレッスンをするんでしたっけ？"
+    };
+
+    const englishContentWhen3 = {
+        "1/6": "When is your day off?",
+        "2/6": "When do you usually study English?",
+        "3/6": "When works for you?",
+        "4/6": "When are you gonna go on a trip to Osaka?",
+        "5/6": "When did you see the movie?",
+        "6/6": "When are we gonna have a lesson?"
+    };
+
+    const japaneseContentWhatTime3 = {
+        "1/6": "今何時？",
+        "2/6": "何時にいつも寝てるの？",
+        "3/6": "何時に家を出るの？",
+        "4/6": "今日は何時に起きたの？",
+        "5/6": "何時にバスは出発するの？",
+        "6/6": "何時にコンサートは終わるの？"
+    };
+
+    const englishContentWhatTime3 = {
+        "1/6": "What time is it now?",
+        "2/6": "What time do you usually go to bed?",
+        "3/6": "What time are you leaving home?",
+        "4/6": "What time did you get up today?",
+        "5/6": "What time does the bus leave?",
+        "6/6": "What time does the concert end?"
+    };
+
+    const japaneseContentWhich3 = {
+        "1/6": "どっちが僕の？",
+        "2/6": "どっちが君の弟？",
+        "3/6": "どっちが好き？",
+        "4/6": "卓球とテニスどっちが好き？",
+        "5/6": "どっちがいいと思う？",
+        "6/6": "どっちが高いと思う？"
+    };
+
+    const englishContentWhich3 = {
+        "1/6": "Which is mine?",
+        "2/6": "Which is your brother?",
+        "3/6": "Which do you prefer?",
+        "4/6": "Which do you like better, table tennis or tennis?",
+        "5/6": "Which do you think is better?",
+        "6/6": "Which do you think is more expensive?"
+    };
+
+    const japaneseContentWho3 = {
+        "1/6": "彼女誰？",
+        "2/6": "誰と行くの？",
+        "3/6": "誰と？",
+        "4/6": "誰がこれやったの？",
+        "5/6": "誰が僕のペン使った？",
+        "6/6": "誰だ、僕のプリン食べたのは？"
+    };
+
+    const englishContentWho3 = {
+        "1/6": "Who is she?",
+        "2/6": "Who are you going with?",
+        "3/6": "With who?",
+        "4/6": "Who did this?",
+        "5/6": "Who used my pen?",
+        "6/6": "Who ate my pudding?"
+    };
+
+    const japaneseContentWhose3 = {
+        "1/6": "誰の番？",
+        "2/6": "これ誰の？",
+        "3/6": "それは誰の考え？",
+        "4/6": "それは誰のせいなの？",
+        "5/6": "これ誰のかばん？",
+        "6/6": "この靴下誰の？"
+    };
+
+    const englishContentWhose3 = {
+        "1/6": "Whose turn?",
+        "2/6": "Whose is this?",
+        "3/6": "Whose idea is that?",
+        "4/6": "Whose fault is that?",
+        "5/6": "Whose bag is this?",
+        "6/6": "Whose socks are these?"
+    };
+
+    const japaneseContentWhy3 = {
+        "1/6": "それはなんで？",
+        "2/6": "なんでそんな怒ってるの？",
+        "3/6": "なんでそんな意地悪なの？",
+        "4/6": "なんでパニくってるの？",
+        "5/6": "なんでそんなこと彼に言ったの！？",
+        "6/6": "なんで授業サボったの？"
+    };
+
+    const englishContentWhy3 = {
+        "1/6": "Why is that?",
+        "2/6": "Why are you so upset?",
+        "3/6": "Why are you so mean?",
+        "4/6": "Why are you freaking out?",
+        "5/6": "Why did you say something like that to him?",
+        "6/6": "Why did you skip the class?"
+    };
+
+    const japaneseContentWhatMakesYou3 = {
+        "1/6": "なんで怒ってるの？",
+        "2/6": "なんで気が変わったの？",
+        "3/6": "なんでそう思うの？",
+        "4/6": "なんで日本に来たの？",
+        "5/6": "なんで英語を勉強し始めたの？",
+        "6/6": "なんで引っ越したの？"
+    };
+
+    const englishContentWhatMakesYou3 = {
+        "1/6": "What makes you angry?",
+        "2/6": "What makes you change your mind?",
+        "3/6": "What makes you think so?",
+        "4/6": "What made you come to Japan?",
+        "5/6": "What made you start studying English?",
+        "6/6": "What made you move out?"
+    };
+
+    const japaneseContentWhatDoYouThink3 = {
+        "1/6": "結果はどうなると思う？",
+        "2/6": "僕はどうすればいいと思う？",
+        "3/6": "彼女は何が欲しいと思う？",
+        "4/6": "どの言語を僕は勉強したらいいと思う？",
+        "5/6": "彼はどんな食べ物が好きだと思う？",
+        "6/6": "何買ったと思う？"
+    };
+
+    const englishContentWhatDoYouThink3 = {
+        "1/6": "What do you think the result will be?",
+        "2/6": "What do you think I should do?",
+        "3/6": "What do you think she wants?",
+        "4/6": "What language do you think I should study?",
+        "5/6": "What food do you think he likes?",
+        "6/6": "What do you think I bought?"
+    };
+
+    const japaneseContentWhyDontYou3 = {
+        "1/6": "一緒に来ない？",
+        "2/6": "彼に電話してみたら？",
+        "3/6": "彼女に聞いてみたら？",
+        "4/6": "もっと早く寝たら？",
+        "5/6": "とにかくやってみたら？",
+        "6/6": "新しいパソコン買ったら？"
+    };
+
+    const englishContentWhyDontYou3 = {
+        "1/6": "Why don’t you come with us?",
+        "2/6": "Why don’t you call him?",
+        "3/6": "Why don’t you ask her?",
+        "4/6": "Why don’t you go to bed earlier?",
+        "5/6": "Why don’t you just try it?",
+        "6/6": "Why don’t you buy a new computer?"
+    };
+
+    const japaneseContentCuzI3 = {
+        "1/6": "今日は遅くまで働かなきゃいけなくて英語を勉強できなかった。",
+        "2/6": "昨夜夜更かししたからすごく疲れてる。",
+        "3/6": "外は雨降ってるから行きたくない。",
+        "4/6": "彼女が嘘ついたから怒ってるんだ。",
+        "5/6": "スマホが壊れててゲームができないんだ。",
+        "6/6": "息子から返信が返ってこなくて心配なの。"
+    };
+
+    const englishContentCuzI3 = {
+        "1/6": "I couldn’t study English today cuz I had to work late.",
+        "2/6": "I’m so tired cuz I stayed up late last night.",
+        "3/6": "I don’t wanna go cuz it’s raining outside.",
+        "4/6": "I’m angry cuz she told me a lie.",
+        "5/6": "I can’t play the game cuz my phone is broken.",
+        "6/6": "I'm so worried cuz my son hasn't messaged me back."
+    };
+
+    const japaneseContentHow3 = {
+        "1/6": "どんな風に英語は勉強しているの？",
+        "2/6": "どんな風に単語は覚えているの？",
+        "3/6": "週末はどんな風に過ごした？",
+        "4/6": "休暇はどんな風に過ごしたの？",
+        "5/6": "駅まではどうやって行けばいいですか？",
+        "6/6": "府中美術館まではどうやって行ったらいいですか？"
+    };
+
+    const englishContentHow3 = {
+        "1/6": "How do you study English?",
+        "2/6": "How do you memorize words?",
+        "3/6": "How did you spend your weekend?",
+        "4/6": "How did you spend your day off?",
+        "5/6": "How do I get to the station?",
+        "6/6": "How do I get to the Fuchu museum?"
+    };
+
+    const japaneseContentHowIs3 = {
+        "1/6": "仕事はどう？",
+        "2/6": "お母さんの調子はどう？",
+        "3/6": "新しい職場はどう？",
+        "4/6": "今日は学校どうだった？",
+        "5/6": "今日はどんな一日だった？",
+        "6/6": "例のレストランはどうだった？"
+    };
+
+    const englishContentHowIs3 = {
+        "1/6": "How’s work?",
+        "2/6": "How’s your mother?",
+        "3/6": "How’s your new workplace?",
+        "4/6": "How was school today?",
+        "5/6": "How was your day?",
+        "6/6": "How was that restaurant?"
+    };
+
+    const japaneseContentHowMuch3 = {
+        "1/6": "これは何円ですか？",
+        "2/6": "オーストラリア行きのチケットどれくらいかかるの？",
+        "3/6": "このセーターいくらですか？",
+        "4/6": "それ何円したの？",
+        "5/6": "何円必要なの？",
+        "6/6": "君は何円払ったの？"
+    };
+
+    const englishContentHowMuch3 = {
+        "1/6": "How much is this?",
+        "2/6": "How much is the ticket to Australia?",
+        "3/6": "How much is this sweater?",
+        "4/6": "How much is it?",
+        "5/6": "How much do you need?",
+        "6/6": "How much did you pay?"
+    };
+
+    const japaneseContentHowMany3 = {
+        "1/6": "何名様でしょうか？",
+        "2/6": "何人家族？",
+        "3/6": "兄弟は何人いるの？",
+        "4/6": "何個バッグ持ってるの？",
+        "5/6": "何回そこに行ったことあるの？",
+        "6/6": "何回それ食べたの？"
+    };
+
+    const englishContentHowMany3 = {
+        "1/6": "How many?",
+        "2/6": "How many people are there in your family?",
+        "3/6": "How many siblings do you have?",
+        "4/6": "How many bags do you have?",
+        "5/6": "How many times have you been there?",
+        "6/6": "How many times have you eaten it?"
+    };
+
+    const japaneseContentHowLong3 = {
+        "1/6": "どれくらい待ちますか？",
+        "2/6": "駅までどれくらいかかるの？",
+        "3/6": "そこまでどれくらい時間かかりますか？",
+        "4/6": "何年くらい日本に住んでいらっしゃるんですか？",
+        "5/6": "どれくらい待ってるんですか？",
+        "6/6": "彼女はどれくらい寝てるの？"
+    };
+
+    const englishContentHowLong3 = {
+        "1/6": "How long is the wait?",
+        "2/6": "How long does it take to get to the station?",
+        "3/6": "How long does it take to get there?",
+        "4/6": "How long have you lived in Japan?",
+        "5/6": "How long have you been waiting?",
+        "6/6": "How long has she been sleeping?"
+    };
+
+    const japaneseContentHowOften3 = {
+        "1/6": "そこにはどれくらいの頻度で行くの？",
+        "2/6": "彼女にはどれくらいの頻度で会うの？",
+        "3/6": "彼はどれくらいの頻度で旅行に行くの？",
+        "4/6": "この辺ではどれくらいの頻度で雨が降るの？",
+        "5/6": "彼女はどれくらいの頻度でここに来るの？",
+        "6/6": "週に何回くらい外食するの？"
+    };
+
+    const englishContentHowOften3 = {
+        "1/6": "How often do you go there?",
+        "2/6": "How often do you meet her?",
+        "3/6": "How often does he travel?",
+        "4/6": "How often does it rain around here?",
+        "5/6": "How often does she come here?",
+        "6/6": "How often a week do you eat out?"
+    };
+
+    const japaneseContentHowAbout3 = {
+        "1/6": "パスタはどう？",
+        "2/6": "来週はどう？",
+        "3/6": "京都はどう？",
+        "4/6": "映画見に行くのは？",
+        "5/6": "25日の夜ご飯でもどう？",
+        "6/6": "これはどう？"
+    };
+
+    const englishContentHowAbout3 = {
+        "1/6": "How about pasta?",
+        "2/6": "How about next week?",
+        "3/6": "How about Kyoto?",
+        "4/6": "How about going to see a movie?",
+        "5/6": "How about dinner on the 25th?",
+        "6/6": "How about this one?"
+    };
+
+    const japaneseContentIWish3 = {
+        "1/6": "もっと時間があったらな。",
+        "2/6": "兄弟がいたらな。",
+        "3/6": "英語が話せたらな。",
+        "4/6": "彼と付き合えたらな。",
+        "5/6": "歌が上手かったらな。",
+        "6/6": "お金がもっとあればな。"
+    };
+
+    const englishContentIWish3 = {
+        "1/6": "I wish I had more time.",
+        "2/6": "I wish I had siblings.",
+        "3/6": "I wish I could speak English.",
+        "4/6": "I wish I could go out with him.",
+        "5/6": "I wish I could sing well.",
+        "6/6": "I wish I had more money."
+    };
+
+    const japaneseContentImPrettySure3 = {
+        "1/6": "絶対大丈夫だよ。",
+        "2/6": "君なら絶対にうまくいくよ。",
+        "3/6": "彼なら絶対に勝つよ。",
+        "4/6": "彼女は絶対に嘘をついているよ。",
+        "5/6": "彼絶対これ気に入るよ。",
+        "6/6": "絶対テスト難しくないよ。"
+    };
+
+    const englishContentImPrettySure3 = {
+        "1/6": "I’m pretty sure it’s gonna be fine.",
+        "2/6": "I’m pretty sure you can make it.",
+        "3/6": "I’m pretty sure he’s gonna win.",
+        "4/6": "I’m pretty sure she’s lying.",
+        "5/6": "I’m pretty sure he’s gonna love it.",
+        "6/6": "I’m pretty sure the test is not difficult."
+    };
+
+    const japaneseContentIKnow3 = {
+        "1/6": "忙しいのは分かってるけど、もっと家族と過ごした方がいいよ。",
+        "2/6": "君のせいじゃないのは分かってるけど彼女に謝った方がいいよ。",
+        "3/6": "怒っているのはわかってるけどそんなこと言っちゃだめだよ。",
+        "4/6": "もっと勉強しなよ！忙しいのはわかるけどさ。",
+        "5/6": "とりあえずやってみた方がいいよ。不安なのはわかるけど。",
+        "6/6": "今日は勉強する気分じゃない。やらないといけないのはわかってるけど。"
+    };
+
+    const englishContentIKnow3 = {
+        "1/6": "I know you’re busy, but you should spend more time with your family.",
+        "2/6": "I know it’s not your fault, but you should apologize to her.",
+        "3/6": "I know you’re upset, but you can’t say such a thing.",
+        "4/6": "You should study more. I know you're busy, though.",
+        "5/6": "You should give it a shot. I know you're worried.",
+        "6/6": "I don't feel like studying today. I know I have to, though."
+    };
+
+    const japaneseContentIHappenTo3 = {
+        "1/6": "僕もたまたまそこにいたんだけど",
+        "2/6": "たまたま君のお母さんに会ったよ。",
+        "3/6": "駅でこの前たまたま君を見かけたよ。",
+        "4/6": "たまたま僕ら誕生日が同じなんだよ。",
+        "5/6": "たまたま宝くじが当たった。",
+        "6/6": "たまたま1000円札拾った。"
+    };
+
+    const englishContentIHappenTo3 = {
+        "1/6": "I happened to be there.",
+        "2/6": "I happened to meet your mother.",
+        "3/6": "I happened to see you at the station the other day.",
+        "4/6": "We happen to have the same birthday.",
+        "5/6": "I happened to win the lottery.",
+        "6/6": "I happened to pick up thousand-yen bill"
+    };
+
+    const japaneseContentICantBelieve3 = {
+        "1/6": "信じられない。まだ雨が降っているよ。",
+        "2/6": "彼が今日来ないの信じられない。",
+        "3/6": "信じられないことが起こった。",
+        "4/6": "僕の誕生日を忘れてただなんて信じられない。",
+        "5/6": "彼がまだ20歳だなんて信じられない。",
+        "6/6": "これが8000円もするなんて信じられない。"
+    };
+
+    const englishContentICantBelieve3 = {
+        "1/6": "I can’t believe it. It’s still raining.",
+        "2/6": "I can’t believe he’s not coming today.",
+        "3/6": "I can’t believe what happened.",
+        "4/6": "I can’t believe you forgot my birthday.",
+        "5/6": "I can’t believe he is still 20 years old.",
+        "6/6": "I can’t believe it costs eight thousand yen."
+    };
+
+    const japaneseContentITendTo3 = {
+        "1/6": "最近食べ過ぎなんだよね、、",
+        "2/6": "遅くまで起きがちなんだよね、、",
+        "3/6": "彼は約束に遅れがちだから、、",
+        "4/6": "衝動買いしがちなんだよね、、",
+        "5/6": "寝坊しがちなんだよね、、",
+        "6/6": "彼はすぐに怒りがちなんだよね、"
+    };
+
+    const englishContentITendTo3 = {
+        "1/6": "I tend to eat a lot these days.",
+        "2/6": "I tend to stay up late.",
+        "3/6": "He tends to be late for the appointment.",
+        "4/6": "I tend to make an impulse buy.",
+        "5/6": "I tend to oversleep.",
+        "6/6": "He tends to get upset easily."
+    };
+
+    const japaneseContentCantBeBotheredTo3 = {
+        "1/6": "料理をする気になれない。",
+        "2/6": "買い物に行く気になれない。",
+        "3/6": "外に出る気になんない。",
+        "4/6": "宿題やるの面倒くさい。",
+        "5/6": "お皿洗うの面倒くさい。",
+        "6/6": "いや、面倒くさい。"
+    };
+
+    const englishContentCantBeBotheredTo3 = {
+        "1/6": "I can’t be bothered to cook today.",
+        "2/6": "I can’t be bothered to go shopping.",
+        "3/6": "I can’t be bothered to go out.",
+        "4/6": "I can’t be bothered to do my homework.",
+        "5/6": "I can’t be bothered to wash the dishes.",
+        "6/6": "No, I can’t be bothered."
+    };
+
+    const japaneseContentImNotSure3 = {
+        "1/6": "確信は持てないけど、たぶんMasaのだよ。",
+        "2/6": "確信は持てないけど、たぶんこの道だと思います。",
+        "3/6": "何時に着けるか分からない。",
+        "4/6": "これどうやって使うのか分からない。",
+        "5/6": "どうやって英語を勉強すればいいか分からない。",
+        "6/6": "将来何をしたいかは分からない。"
+    };
+
+    const englishContentImNotSure3 = {
+        "1/6": "I’m not sure, but maybe it’s Masa’s.",
+        "2/6": "I’m not sure, but I guess this is the right way.",
+        "3/6": "I’m not sure what time I will arrive.",
+        "4/6": "I’m not sure how to use this.",
+        "5/6": "I’m not sure how to study English.",
+        "6/6": "I’m not sure what I want to do in the future."
+    };
+
+    const japaneseContentIDidntMeanTo3 = {
+        "1/6": "泣かすつもりはなかったんだ。",
+        "2/6": "脅かすつもりはなかったんだ。",
+        "3/6": "怒らせるつもりはなかったんだ。",
+        "4/6": "恥をかかせるつもりはなかったんだ。",
+        "5/6": "失礼なことをするつもりはなかったんです。",
+        "6/6": "邪魔をするつもりはなかったんです。"
+    };
+
+    const englishContentIDidntMeanTo3 = {
+        "1/6": "I didn’t mean to make you cry.",
+        "2/6": "I didn’t mean to startle you.",
+        "3/6": "I didn’t mean to upset you.",
+        "4/6": "I didn’t mean to embarrass you.",
+        "5/6": "I didn’t mean to be rude.",
+        "6/6": "I didn’t mean to intrude."
+    };
+
+    const japaneseContentIDidntExpectTo3 = {
+        "1/6": "ここで会うとは思ってなかった！",
+        "2/6": "まさか日本が勝つとは！",
+        "3/6": "君は今日来ないと思ってた。",
+        "4/6": "そんなこと起こるとは予想もしなかった。",
+        "5/6": "こんなに時間がかかるとは思いもしなかった。",
+        "6/6": "彼女が試験に受かるとは思ってなかった。"
+    };
+
+    const englishContentIDidntExpectTo3 = {
+        "1/6": "I didn’t expect to see you here.",
+        "2/6": "I didn’t expect Japan to win.",
+        "3/6": "I didn’t expect you to come.",
+        "4/6": "I didn’t expect that to happen.",
+        "5/6": "I didn’t expect to have to wait so long.",
+        "6/6": "I didn’t expect her to pass the test."
+    };
+
+    const japaneseContentImSupposedTo3 = {
+        "1/6": "今日は彼と7時に会うことになっている。",
+        "2/6": "明日は会議に参加することになっている。",
+        "3/6": "毎日薬を飲むことになっている。",
+        "4/6": "この宿題は昨日やるはずだった。",
+        "5/6": "昨日彼に電話するはずだった。",
+        "6/6": "9時にレッスンがあるはずだった。"
+    };
+
+    const englishContentImSupposedTo3 = {
+        "1/6": "I’m supposed to meet him at 7.",
+        "2/6": "I’m supposed to attend the meeting tomorrow.",
+        "3/6": "I’m supposed to take medicine every day.",
+        "4/6": "I was supposed to do this homework yesterday.",
+        "5/6": "I was supposed to call him yesterday.",
+        "6/6": "I was supposed to have a lesson at 9."
+    };
+
+    const japaneseContentThatsWhat3 = {
+        "1/6": "そうだと思った。",
+        "2/6": "そういうこと！",
+        "3/6": "ちょうどそれが欲しかったんだ。",
+        "4/6": "それは起こったこととは違う。",
+        "5/6": "そういう意味じゃなくて",
+        "6/6": "そんなこと僕言ってないよ。"
+    };
+
+    const englishContentThatsWhat3 = {
+        "1/6": "That’s what I thought!",
+        "2/6": "That’s what I’m talking about.",
+        "3/6": "That’s exactly what I wanted.",
+        "4/6": "That’s not what happened.",
+        "5/6": "That’s not what I meant.",
+        "6/6": "That’s not what I said."
+    };
+
+    const japaneseContentThatsHow3 = {
+        "1/6": "そんな感じで英語を勉強したんだ。",
+        "2/6": "そのようにして事故が起こったんだ。",
+        "3/6": "そのようにして彼は東大に受かったんだ。",
+        "4/6": "そのようにして戦争が起こりました。",
+        "5/6": "そのようにしてチーズはミルクから作られます。",
+        "6/6": "そういうもんだよ。"
+    };
+
+    const englishContentThatsHow3 = {
+        "1/6": "That’s how I studied English.",
+        "2/6": "That’s how the accident happened.",
+        "3/6": "That’s how he got into Tokyo university.",
+        "4/6": "That’s how the war broke out.",
+        "5/6": "That’s how cheese is made from milk.",
+        "6/6": "That’s how it is."
+    };
+
+    const japaneseContentThatsWhy3 = {
+        "1/6": "だから彼に怒っているんだ。",
+        "2/6": "だから昨日は徹夜をしたんだ。",
+        "3/6": "だから遅れちゃったんだ。",
+        "4/6": "だから最近君は忙しいのか。",
+        "5/6": "だから仕事に行かなかったのか。",
+        "6/6": "だから昨日は静かだったのか。"
+    };
+
+    const englishContentThatsWhy3 = {
+        "1/6": "That’s why I’m mad at him.",
+        "2/6": "That’s why I pulled an all-nighter last night.",
+        "3/6": "That’s why I was late.",
+        "4/6": "That’s why you’re busy these days.",
+        "5/6": "That’s why you didn’t go to work.",
+        "6/6": "That’s why you were quiet yesterday."
+    };
+
+    //Grade 4
+    const japaneseContentMustBe4 = {
+        "1/6": "疲れてるでしょう。",
+        "2/6": "めっちゃ疲れてるでしょう。",
+        "3/6": "彼絶対にお金持ちだね。",
+        "4/6": "絶対最近忙しいでしょう。",
+        "5/6": "楽しみでしょ！",
+        "6/6": "彼女絶対に嫉妬してるよ。"
+    };
+
+    const englishContentMustBe4 = {
+        "1/6": "You must be tired.",
+        "2/6": "You must be exhausted.",
+        "3/6": "He must be rich.",
+        "4/6": "You must be really busy these days.",
+        "5/6": "You must be excited.",
+        "6/6": "She must be so jealous."
+    };
+
+    const japaneseContentMustHaveBeen4 = {
+        "1/6": "相当ショックだったでしょう…",
+        "2/6": "すごく恥ずかしかったでしょ笑",
+        "3/6": "すごく痛かったでしょ",
+        "4/6": "すごく腹が立ったでしょ",
+        "5/6": "すごく疲れてたでしょ",
+        "6/6": "絶対めっちゃ興奮したでしょ！"
+    };
+
+    const englishContentMustHaveBeen4 = {
+        "1/6": "That must’ve been so devastating.",
+        "2/6": "That must’ve been so embarrassing.",
+        "3/6": "That must’ve been so painful.",
+        "4/6": "You must’ve been so angry.",
+        "5/6": "You must’ve been so tired.",
+        "6/6": "You must’ve been so excited."
+    };
+
+    const japaneseContentImGonna4 = {
+        "1/6": "今日は英語を勉強するつもり！",
+        "2/6": "明日はカフェに行く予定。",
+        "3/6": "今週末その映画を見に行くんだ。",
+        "4/6": "来年は留学に行くつもり。",
+        "5/6": "なにかおごるよ。",
+        "6/6": "ケーキ焼いてあげるよ。"
+    };
+
+    const englishContentImGonna4 = {
+        "1/6": "I’m gonna study English today!",
+        "2/6": "I’m gonna go to a café tomorrow.",
+        "3/6": "I’m gonna see the movie this weekend.",
+        "4/6": "I’m gonna study abroad next year.",
+        "5/6": "I’m gonna treat you to something.",
+        "6/6": "I’m gonna bake a cake for you."
+    };
+
+    const japaneseContentImNotGonna4 = {
+        "1/6": "私は行かないわ。",
+        "2/6": "今日は出かけないよ。",
+        "3/6": "明日は仕事には行かないよ。",
+        "4/6": "彼には謝らないよ。",
+        "5/6": "君には嘘つかないよ。",
+        "6/6": "僕は秘密言わないよ。"
+    };
+
+    const englishContentImNotGonna4 = {
+        "1/6": "I’m not gonna go.",
+        "2/6": "I’m not gonna go outside today.",
+        "3/6": "I’m not gonna go to work tomorrow.",
+        "4/6": "I’m not gonna apologize to him.",
+        "5/6": "I’m not gonna lie to you.",
+        "6/6": "I’m not gonna give away the secret."
+    };
+
+    const japaneseContentGonnaQ4 = {
+        "1/6": "今日は何をするの？",
+        "2/6": "彼になんて言うの？",
+        "3/6": "いつ京都に旅行に行くの？",
+        "4/6": "いつ彼に会うの？",
+        "5/6": "何時に家を出るの？",
+        "6/6": "今日は何時に寝るの？"
+    };
+
+    const englishContentGonnaQ4 = {
+        "1/6": "What are you gonna do today?",
+        "2/6": "What are you gonna say to him?",
+        "3/6": "When are you gonna go on a trip to Kyoto?",
+        "4/6": "When are you gonna see him?",
+        "5/6": "What time are you gonna leave home?",
+        "6/6": "What time are you gonna go to sleep?"
+    };
+
+    const japaneseContentImIng4 = {
+        "1/6": "10分後に出る予定。",
+        "2/6": "今週末にTOEICを受けるんだ。",
+        "3/6": "明日おばあちゃんの家を訪ねるんだ。",
+        "4/6": "来月東京に引っ越すんだ。",
+        "5/6": "今週末は動物園に行くんだ。",
+        "6/6": "今日は髪を切るんだ。"
+    };
+
+    const englishContentImIng4 = {
+        "1/6": "I’m leaving in 10 minutes.",
+        "2/6": "I’m taking the TOEIC test this weekend.",
+        "3/6": "I’m visiting my grandma tomorrow.",
+        "4/6": "I’m moving to Tokyo next month.",
+        "5/6": "I’m going to the zoo this weekend.",
+        "6/6": "I’m getting a hair-cut today."
+    };
+
+    const japaneseContentGlad4 = {
+        "1/6": "気に入ってくれて嬉しいよ。",
+        "2/6": "そう言っていただけて嬉しいよ。",
+        "3/6": "会えてよかった！",
+        "4/6": "来てくれてよかった！",
+        "5/6": "体調がよくなってよかった！",
+        "6/6": "合格してよかった！"
+    };
+
+    const englishContentGlad4 = {
+        "1/6": "I’m glad you like it.",
+        "2/6": "I’m glad to hear that.",
+        "3/6": "I’m glad to meet you.",
+        "4/6": "I’m glad you came.",
+        "5/6": "I’m glad you’re feeling better.",
+        "6/6": "I’m glad you passed the test."
+    };
+
+    const japaneseContentHope4 = {
+        "1/6": "明日晴れるといいな。",
+        "2/6": "全部うまくいくといいね。",
+        "3/6": "試験受かるといいね。",
+        "4/6": "明日雨が降らなければいいな",
+        "5/6": "体調良くなるといいね。",
+        "6/6": "彼がプレゼント気に入ってくれたら嬉しいな。"
+    };
+
+    const englishContentHope4 = {
+        "1/6": "I hope it’ll be sunny tomorrow.",
+        "2/6": "I hope everything goes well.",
+        "3/6": "I hope you’ll pass the test.",
+        "4/6": "I hope it’s not raining tomorrow.",
+        "5/6": "I hope you’ll get better soon.",
+        "6/6": "I hope he likes my present."
+    };
+
+    const japaneseContentIllHave4 = {
+        "1/6": "これにしよう。",
+        "2/6": "コーラにしよう。",
+        "3/6": "チーズケーキにしよう。",
+        "4/6": "3番のセットでお願いします。",
+        "5/6": "同じのをください。",
+        "6/6": "他のにしよう〜"
+    };
+
+    const englishContentIllHave4 = {
+        "1/6": "I’ll have this one.",
+        "2/6": "I’ll have coke.",
+        "3/6": "I’ll have a cheesecake.",
+        "4/6": "I’ll have a combo number 3.",
+        "5/6": "I’ll have the same one, please.",
+        "6/6": "I’ll have another one."
+    };
+
+    const japaneseContentLetMe4 = {
+        "1/6": "僕にもやらせて。",
+        "2/6": "一口食べさせて。",
+        "3/6": "自己紹介させてください。",
+        "4/6": "顔見せてごらん。",
+        "5/6": "見つけたら僕に知らせて。",
+        "6/6": "いつが都合がいいか知らせて。"
+    };
+
+    const englishContentLetMe4 = {
+        "1/6": "Let me do that.",
+        "2/6": "Let me have a bite.",
+        "3/6": "Let me introduce myself.",
+        "4/6": "Let me see your face.",
+        "5/6": "Let me know when you find it.",
+        "6/6": "Let me know when works for you."
+    };
+
+    const japaneseContentWhyDontWe4 = {
+        "1/6": "泳ぎに行かない？",
+        "2/6": "今夜飲みに行かない？",
+        "3/6": "なんか出前でも取らない？",
+        "4/6": "今日はいつもとは違うレストランにしない？",
+        "5/6": "ちょっと休憩しない？",
+        "6/6": "公園でも行かない？"
+    };
+
+    const englishContentWhyDontWe4 = {
+        "1/6": "Why don’t we go swimming?",
+        "2/6": "Why don’t we go for a drink tonight?",
+        "3/6": "Why don’t we order something out?",
+        "4/6": "Why don’t we try a different restaurant?",
+        "5/6": "Why don’t we take a little break?",
+        "6/6": "Why don’t we go to the park?"
+    };
+
+    const japaneseContentLetsNot4 = {
+        "1/6": "焦らないようにしよう。",
+        "2/6": "時間をムダにしないようにしよう。",
+        "3/6": "そういう風に考えるのはよそう。",
+        "4/6": "その話はやめておこう。",
+        "5/6": "今これを買うのはやめておこう。",
+        "6/6": "心配しないようにしよう。"
+    };
+
+    const englishContentLetsNot4 = {
+        "1/6": "Let’s not rush into anything.",
+        "2/6": "Let’s not waste time.",
+        "3/6": "Let’s not think like that.",
+        "4/6": "Let’s not talk about it.",
+        "5/6": "Let’s not buy it now.",
+        "6/6": "Let’s not worry about it."
+    };
+
+    const japaneseContentDont4 = {
+        "1/6": "心配しないでね。",
+        "2/6": "遠慮しないでね。",
+        "3/6": "僕に八つ当たりしないで。",
+        "4/6": "お願いだから邪魔しないで。",
+        "5/6": "頼むから音立てないで！",
+        "6/6": "頼むからそんな大きな声で歌わないでくれ。"
+    };
+
+    const englishContentDont4 = {
+        "1/6": "Don’t worry.",
+        "2/6": "Don’t hold back.",
+        "3/6": "Don’t take it out on me.",
+        "4/6": "Please do not bother me.",
+        "5/6": "Please do not make any sound.",
+        "6/6": "Please do not sing so loud."
+    };
+
+    const japaneseContentDontBe4 = {
+        "1/6": "謝らないで。",
+        "2/6": "バカ言わないで。",
+        "3/6": "そんなことないって(ばか言わないで)。",
+        "4/6": "失敗を恐れないで。",
+        "5/6": "わがまま言わないで。",
+        "6/6": "謙遜しないで。"
+    };
+
+    const englishContentDontBe4 = {
+        "1/6": "Don’t be sorry.",
+        "2/6": "Don’t be ridiculous.",
+        "3/6": "Don’t be silly.",
+        "4/6": "Don’t be afraid to make mistakes.",
+        "5/6": "Don’t be selfish.",
+        "6/6": "Don’t be modest."
+    };
+
+    const japaneseContentYouCan4 = {
+        "1/6": "僕のペン使ってもいいよ。",
+        "2/6": "今日は早く帰ってもいいよ。",
+        "3/6": "僕のこと頼っていいよ。",
+        "4/6": "Masaって呼んでいいよ。",
+        "5/6": "これ食べていいよ。",
+        "6/6": "なんでも好きなの食べていいよ。"
+    };
+
+    const englishContentYouCan4 = {
+        "1/6": "You can use my pen.",
+        "2/6": "You can leave early today.",
+        "3/6": "You can count on me.",
+        "4/6": "You can call me Masa.",
+        "5/6": "You can have this.",
+        "6/6": "You can eat whatever you want."
+    };
+
+    const japaneseContentYouCant4 = {
+        "1/6": "そういうことは言っちゃダメ！",
+        "2/6": "他の人のパソコン勝手に使っちゃダメだよ。",
+        "3/6": "なんて口の利き方してるの！",
+        "4/6": "女子トイレ入っちゃだめだよ！",
+        "5/6": "いつまでも落ち込んでちゃだめだよ。",
+        "6/6": "いつまでも寝てちゃだめだよ。"
+    };
+
+    const englishContentYouCant4 = {
+        "1/6": "You can’t say such things.",
+        "2/6": "You can’t use other people’s computer without asking.",
+        "3/6": "You can’t talk to me like that.",
+        "4/6": "You can’t go into the women’s bathroom.",
+        "5/6": "You can’t stay depressed forever.",
+        "6/6": "You can’t be in bed forever."
+    };
+
+    const japaneseContentBeCarefulNotTo4 = {
+        "1/6": "壊さないように気を付けて。",
+        "2/6": "落ちないように気をつけてね。",
+        "3/6": "ケガしないように気を付けてね。",
+        "4/6": "こぼさないように気を付けて。",
+        "5/6": "お皿わらないように気をつけて。",
+        "6/6": "風邪ひかないように気をつけて。"
+    };
+
+    const englishContentBeCarefulNotTo4 = {
+        "1/6": "Be careful not to break it.",
+        "2/6": "Be careful not to fall down.",
+        "3/6": "Be careful not to get hurt.",
+        "4/6": "Be careful not to spill it.",
+        "5/6": "Be careful not to break dishes.",
+        "6/6": "Be careful not to catch a cold."
+    };
+
+    const japaneseContentThatSounds4 = {
+        "1/6": "すごく楽しそう！！",
+        "2/6": "大変そう…",
+        "3/6": "面白そう！",
+        "4/6": "値段高そうだね、、",
+        "5/6": "難しそうだね、、",
+        "6/6": "いいね！"
+    };
+
+    const englishContentThatSounds4 = {
+        "1/6": "That sounds like a lot of fun.",
+        "2/6": "That sounds tough.",
+        "3/6": "That sounds interesting!",
+        "4/6": "That sounds expensive.",
+        "5/6": "That sounds difficult.",
+        "6/6": "That sounds good."
+    };
+
+    const japaneseContentFeelLikeIng4 = {
+        "1/6": "今日はイタリア料理を食べたい気分。",
+        "2/6": "映画を見たい気分。",
+        "3/6": "運動したい気分。",
+        "4/6": "今日は外に出る気分じゃない。",
+        "5/6": "今日は何もする気分じゃない。",
+        "6/6": "今日は英語を勉強する気分じゃない。"
+    };
+
+    const englishContentFeelLikeIng4 = {
+        "1/6": "I feel like eating Italian food today.",
+        "2/6": "I feel like seeing a movie.",
+        "3/6": "I feel like getting some exercise.",
+        "4/6": "I don’t feel like going out.",
+        "5/6": "I don’t feel like doing anything today.",
+        "6/6": "I don’t feel like studying English today."
+    };
+
+    const japaneseContentFeelLikeSV4 = {
+        "1/6": "雨が降りそうな気がする。",
+        "2/6": "彼は僕のこと好きじゃない気がする。",
+        "3/6": "このお店ちょっと怪しい気がする。",
+        "4/6": "彼女は僕に怒ってるような気がする。",
+        "5/6": "なんか忘れている気がする。",
+        "6/6": "君のこと前に見たことあるような気がする。"
+    };
+
+    const englishContentFeelLikeSV4 = {
+        "1/6": "I feel like it’s gonna rain.",
+        "2/6": "I feel like he doesn’t like me.",
+        "3/6": "I feel like this place is a bit shady.",
+        "4/6": "I feel like she’s mad at me.",
+        "5/6": "I feel like I’m forgetting something.",
+        "6/6": "I feel like I’ve seen you before."
+    };
+
+    const japaneseContentImThinkingOf4 = {
+        "1/6": "Masaのレッスンを受けようかなって思ってる。",
+        "2/6": "将来は海外に住もうかなって思ってる。",
+        "3/6": "新しい車を買おうかなって思ってるだ。",
+        "4/6": "京都に旅行しようかなって思ってるんだ。",
+        "5/6": "TOEICを受けようかなって思っています。",
+        "6/6": "髪を短くしようかなーて思ってる。"
+    };
+
+    const englishContentImThinkingOf4 = {
+        "1/6": "I’m thinking of taking Masa’s lessons.",
+        "2/6": "I’m thinking of living abroad in the future.",
+        "3/6": "I’m thinking of buying a new car.",
+        "4/6": "I’m thinking of going on a trip to Kyoto.",
+        "5/6": "I’m thinking of taking the TOEIC test.",
+        "6/6": "I’m thinking of cutting my hair short."
+    };
+
+    const japaneseContentImStartingTo4 = {
+        "1/6": "彼のことが好きになってきた。",
+        "2/6": "納豆が好きになってきた。",
+        "3/6": "徐々に理解してきました。",
+        "4/6": "英語の勉強が楽しくなってきた。",
+        "5/6": "雨が降ってきたね。",
+        "6/6": "彼女が心を開き始めた。"
+    };
+
+    const englishContentImStartingTo4 = {
+        "1/6": "I’m starting to like him.",
+        "2/6": "I’m starting to like Natto.",
+        "3/6": "I’m starting to understand.",
+        "4/6": "I’m starting to enjoy studying English.",
+        "5/6": "It’s starting to rain.",
+        "6/6": "She’s starting to open up."
+    };
+
+    const japaneseContentGetting4 = {
+        "1/6": "遅い時間になってきたね。",
+        "2/6": "最近は暑くなってきたね。",
+        "3/6": "寒くなってきたね。",
+        "4/6": "君の英語よくなってきたね。",
+        "5/6": "風邪をひき始めた。",
+        "6/6": "緊張してきた。"
+    };
+
+    const englishContentGetting4 = {
+        "1/6": "It’s getting late.",
+        "2/6": "It’s getting hot these days.",
+        "3/6": "It’s getting cold.",
+        "4/6": "Your English is getting better.",
+        "5/6": "I’m getting sick.",
+        "6/6": "I’m getting nervous."
+    };
+
+    const japaneseContentLookingForwardTo4 = {
+        "1/6": "また会えるの楽しみです。",
+        "2/6": "その映画見るの楽しみ！",
+        "3/6": "東京に引っ越すのが楽しみだ！",
+        "4/6": "セミナー楽しみにしてました！",
+        "5/6": "会えるの楽しみだった！",
+        "6/6": "ライブ超楽しみにしてた！"
+    };
+
+    const englishContentLookingForwardTo4 = {
+        "1/6": "I’m looking forward to seeing you again.",
+        "2/6": "I’m looking forward to seeing the movie.",
+        "3/6": "I’m looking forward to moving to Tokyo.",
+        "4/6": "I was looking forward to the seminar.",
+        "5/6": "I was looking forward to seeing you.",
+        "6/6": "I was so looking forward to the concert."
+    };
+
+    const japaneseContentYouLook4 = {
+        "1/6": "元気そうだね。",
+        "2/6": "綺麗だよ。",
+        "3/6": "なんか今日違うね。",
+        "4/6": "若く見えるね。",
+        "5/6": "なんか見たことある気がする。",
+        "6/6": "疲れてるようだね。"
+    };
+
+    const englishContentYouLook4 = {
+        "1/6": "You look great.",
+        "2/6": "You look beautiful.",
+        "3/6": "You look different.",
+        "4/6": "You look young.",
+        "5/6": "You look familiar.",
+        "6/6": "You look worn out."
+    };
+
+    const japaneseContentItsHardTo4 = {
+        "1/6": "説明するのが難しい。",
+        "2/6": "選ぶのが難しいな…",
+        "3/6": "英語をペラペラ話すのは難しい。",
+        "4/6": "一度にたくさん覚えるのは難しい。",
+        "5/6": "彼の説明は分かりにくい。",
+        "6/6": "冬に早起きするのは難しい。"
+    };
+
+    const englishContentItsHardTo4 = {
+        "1/6": "It’s hard to explain.",
+        "2/6": "It’s hard to choose..",
+        "3/6": "It’s hard to speak English fluently.",
+        "4/6": "It’s hard to memorize a lot at the same time.",
+        "5/6": "It’s hard to understand his explanation.",
+        "6/6": "It’s hard to get up early in winter."
+    };
+
+    const japaneseContentItsSoThat4 = {
+        "1/6": "暑すぎて頭痛がする。",
+        "2/6": "疲れすぎていて英語は勉強できなかった。",
+        "3/6": "話が難しくて全然理解できなかった。",
+        "4/6": "その映画感動的で泣いちゃった。",
+        "5/6": "このラーメン辛すぎて食べれなかった。",
+        "6/6": "疲れすぎていて電車で寝落ちしてしまった。"
+    };
+
+    const englishContentItsSoThat4 = {
+        "1/6": "It’s so hot I have a headache.",
+        "2/6": "I was so exhausted I couldn’t study English.",
+        "3/6": "The story was so difficult I couldn’t understand it.",
+        "4/6": "The movie was so touching I cried.",
+        "5/6": "This ramen was so hot I couldn’t eat it.",
+        "6/6": "I was so exhausted I fell asleep on the train."
+    };
+
+    const japaneseContentIsItOkayIfI4 = {
+        "1/6": "ここでタバコ吸ってもいいですか？",
+        "2/6": "これ試着してもいいですか？",
+        "3/6": "窓閉めてもいいですか？",
+        "4/6": "時間変えてもらってもいいですか？",
+        "5/6": "10分くらい遅れてもいい？",
+        "6/6": "コンビニ寄ってもいい？"
+    };
+
+    const englishContentIsItOkayIfI4 = {
+        "1/6": "Is it okay if I smoke here?",
+        "2/6": "Is it okay if I try this on?",
+        "3/6": "Is it okay if I close the window?",
+        "4/6": "Is it okay if I reschedule?",
+        "5/6": "Is it okay if I’m 10 minutes late?",
+        "6/6": "Is it okay if I stop by the convenience store?"
+    };
+
+
+    //Grade 5
+    const japaneseContentLike5 = {
+        "1/6": "英語を勉強するのが好き。",
+        "2/6": "本を読むのが好き。",
+        "3/6": "スポーツ観戦するのが好き。",
+        "4/6": "散歩するのが好き。",
+        "5/6": "ゲームをするのが好き。",
+        "6/6": "映画を見るのが好き。"
+    };
+
+    const englishContentLike5 = {
+        "1/6": "I like to study English.",
+        "2/6": "I like to read books.",
+        "3/6": "I like to watch sports.",
+        "4/6": "I like to go for a walk.",
+        "5/6": "I like to play the game.",
+        "6/6": "I like to see movies."
+    };
+
+    const japaneseContentWanna5 = {
+        "1/6": "英語を勉強したい。",
+        "2/6": "世界中を旅したい。",
+        "3/6": "君のお母さんに会ってみたい。",
+        "4/6": "なにか甘いも䛾が食べたい。",
+        "5/6": "ショッピングに行きたい。",
+        "6/6": "英語を話せるようになりたい。"
+    };
+
+    const englishContentWanna5 = {
+        "1/6": "I wanna study English.",
+        "2/6": "I wanna travel around the world.",
+        "3/6": "I wanna meet your mother.",
+        "4/6": "I wanna eat something sweet.",
+        "5/6": "I wanna go shopping.",
+        "6/6": "I wanna be able to speak English."
+    };
+
+    const japaneseContentWantedTo5 = {
+        "1/6": "早く家に帰りたかった。",
+        "2/6": "もっと寝たかった。",
+        "3/6": "行きたかった。",
+        "4/6": "君の作ったプリン食べたかったー。",
+        "5/6": "その映画見たかったー。",
+        "6/6": "そのレストラン行ってみたかった。"
+    };
+
+    const englishContentWantedTo5 = {
+        "1/6": "I wanted to go home earlier.",
+        "2/6": "I wanted to sleep more.",
+        "3/6": "I wanted to go.",
+        "4/6": "I wanted to eat the pudding you made.",
+        "5/6": "I wanted to see the movie.",
+        "6/6": "I wanted to try the restaurant."
+    };
+
+    const japaneseContentWantNounTo5 = {
+        "1/6": "君に来てほしい。",
+        "2/6": "お皿洗ってほしい。",
+        "3/6": "早く家に帰ってきてほしい。",
+        "4/6": "一緒に来てほしい。",
+        "5/6": "謝ってほしい。",
+        "6/6": "お金返してほしい。"
+    };
+
+    const englishContentWantNounTo5 = {
+        "1/6": "I want you to come.",
+        "2/6": "I want you to wash the dishes.",
+        "3/6": "I want you to come back home early.",
+        "4/6": "I want you to come with me.",
+        "5/6": "I want you to apologize.",
+        "6/6": "I want you to give the money back."
+    };
+
+    const japaneseContentWantedNounTo5 = {
+        "1/6": "本当のこと言ってほしかった。",
+        "2/6": "もっと早く言ってほしかった。",
+        "3/6": "誘ってほしかった。",
+        "4/6": "待っててほしかった。",
+        "5/6": "秘密守っておいてほしかった。",
+        "6/6": "時間通りに来てほしかった。"
+    };
+
+    const englishContentWantedNounTo5 = {
+        "1/6": "I wanted you to tell me the truth.",
+        "2/6": "I wanted you to tell me earlier.",
+        "3/6": "I wanted you to invite me.",
+        "4/6": "I wanted you to wait for me.",
+        "5/6": "I wanted you to keep the secret.",
+        "6/6": "I wanted you to be on time."
+    };
+
+    const japaneseContentDontWanna5 = {
+        "1/6": "あきらめたくない。",
+        "2/6": "料理したくない。",
+        "3/6": "TOEICのために勉強したくない。",
+        "4/6": "そこに行きたくない。",
+        "5/6": "仕事に行きたくない。",
+        "6/6": "彼女と喧嘩したくない。"
+    };
+
+    const englishContentDontWanna5 = {
+        "1/6": "I don’t wanna give up.",
+        "2/6": "I don’t wanna cook.",
+        "3/6": "I don’t wanna study for the TOEIC test.",
+        "4/6": "I don’t wanna go there.",
+        "5/6": "I don’t wanna go to work.",
+        "6/6": "I don’t wanna fight with her."
+    };
+
+    const japaneseContentDontWantYouTo5 = {
+        "1/6": "無理しないでほしい。",
+        "2/6": "ドタキャンしないでほしい。",
+        "3/6": "今のままでいてほしい。",
+        "4/6": "諦めないでほしい。",
+        "5/6": "汚い言葉使わないでほしい。",
+        "6/6": "行ってほしくない。"
+    };
+
+    const englishContentDontWantYouTo5 = {
+        "1/6": "I don’t want you to push yourself too hard.",
+        "2/6": "I don’t want you to cancel on me.",
+        "3/6": "I don’t want you to change.",
+        "4/6": "I don’t want you to give up.",
+        "5/6": "I don’t want you to use violent language.",
+        "6/6": "I don’t want you to go."
+    };
+
+    const japaneseContentYouWanna5 = {
+        "1/6": "君も来る？",
+        "2/6": "僕の充電器使う？",
+        "3/6": "今週の月曜日遊ぶ？",
+        "4/6": "ちょっと飲む？",
+        "5/6": "僕のペン使う？",
+        "6/6": "僕の家来る？"
+    };
+
+    const englishContentYouWanna5 = {
+        "1/6": "You wanna come?",
+        "2/6": "You wanna use my charger?",
+        "3/6": "You wanna hang out this Monday?",
+        "4/6": "You wanna drink some?",
+        "5/6": "You wanna use my pen?",
+        "6/6": "You wanna come over?"
+    };
+
+    const japaneseContentIdLike5 = {
+        "1/6": "これいただきたいです。",
+        "2/6": "お水が欲しいです。",
+        "3/6": "お茶頂きたいです。",
+        "4/6": "コーヒーを一杯お願いします。",
+        "5/6": "チケットを二枚ください。",
+        "6/6": "レシートをください。"
+    };
+
+    const englishContentIdLike5 = {
+        "1/6": "I’d like this one.",
+        "2/6": "I’d like some water.",
+        "3/6": "I’d like some tea.",
+        "4/6": "I’d like a cup of coffee.",
+        "5/6": "I’d like two tickets.",
+        "6/6": "I’d like a receipt."
+    };
+
+    const japaneseContentIdLikeTo5 = {
+        "1/6": "Masaさんとお話しがしたいのですが。",
+        "2/6": "予約を取りたいのですが。",
+        "3/6": "診察を受けたいのですが。",
+        "4/6": "それの詳細を知りたいのですが。",
+        "5/6": "これを返品したいのですが。",
+        "6/6": "質問をしたいのですが。"
+    };
+
+    const englishContentIdLikeTo5 = {
+        "1/6": "I’d like to talk to Mr. Masa.",
+        "2/6": "I’d like to make a reservation.",
+        "3/6": "I’d like to see a doctor.",
+        "4/6": "I’d like to know more details about it.",
+        "5/6": "I’d like to return it.",
+        "6/6": "I’d like to ask you a question."
+    };
+
+    const japaneseContentWouldYouLike5 = {
+        "1/6": "お水いる？",
+        "2/6": "コーヒー飲む？",
+        "3/6": "アイス食べる？",
+        "4/6": "おかわりしたい？",
+        "5/6": "なんか食べたい？",
+        "6/6": "なんか飲みたい？"
+    };
+
+    const englishContentWouldYouLike5 = {
+        "1/6": "Would you like some water?",
+        "2/6": "Would you like some coffee?",
+        "3/6": "Would you like some ice cream?",
+        "4/6": "Would you like some more?",
+        "5/6": "Would you like something to eat?",
+        "6/6": "Would you like something to drink?"
+    };
+
+    const japaneseContentWouldYouLikeTo5 = {
+        "1/6": "一緒に来ません？",
+        "2/6": "飲み会行きません？",
+        "3/6": "一緒にお昼ご飯食べません？",
+        "4/6": "もっと知りたいですか？",
+        "5/6": "ゲームしません？",
+        "6/6": "散歩しません？"
+    };
+
+    const englishContentWouldYouLikeTo5 = {
+        "1/6": "Would you like to come with me?",
+        "2/6": "Would you like to go for a drink?",
+        "3/6": "Would you like to have lunch with me?",
+        "4/6": "Would you like to know more?",
+        "5/6": "Would you like to play a game?",
+        "6/6": "Would you like to go for a walk?"
+    };
+
+    const japaneseContentINeed5 = {
+        "1/6": "君が必要なんだ。",
+        "2/6": "睡眠が必要、、",
+        "3/6": "お水が欲しい、、",
+        "4/6": "助けが必要なんだ、、",
+        "5/6": "休まないともうだめ、、",
+        "6/6": "コーラ飲まないともうだめ、、"
+    };
+
+    const englishContentINeed5 = {
+        "1/6": "I need you.",
+        "2/6": "I need some sleep.",
+        "3/6": "I need some water.",
+        "4/6": "I need help.",
+        "5/6": "I need some rest.",
+        "6/6": "I need coke."
+    };
+
+    const japaneseContentIGotta5 = {
+        "1/6": "もう行かないと。",
+        "2/6": "急がないと。",
+        "3/6": "急がなきゃだめだよ。",
+        "4/6": "宿題をやらなきゃ。",
+        "5/6": "10分後に出発しないといけない。",
+        "6/6": "仕事に行かなきゃ。"
+    };
+
+    const englishContentIGotta5 = {
+        "1/6": "I gotta go.",
+        "2/6": "I gotta run.",
+        "3/6": "You gotta rush.",
+        "4/6": "I gotta do my homework.",
+        "5/6": "I gotta leave in 10 minutes.",
+        "6/6": "I gotta go to work."
+    };
+
+    const japaneseContentImGonnaHaveTo5 = {
+        "1/6": "徹夜するしかないな。",
+        "2/6": "彼に本当のこと言うしかないな。",
+        "3/6": "予約キャンセルしないと…",
+        "4/6": "ホテルに泊まるしかないな。",
+        "5/6": "もう一個買うしかないな。",
+        "6/6": "もっと勉強しないとな。"
+    };
+
+    const englishContentImGonnaHaveTo5 = {
+        "1/6": "I’m gonna have to pull an all-nighter.",
+        "2/6": "I’m gonna have to tell him the truth.",
+        "3/6": "I’m gonna have to cancel the reservation.",
+        "4/6": "I’m gonna have to stay at a hotel.",
+        "5/6": "I’m gonna have to buy another one.",
+        "6/6": "I’m gonna have to study harder."
+    };
+
+    const japaneseContentYouDontHaveTo5 = {
+        "1/6": "ごめんって思わなくていいよ。",
+        "2/6": "来なくてもいいよ。",
+        "3/6": "急がなくていいよ。",
+        "4/6": "心配しなくていいよ。",
+        "5/6": "返信はしなくていいよ。",
+        "6/6": "なんも買わなくていいよ。"
+    };
+
+    const englishContentYouDontHaveTo5 = {
+        "1/6": "You don’t have to be sorry.",
+        "2/6": "You don’t have to come.",
+        "3/6": "You don’t have to hurry.",
+        "4/6": "You don’t have to worry.",
+        "5/6": "You don’t have to message me back.",
+        "6/6": "You don’t have to buy me anything."
+    };
+
+    const japaneseContentIHave5 = {
+        "1/6": "頭痛がする。",
+        "2/6": "ひどい咳が出る。",
+        "3/6": "あんまりよくないニュースがあって、、",
+        "4/6": "ちょっと言いたいことがあって、、",
+        "5/6": "すごく楽しかったよ。",
+        "6/6": "事故に巻き込まれちゃって、、"
+    };
+
+    const englishContentIHave5 = {
+        "1/6": "I have a headache.",
+        "2/6": "I have a bad cough.",
+        "3/6": "I have bad news.",
+        "4/6": "I have something to say.",
+        "5/6": "I had a great time.",
+        "6/6": "I had an accident."
+    };
+
+    const japaneseContentIDontHave5 = {
+        "1/6": "パソコン持ってないんだ。",
+        "2/6": "水筒持ってないんだ。",
+        "3/6": "運転免許持ってないんだ。",
+        "4/6": "君のLINE知らない。",
+        "5/6": "今日は宿題ないんだ。",
+        "6/6": "なんも文句ないよ。"
+    };
+
+    const englishContentIDontHave5 = {
+        "1/6": "I don’t have a computer.",
+        "2/6": "I don’t have a water bottle.",
+        "3/6": "I don’t have a car license.",
+        "4/6": "I don’t have your LINE address.",
+        "5/6": "I don’t have homework today.",
+        "6/6": "I don’t have any complaints."
+    };
+
+    const japaneseContentDoYouHave5 = {
+        "1/6": "なんか書くもの持ってる？",
+        "2/6": "兄弟はいるの？",
+        "3/6": "身分証明書持ってますか？",
+        "4/6": "もっと小さいものはありますか？",
+        "5/6": "もっと安いのありますか？",
+        "6/6": "彼の電話番号知ってる？"
+    };
+
+    const englishContentDoYouHave5 = {
+        "1/6": "Do you have anything to write with?",
+        "2/6": "Do you have any siblings?",
+        "3/6": "Do you have ID?",
+        "4/6": "Do you have a smaller one?",
+        "5/6": "Do you have a less expensive one?",
+        "6/6": "Do you have his phone number?"
+    };
+
+    const japaneseContentYouKnow5 = {
+        "1/6": "どうやって駅に行くのか分かる？",
+        "2/6": "どこに彼が行ったか知ってる？",
+        "3/6": "彼女の誕生日いつか知ってる？",
+        "4/6": "これの使い方分かる？",
+        "5/6": "Masaが誰か知ってる？",
+        "6/6": "ATMどこにあるか分かる？"
+    };
+
+    const englishContentYouKnow5 = {
+        "1/6": "You know how to get to the station?",
+        "2/6": "You know where he went to?",
+        "3/6": "You know when her birthday is?",
+        "4/6": "You know how to use this?",
+        "5/6": "You know who Masa is?",
+        "6/6": "You know where the ATM is?"
+    };
+
+    const japaneseContentYouCan5 = {
+        "1/6": "君ならできるよ。",
+        "2/6": "君なら彼に勝てるよ。",
+        "3/6": "君なら試験に受かるよ。",
+        "4/6": "それ食べていいよ。",
+        "5/6": "Masaって呼んでいいよ。",
+        "6/6": "それもらっていいよ。"
+    };
+
+    const englishContentYouCan5 = {
+        "1/6": "You can do it.",
+        "2/6": "You can beat him.",
+        "3/6": "You can pass the test.",
+        "4/6": "You can have it.",
+        "5/6": "You can call me Masa.",
+        "6/6": "You can keep it."
+    };
+
+    const japaneseContentICantYouCant5 = {
+        "1/6": "受け取れないよ。",
+        "2/6": "そんなお金払えないよ！",
+        "3/6": "彼を叱るなんてできないよ！",
+        "4/6": "そんな口の利き方しちゃだめ！",
+        "5/6": "宿題終わらせるまでゲームしちゃだめ！",
+        "6/6": "彼の悪口言っちゃダメ！"
+    };
+
+    const englishContentICantYouCant5 = {
+        "1/6": "I can’t take it.",
+        "2/6": "I can’t pay the money.",
+        "3/6": "I can’t scold him.",
+        "4/6": "You can’t talk to me like that.",
+        "5/6": "You can’t play the game until you finish your homework.",
+        "6/6": "You can’t say bad things about him."
+    };
+
+    const japaneseContentCanYouCouldYou5 = {
+        "1/6": "ドア開けてくれる？",
+        "2/6": "迎えに来てくれる？",
+        "3/6": "手伝ってくれる？",
+        "4/6": "車で駅まで送っていってくれない？",
+        "5/6": "塩取ってくれませんか？",
+        "6/6": "もう少し声を大きくしてくれませんか？"
+    };
+
+    const englishContentCanYouCouldYou5 = {
+        "1/6": "Can you open the door?",
+        "2/6": "Can you pick me up?",
+        "3/6": "Can you give me a hand?",
+        "4/6": "Could you drive me to the station?",
+        "5/6": "Could you pass me the salt?",
+        "6/6": "Could you speak up a little bit?"
+    };
+
+    const japaneseContentCouldYouTellMe5 = {
+        "1/6": "彼の名前教えていただけますか？",
+        "2/6": "答えを教えていただけますか？",
+        "3/6": "時間教えていただけますか？",
+        "4/6": "これどうやって使うか教えていただけますか？",
+        "5/6": "その駅までの道教えていただけますか？",
+        "6/6": "次の電車いつ来るか教えていただけますか？"
+    };
+
+    const englishContentCouldYouTellMe5 = {
+        "1/6": "Could you tell me his name?",
+        "2/6": "Could you tell me the answer?",
+        "3/6": "Could you tell me the time?",
+        "4/6": "Could you tell me how to use this?",
+        "5/6": "Could you tell me how to get to the station?",
+        "6/6": "Could you tell me when the next train will come?"
+    };
+
+    const japaneseContentCanICouldI5 = {
+        "1/6": "君のペン借りてもいい？",
+        "2/6": "トイレ使ってもいい？",
+        "3/6": "ちょっと聞いてもいい？",
+        "4/6": "今日は早く帰ってもいいですか？",
+        "5/6": "明日お休みとってもいいですか？",
+        "6/6": "後でかけなおしてもいいですか？"
+    };
+
+    const englishContentCanICouldI5 = {
+        "1/6": "Can I borrow your pen?",
+        "2/6": "Can I use the restroom?",
+        "3/6": "Can I ask you something?",
+        "4/6": "Could I leave early today?",
+        "5/6": "Could I take a day off tomorrow?",
+        "6/6": "Could I call you later?"
+    };
+
+    const japaneseContentShouldI5 = {
+        "1/6": "オンライン英会話始めた方がいいですか？",
+        "2/6": "僕も行った方がいい？",
+        "3/6": "服着替えた方がいいかな？",
+        "4/6": "もう少し声大きくした方がいい？",
+        "5/6": "もう少し塩入れた方がいいかな？",
+        "6/6": "後で電話かけなおした方がいい？"
+    };
+
+    const englishContentShouldI5 = {
+        "1/6": "Should I start taking online English conversation lessons?",
+        "2/6": "Should I go, too?",
+        "3/6": "Should I change clothes?",
+        "4/6": "Should I speak up a little bit?",
+        "5/6": "Should I add more salt?",
+        "6/6": "Should I call you later?"
+    };
+
+    const japaneseContentMaybeIll5 = {
+        "1/6": "僕もそれ見てみようかな。",
+        "2/6": "僕もそれ食べてみようかな。",
+        "3/6": "彼と話してみようかな。",
+        "4/6": "途中でなんか買ってこようかな。",
+        "5/6": "明日髪切ろうっかな。",
+        "6/6": "今夜は寿司を食べようかな。"
+    };
+
+    const englishContentMaybeIll5 = {
+        "1/6": "Maybe I’ll watch it, too.",
+        "2/6": "Maybe I’ll try it, too.",
+        "3/6": "Maybe I’ll talk to him.",
+        "4/6": "Maybe I’ll grab something on the way.",
+        "5/6": "Maybe I’ll get a haircut tomorrow.",
+        "6/6": "Maybe I’ll eat sushi tonight."
+    };
+
+    const japaneseContentThenIll5 = {
+        "1/6": "そしたら着替えてくるね。",
+        "2/6": "そしたら傘持っていくね。",
+        "3/6": "そしたらもっと早く家出るわ。",
+        "4/6": "そしたら終わったら連絡する。",
+        "5/6": "そしたら仕事終わりに(彼女を)迎えに行くね。",
+        "6/6": "そしたら(彼を)一人にしておくわ。"
+    };
+
+    const englishContentThenIll5 = {
+        "1/6": "Then I’ll get dressed.",
+        "2/6": "Then I’ll get my umbrella.",
+        "3/6": "Then I’ll leave home earlier.",
+        "4/6": "Then I’ll be in touch when I’m done.",
+        "5/6": "Then I’ll pick her up after work.",
+        "6/6": "Then I’ll leave him alone."
+    };
+
+    const japaneseContentDidYouKnow5 = {
+        "1/6": "彼って英語話せるの知ってた？",
+        "2/6": "彼女結婚したの知ってた？",
+        "3/6": "新しいレストラン近くにできたの知ってた？",
+        "4/6": "Masaって19歳なの知ってた？",
+        "5/6": "彼が左利きなの知ってた？",
+        "6/6": "冬休み10日間だけなの知ってた？"
+    };
+
+    const englishContentDidYouKnow5 = {
+        "1/6": "Did you know he speaks English?",
+        "2/6": "Did you know she got married?",
+        "3/6": "Did you know a new restaurant opened nearby?",
+        "4/6": "Did you know Masa is 19 years old?",
+        "5/6": "Did you know he is left-handed?",
+        "6/6": "Did you know the winter break is only 10 days?"
+    };
+
+    const japaneseContentMaybeYouShould5 = {
+        "1/6": "タバコ吸うのやめた方がいいんじゃない？",
+        "2/6": "バイト辞めた方がいいんじゃない？",
+        "3/6": "もっと寝た方がいいんじゃない？",
+        "4/6": "休憩したほうがいいんじゃない？",
+        "5/6": "医者に診てもらった方がいいんじゃない？",
+        "6/6": "今日は仕事休んだ方がいいんじゃない？"
+    };
+
+    const englishContentMaybeYouShould5 = {
+        "1/6": "Maybe you should stop smoking.",
+        "2/6": "Maybe you should quit the part-time job.",
+        "3/6": "Maybe you should get more sleep.",
+        "4/6": "Maybe you should take a rest.",
+        "5/6": "Maybe you should see a doctor.",
+        "6/6": "Maybe you should take a day off work today."
+    };
+
+    const japaneseContentMaybeYouShouldnt5 = {
+        "1/6": "そんなにお金使わない方がいいと思うよ。",
+        "2/6": "それはしない方がいいよ。",
+        "3/6": "それ買わない方がいいよ。",
+        "4/6": "彼とは話さない方がいいよ。",
+        "5/6": "そんなお金、持ち歩かない方がいいよ。",
+        "6/6": "彼をあんまりからかわない方がいいよ。"
+    };
+
+    const englishContentMaybeYouShouldnt5 = {
+        "1/6": "Maybe you shouldn’t spend so much money.",
+        "2/6": "Maybe you shouldn’t do that.",
+        "3/6": "Maybe you shouldn’t buy it.",
+        "4/6": "Maybe you shouldn’t talk to him.",
+        "5/6": "Maybe you shouldn’t carry so much cash.",
+        "6/6": "Maybe you shouldn’t tease him so much."
+    };
+
+    const japaneseContentYouMightWanna5 = {
+        "1/6": "少し急いだほうがいいかも。",
+        "2/6": "これ試してみるといいかもよ。",
+        "3/6": "これ見ておいた方がいいかもよ。",
+        "4/6": "もう少し大きな声で話した方がいいかも。",
+        "5/6": "医者に診てもらった方がいいよ。",
+        "6/6": "彼とは距離を置いた方がいいかもね。"
+    };
+
+    const englishContentYouMightWanna5 = {
+        "1/6": "You might wanna hurry a little.",
+        "2/6": "You might wanna try this.",
+        "3/6": "You might wanna check this out.",
+        "4/6": "You might wanna speak a little louder.",
+        "5/6": "You might wanna see a doctor.",
+        "6/6": "You might wanna keep a distance from him."
+    };
+
+    englishContentJson[0] = {
+        "1. That would be": englishContentThatWouldBe1,
+        "2. Sorry to": englishContentSorryTo1,
+        "3. What if": englishContentWhatIf1,
+        "4. Aren't you gonna": englishContentArentYouGonna1,
+        "5. though": englishContentThough1,
+        "6. There's no point": englishContentThereIsNoPointIn1,
+        "7. The more": englishContentTheMoreTheMore1,
+        "8. I had": englishContentIHaveNounPastParticiple1,
+        "9. There's [thing]": englishContentTheresThing1,
+        "10. There’s gotta": englishContentTheresGottaBe1,
+        "11. Make sure to": englishContentMakeSureTo1,
+        "12. just(1)": englishContentJust1,
+        "13. just(2)": englishContentJust2_1,
+        "14. Sounds like": englishContentSoundsLike1,
+        "15. Seems like": englishContentSeemsLike1,
+        "16. I was wondering if we/I": englishContentIWasWonderingIfWeICould1,
+        "17. I was wondering if you": englishContentIWasWonderingIfYouCould1,
+        "18. I’d appreciate it": englishContentIdAppreciateItIfYouCould1,
+        "19. I've ever": englishContentTheSuperlativeIveEver1,
+        "20. as long as": englishContentAsLongAs1,
+        "21. Is there anything": englishContentIsThereAnything1,
+        "22. You are such": englishContentYoureSuchA1,
+        "23. Do I have to": englishContentDoIHaveTo1,
+        "24. Are you sure": englishContentAreYouSure1,
+        "25. It's just that": englishContentItsJustThat1,
+        "26. It's not that": englishContentItsNotThat1,
+        "27. The last thing I wanna": englishContentTheLastThingIWantToDoIs1,
+        "28. Just because": englishContentJustBecauseDoesntMean1,
+        "29. It's only a matter": englishContentItsOnlyAMatterOfTime1,
+        "30. Let's say": englishContentLetsSay1,
+        "31. Since when": englishContentSinceWhen1,
+        "32. Do you happen to": englishContentDoYouHappenTo1,
+        "33. Mind if I": englishContentMindIfI1,
+        "34. There's something wrong": englishContentTheresSomethingWrongWith1,
+        "35. It turned out": englishContentItTurnedOut1,
+        "36. You(1)": englishContentYou1,
+        "37. You(2)": englishContentYou2_1,
+        "38. You(3)": englishContentYou3_1,
+        "39. You wanna": englishContentYouWanna1,
+    }
+
+    englishContentJson[1] = {
+        "1. I am not sure if": englishContentImNotSureIf2,
+        "2. I don't know what": englishContentIDontKnowWhat2,
+        "3. I don't know": englishContentIDontKnowQuestionTo2,
+        "4. I wonder what": englishContentIWonderWhatIf2,
+        "5. I wonder": englishContentIWonderQuestion2,
+        "6. You mean": englishContentYouMean2,
+        "7. Do you have any idea": englishContentDoYouHaveAnyIdea2,
+        "8. No wonder": englishContentNoWonder2,
+        "9. I have": englishContentIve2,
+        "10. I have been": englishContentIveBeen2,
+        "11. I've never": englishContentIveNever2,
+        "12. Have you ever": englishContentHaveYouEver2,
+        "13. Isn't it/Wasn't it": englishContentIsntItWasntIt2,
+        "14. Didn't you/Doesn't it": englishContentDidntYouDoesntIt2,
+        "15. Aren't you/Weren't you": englishContentArentYouWerentYou2,
+        "16. Right": englishContentRight2,
+        "17. You are -ing, right": englishContentYoureIngRight2,
+        "18. The one who": englishContentTheOneWho2,
+        "19. We should": englishContentWeShould2,
+        "20. Maybe we could": englishContentMaybeWeCould2,
+        "21. Could": englishContentCould2,
+        "22. Should've": englishContentShouldve2,
+        "23. Didn't I tell you": englishContentDidntITellYou2,
+        "24. Didn't you say": englishContentDidntYouSay2,
+        "25. Why didn't I": englishContentWhyDidntI2,
+        "26. Why would you": englishContentWhyWouldYou2,
+        "27. How could you": englishContentHowCouldYou2,
+        "28. How can you": englishContentHowCanYou2,
+    }
+
+    englishContentJson[2] = {
+        "1. What": englishContentWhat3,
+        "2. What a": englishContentWhatA3,
+        "3. What about": englishContentWhatAbout3,
+        "4. What kind of": englishContentWhatKindOf3,
+        "5. What can I": englishContentWhatCanI3,
+        "6. Where": englishContentWhere3,
+        "7. When": englishContentWhen3,
+        "8. What time": englishContentWhatTime3,
+        "9. Which": englishContentWhich3,
+        "10. Who": englishContentWho3,
+        "11. Whose": englishContentWhose3,
+        "12. Why": englishContentWhy3,
+        "13. What makes you": englishContentWhatMakesYou3,
+        "14. What do you think": englishContentWhatDoYouThink3,
+        "15. Why don't you": englishContentWhyDontYou3,
+        "16. cuz": englishContentCuzI3,
+        "17. How": englishContentHow3,
+        "18. How is": englishContentHowIs3,
+        "19. How much": englishContentHowMuch3,
+        "20. How many": englishContentHowMany3,
+        "21. How long": englishContentHowLong3,
+        "22. How often": englishContentHowOften3,
+        "23. How about": englishContentHowAbout3,
+        "24. I wish": englishContentIWish3,
+        "25. I'm pretty sure": englishContentImPrettySure3,
+        "26. I know": englishContentIKnow3,
+        "27. I happen to": englishContentIHappenTo3,
+        "28. I can't believe": englishContentICantBelieve3,
+        "29. I tend to": englishContentITendTo3,
+        "30. I can't be bothered to": englishContentCantBeBotheredTo3,
+        "31. I'm not sure": englishContentImNotSure3,
+        "32. I didn't mean to": englishContentIDidntMeanTo3,
+        "33. I didn't expect": englishContentIDidntExpectTo3,
+        "34. I'm supposed to": englishContentImSupposedTo3,
+        "35. That's what": englishContentThatsWhat3,
+        "36. That's how": englishContentThatsHow3,
+        "37. That's why": englishContentThatsWhy3,
+    }
+
+    englishContentJson[3] = {
+        "1. Must be": englishContentMustBe4,
+        "2. Must have been": englishContentMustHaveBeen4,
+        "3. I'm gonna": englishContentImGonna4,
+        "4. I'm not gonna": englishContentImNotGonna4,
+        "5. Gonna": englishContentGonnaQ4,
+        "6. I'm -ing": englishContentImIng4,
+        "7. I'm glad": englishContentGlad4,
+        "8. I hope": englishContentHope4,
+        "9. I'll have": englishContentIllHave4,
+        "10. Let me": englishContentLetMe4,
+        "11. Why don't we": englishContentWhyDontWe4,
+        "12. Let's not": englishContentLetsNot4,
+        "13. Don't": englishContentDont4,
+        "14. Don't be": englishContentDontBe4,
+        "15. You can": englishContentYouCan4,
+        "16. You can't": englishContentYouCant4,
+        "17. Be careful not": englishContentBeCarefulNotTo4,
+        "18. That sounds": englishContentThatSounds4,
+        "19. Feel like -ing": englishContentFeelLikeIng4,
+        "20. Feel like": englishContentFeelLikeSV4,
+        "21. I'm thinking of": englishContentImThinkingOf4,
+        "22. I'm starting to": englishContentImStartingTo4,
+        "23. Getting": englishContentGetting4,
+        "24. Look forward to": englishContentLookingForwardTo4,
+        "25. You look": englishContentYouLook4,
+        "26. It's hard to": englishContentItsHardTo4,
+        "27. It's so that": englishContentItsSoThat4,
+        "28. Is it okay if I": englishContentIsItOkayIfI4,
+    }
+
+    englishContentJson[4] = {
+        "1. I like to": englishContentLike5,
+        "2. I wanna": englishContentWanna5,
+        "3. I wanted to": englishContentWantedTo5,
+        "4. I want you to": englishContentWantNounTo5,
+        "5. I wanted you to": englishContentWantedNounTo5,
+        "6. I don't wanna": englishContentDontWanna5,
+        "7. I don't want you to": englishContentDontWantYouTo5,
+        "8. You wanna": englishContentYouWanna5,
+        "9. I'd like": englishContentIdLike5,
+        "10. I'd like to": englishContentIdLikeTo5,
+        "11. Would you like": englishContentWouldYouLike5,
+        "12. Would you like to": englishContentWouldYouLikeTo5,
+        "13. I need": englishContentINeed5,
+        "14. I gotta": englishContentIGotta5,
+        "15. I'm gonna have to": englishContentImGonnaHaveTo5,
+        "16. You don't have to": englishContentYouDontHaveTo5,
+        "17. I have": englishContentIHave5,
+        "18. I don't have": englishContentIDontHave5,
+        "19. Do you have": englishContentDoYouHave5,
+        "20. You know": englishContentYouKnow5,
+        "21. You can": englishContentYouCan5,
+        "22. I can't/You can't": englishContentICantYouCant5,
+        "23. Can you/Could you": englishContentCanYouCouldYou5,
+        "24. Could you tell me": englishContentCouldYouTellMe5,
+        "25. Can I/Could I": englishContentCanICouldI5,
+        "26. Should I": englishContentShouldI5,
+        "27. Maybe I'll": englishContentMaybeIll5,
+        "28. Then I'll": englishContentThenIll5,
+        "29. Did you know": englishContentDidYouKnow5,
+        "30. Maybe you should": englishContentMaybeYouShould5,
+        "31. Maybe you shouldn't": englishContentMaybeYouShouldnt5,
+        "32. You might wanna": englishContentYouMightWanna5,
+    };
+
+    japaneseContentJson[0] = {
+        "1. That would be": japaneseContentThatWouldBe1,
+        "2. Sorry to": japaneseContentSorryTo1,
+        "3. What if": japaneseContentWhatIf1,
+        "4. Aren't you gonna": japaneseContentArentYouGonna1,
+        "5. though": japaneseContentThough1,
+        "6. There's no point": japaneseContentThereIsNoPointIn1,
+        "7. The more": japaneseContentTheMoreTheMore1,
+        "8. I had": japaneseContentIHaveNounPastParticiple1,
+        "9. There's [thing]": japaneseContentTheresThing1,
+        "10. There’s gotta": japaneseContentTheresGottaBe1,
+        "11. Make sure to": japaneseContentMakeSureTo1,
+        "12. just(1)": japaneseContentJust1,
+        "13. just(2)": japaneseContentJust2_1,
+        "14. Sounds like": japaneseContentSoundsLike1,
+        "15. Seems like": japaneseContentSeemsLike1,
+        "16. I was wondering if we/I": japaneseContentIWasWonderingIfWeICould1,
+        "17. I was wondering if you": japaneseContentIWasWonderingIfYouCould1,
+        "18. I’d appreciate it": japaneseContentIdAppreciateItIfYouCould1,
+        "19. I've ever": japaneseContentTheSuperlativeIveEver1,
+        "20. as long as": japaneseContentAsLongAs1,
+        "21. Is there anything": japaneseContentIsThereAnything1,
+        "22. You are such": japaneseContentYoureSuchA1,
+        "23. Do I have to": japaneseContentDoIHaveTo1,
+        "24. Are you sure": japaneseContentAreYouSure1,
+        "25. It's just that": japaneseContentItsJustThat1,
+        "26. It's not that": japaneseContentItsNotThat1,
+        "27. The last thing I wanna": japaneseContentTheLastThingIWantToDoIs1,
+        "28. Just because": japaneseContentJustBecauseDoesntMean1,
+        "29. It's only a matter": japaneseContentItsOnlyAMatterOfTime1,
+        "30. Let's say": japaneseContentLetsSay1,
+        "31. Since when": japaneseContentSinceWhen1,
+        "32. Do you happen to": japaneseContentDoYouHappenTo1,
+        "33. Mind if I": japaneseContentMindIfI1,
+        "34. There's something wrong": japaneseContentTheresSomethingWrongWith1,
+        "35. It turned out": japaneseContentItTurnedOut1,
+        "36. You(1)": japaneseContentYou1,
+        "37. You(2)": japaneseContentYou2_1,
+        "38. You(3)": japaneseContentYou3_1,
+        "39. You wanna": japaneseContentYouWanna1,
+    }
+
+    japaneseContentJson[1] = {
+        "1. I am not sure if": japaneseContentImNotSureIf2,
+        "2. I don't know what": japaneseContentIDontKnowWhat2,
+        "3. I don't know": japaneseContentIDontKnowQuestionTo2,
+        "4. I wonder what": japaneseContentIWonderWhatIf2,
+        "5. I wonder": japaneseContentIWonderQuestion2,
+        "6. You mean": japaneseContentYouMean2,
+        "7. Do you have any idea": japaneseContentDoYouHaveAnyIdea2,
+        "8. No wonder": japaneseContentNoWonder2,
+        "9. I have": japaneseContentIve2,
+        "10. I have been": japaneseContentIveBeen2,
+        "11. I've never": japaneseContentIveNever2,
+        "12. Have you ever": japaneseContentHaveYouEver2,
+        "13. Isn't it/Wasn't it": japaneseContentIsntItWasntIt2,
+        "14. Didn't you/Doesn't it": japaneseContentDidntYouDoesntIt2,
+        "15. Aren't you/Weren't you": japaneseContentArentYouWerentYou2,
+        "16. Right": japaneseContentRight2,
+        "17. You are -ing, right": japaneseContentYoureIngRight2,
+        "18. The one who": japaneseContentTheOneWho2,
+        "19. We should": japaneseContentWeShould2,
+        "20. Maybe we could": japaneseContentMaybeWeCould2,
+        "21. Could": japaneseContentCould2,
+        "22. Should've": japaneseContentShouldve2,
+        "23. Didn't I tell you": japaneseContentDidntITellYou2,
+        "24. Didn't you say": japaneseContentDidntYouSay2,
+        "25. Why didn't I": japaneseContentWhyDidntI2,
+        "26. Why would you": japaneseContentWhyWouldYou2,
+        "27. How could you": japaneseContentHowCouldYou2,
+        "28. How can you": japaneseContentHowCanYou2,
+    }
+
+    japaneseContentJson[2] = {
+        "1. What": japaneseContentWhat3,
+        "2. What a": japaneseContentWhatA3,
+        "3. What about": japaneseContentWhatAbout3,
+        "4. What kind of": japaneseContentWhatKindOf3,
+        "5. What can I": japaneseContentWhatCanI3,
+        "6. Where": japaneseContentWhere3,
+        "7. When": japaneseContentWhen3,
+        "8. What time": japaneseContentWhatTime3,
+        "9. Which": japaneseContentWhich3,
+        "10. Who": japaneseContentWho3,
+        "11. Whose": japaneseContentWhose3,
+        "12. Why": japaneseContentWhy3,
+        "13. What makes you": japaneseContentWhatMakesYou3,
+        "14. What do you think": japaneseContentWhatDoYouThink3,
+        "15. Why don't you": japaneseContentWhyDontYou3,
+        "16. cuz": japaneseContentCuzI3,
+        "17. How": japaneseContentHow3,
+        "18. How is": japaneseContentHowIs3,
+        "19. How much": japaneseContentHowMuch3,
+        "20. How many": japaneseContentHowMany3,
+        "21. How long": japaneseContentHowLong3,
+        "22. How often": japaneseContentHowOften3,
+        "23. How about": japaneseContentHowAbout3,
+        "24. I wish": japaneseContentIWish3,
+        "25. I'm pretty sure": japaneseContentImPrettySure3,
+        "26. I know": japaneseContentIKnow3,
+        "27. I happen to": japaneseContentIHappenTo3,
+        "28. I can't believe": japaneseContentICantBelieve3,
+        "29. I tend to": japaneseContentITendTo3,
+        "30. I can't be bothered to": japaneseContentCantBeBotheredTo3,
+        "31. I'm not sure": japaneseContentImNotSure3,
+        "32. I didn't mean to": japaneseContentIDidntMeanTo3,
+        "33. I didn't expect": japaneseContentIDidntExpectTo3,
+        "34. I'm supposed to": japaneseContentImSupposedTo3,
+        "35. That's what": japaneseContentThatsWhat3,
+        "36. That's how": japaneseContentThatsHow3,
+        "37. That's why": japaneseContentThatsWhy3,
+    }
+
+    japaneseContentJson[3] = {
+        "1. Must be": japaneseContentMustBe4,
+        "2. Must have been": japaneseContentMustHaveBeen4,
+        "3. I'm gonna": japaneseContentImGonna4,
+        "4. I'm not gonna": japaneseContentImNotGonna4,
+        "5. Gonna": japaneseContentGonnaQ4,
+        "6. I'm -ing": japaneseContentImIng4,
+        "7. I'm glad": japaneseContentGlad4,
+        "8. I hope": japaneseContentHope4,
+        "9. I'll have": japaneseContentIllHave4,
+        "10. Let me": japaneseContentLetMe4,
+        "11. Why don't we": japaneseContentWhyDontWe4,
+        "12. Let's not": japaneseContentLetsNot4,
+        "13. Don't": japaneseContentDont4,
+        "14. Don't be": japaneseContentDontBe4,
+        "15. You can": japaneseContentYouCan4,
+        "16. You can't": japaneseContentYouCant4,
+        "17. Be careful not": japaneseContentBeCarefulNotTo4,
+        "18. That sounds": japaneseContentThatSounds4,
+        "19. Feel like -ing": japaneseContentFeelLikeIng4,
+        "20. Feel like": japaneseContentFeelLikeSV4,
+        "21. I'm thinking of": japaneseContentImThinkingOf4,
+        "22. I'm starting to": japaneseContentImStartingTo4,
+        "23. Getting": japaneseContentGetting4,
+        "24. Look forward to": japaneseContentLookingForwardTo4,
+        "25. You look": japaneseContentYouLook4,
+        "26. It's hard to": japaneseContentItsHardTo4,
+        "27. It's so that": japaneseContentItsSoThat4,
+        "28. Is it okay if I": japaneseContentIsItOkayIfI4,
+    }
+
+    japaneseContentJson[4] = {
+        "1. I like to": japaneseContentLike5,
+        "2. I wanna": japaneseContentWanna5,
+        "3. I wanted to": japaneseContentWantedTo5,
+        "4. I want you to": japaneseContentWantNounTo5,
+        "5. I wanted you to": japaneseContentWantedNounTo5,
+        "6. I don't wanna": japaneseContentDontWanna5,
+        "7. I don't want you to": japaneseContentDontWantYouTo5,
+        "8. You wanna": japaneseContentYouWanna5,
+        "9. I'd like": japaneseContentIdLike5,
+        "10. I'd like to": japaneseContentIdLikeTo5,
+        "11. Would you like": japaneseContentWouldYouLike5,
+        "12. Would you like to": japaneseContentWouldYouLikeTo5,
+        "13. I need": japaneseContentINeed5,
+        "14. I gotta": japaneseContentIGotta5,
+        "15. I'm gonna have to": japaneseContentImGonnaHaveTo5,
+        "16. You don't have to": japaneseContentYouDontHaveTo5,
+        "17. I have": japaneseContentIHave5,
+        "18. I don't have": japaneseContentIDontHave5,
+        "19. Do you have": japaneseContentDoYouHave5,
+        "20. You know": japaneseContentYouKnow5,
+        "21. You can": japaneseContentYouCan5,
+        "22. I can't/You can't": japaneseContentICantYouCant5,
+        "23. Can you/Could you": japaneseContentCanYouCouldYou5,
+        "24. Could you tell me": japaneseContentCouldYouTellMe5,
+        "25. Can I/Could I": japaneseContentCanICouldI5,
+        "26. Should I": japaneseContentShouldI5,
+        "27. Maybe I'll": japaneseContentMaybeIll5,
+        "28. Then I'll": japaneseContentThenIll5,
+        "29. Did you know": japaneseContentDidYouKnow5,
+        "30. Maybe you should": japaneseContentMaybeYouShould5,
+        "31. Maybe you shouldn't": japaneseContentMaybeYouShouldnt5,
+        "32. You might wanna": japaneseContentYouMightWanna5,
+    };
+
+    let order = ["1/6", "2/6", "3/6", "4/6", "5/6", "6/6"];
+    let onceMore = [];
+
+    var firstPage = document.getElementById('first-page');
+    var secondPage = document.getElementById('second-page');
+    var thirdPage = document.getElementById('third-page');
+    var fourthPage = document.getElementById('fourth-page');
+    var selectionTitle5 = document.getElementById('selection-title-5');
+    var subTitle5 = document.getElementById('sub_title_5');
+    var contentOrder = document.getElementById('content_order');
+    var mainContent = document.getElementById('main_content');
+    var englishContent = document.getElementById('english_content');
+    var japaneseContent = document.getElementById('japanese_content');
+    var successContent = document.getElementById('success_content');
+    var finalContent = document.getElementById('final_content');
+    var buttonGroup = document.getElementById('button_group');
+    var buttonSide = document.getElementById('button_side');
+    var englishContentOrder = document.getElementById('english_content_order');
+    var englishMainContent = document.getElementById('english_main_content');
+    var onceMoreBtn = document.getElementById('once_more_btn');
+    var gradeText1 = document.getElementById('grade1');
+    var gradeText2 = document.getElementById('grade2');
+    var gradeText3 = document.getElementById('grade3');
+    var mainPage = document.getElementById('main-page');
+    let isMouseDown = false;
+    let startX, endX;
+
+    //Grade 5
+    var likeAudio = Array(6);
+    var wannaAudio = Array(6);
+    var wantedToAudio = Array(6);
+    var wantNounToAudio = Array(6);
+    var wantedNounToAudio = Array(6);
+    var dontWannaAudio = Array(6);
+    var dontWantYouToAudio = Array(6);
+    var youWannaAudio = Array(6);
+    var idLikeAudio = Array(6);
+    var idLikeToAudio = Array(6);
+    var wouldYouLikeAudio = Array(6);
+    var wouldYouLikeToAudio = Array(6);
+    var iNeedAudio = Array(6);
+    var iGottaAudio = Array(6);
+    var imGonnaHaveToAudio = Array(6);
+    var youDontHaveToAudio = Array(6);
+    var iHaveAudio = Array(6);
+    var iDontHaveAudio = Array(6);
+    var doYouHaveAudio = Array(6);
+    var youKnowAudio = Array(6);
+    var youCanAudio = Array(6);
+    var iCantYouCantAudio = Array(6);
+    var canYouCouldYouAudio = Array(6);
+    var couldYouTellMeAudio = Array(6);
+    var canICouldIAudio = Array(6);
+    var shouldIAudio = Array(6);
+    var maybeIllAudio = Array(6);
+    var thenIllAudio = Array(6);
+    var didYouKnowAudio = Array(6);
+    var maybeYouShouldAudio = Array(6);
+    var maybeYouShouldntAudio = Array(6);
+    var youMightWannaAudio = Array(6);
+
+    //Grade 4
+    var mustBeAudio = Array(6);
+    var mustHaveBeenAudio = Array(6);
+    var imGonnaAudio = Array(6);
+    var imNotGonnaAudio = Array(6);
+    var gonnaQAudio = Array(6);
+    var imIngAudio = Array(6);
+    var gladAudio = Array(6);
+    var hopeAudio = Array(6);
+    var illHaveAudio = Array(6);
+    var letMeAudio = Array(6);
+    var whyDontWeAudio = Array(6);
+    var letsNotAudio = Array(6);
+    var dontAudio = Array(6);
+    var dontBeAudio = Array(6);
+    var youCanAudio = Array(6);
+    var youCantAudio = Array(6);
+    var beCarefulNotToAudio = Array(6);
+    var thatSoundsAudio = Array(6);
+    var feelLikeIngAudio = Array(6);
+    var feelLikeSVAudio = Array(6);
+    var imThinkingOfAudio = Array(6);
+    var imStartingToAudio = Array(6);
+    var gettingAudio = Array(6);
+    var lookingForwardToAudio = Array(6);
+    var youLookAudio = Array(6);
+    var itsHardToAudio = Array(6);
+    var itsSoThatAudio = Array(6);
+    var isItOkayIfIAudio = Array(6);
+
+    //Grade 3
+    var whatAudio = Array(6);
+    var whatAAudio = Array(6);
+    var whatAboutAudio = Array(6);
+    var whatKindOfAudio = Array(6);
+    var whatCanIAudio = Array(6);
+    var whereAudio = Array(6);
+    var whenAudio = Array(6);
+    var whatTimeAudio = Array(6);
+    var whichAudio = Array(6);
+    var whoAudio = Array(6);
+    var whoseAudio = Array(6);
+    var whyAudio = Array(6);
+    var whatMakesYouAudio = Array(6);
+    var whatDoYouThinkAudio = Array(6);
+    var whyDontYouAudio = Array(6);
+    var cuzIAudio = Array(6);
+    var howAudio = Array(6);
+    var howIsAudio = Array(6);
+    var howMuchAudio = Array(6);
+    var howManyAudio = Array(6);
+    var howLongAudio = Array(6);
+    var howOftenAudio = Array(6);
+    var howAboutAudio = Array(6);
+    var iWishAudio = Array(6);
+    var imPrettySureAudio = Array(6);
+    var iKnowAudio = Array(6);
+    var iHappenToAudio = Array(6);
+    var iCantBelieveAudio = Array(6);
+    var itTendToAudio = Array(6);
+    var cantBeBotheredToAudio = Array(6);
+    var imNotSureAudio = Array(6);
+    var iDidntMeanToAudio = Array(6);
+    var iDidntExpectToAudio = Array(6);
+    var imSupposedToAudio = Array(6);
+    var thatsWhatAudio = Array(6);
+    var thatsHowAudio = Array(6);
+    var thatsWhyAudio = Array(6);
+
+    //Grade 2
+    var imNotSureIfAudio = Array(6);
+    var iDontKnowWhatAudio = Array(6);
+    var iDontKnowQuestionToAudio = Array(6);
+    var iWonderWhatIfAudio = Array(6);
+    var iWonderQuestionAudio = Array(6);
+    var youMeanAudio = Array(6);
+    var doYouHaveAnyIdeaAudio = Array(6);
+    var noWonderAudio = Array(6);
+    var iveAudio = Array(6);
+    var iveBeenAudio = Array(6);
+    var iveNeverAudio = Array(6);
+    var haveYouEverAudio = Array(6);
+    var isntItWasntItAudio = Array(6);
+    var didntYouDoesntItAudio = Array(6);
+    var arentYouWerentYouAudio = Array(6);
+    var rightAudio = Array(6);
+    var youreIngRightAudio = Array(6);
+    var theOneWhoAudio = Array(6);
+    var weShouldAudio = Array(6);
+    var maybeWeCouldAudio = Array(6);
+    var couldAudio = Array(6);
+    var shouldveAudio = Array(6);
+    var didntITellYouAudio = Array(6);
+    var didntYouSayAudio = Array(6);
+    var whyDidntIAudio = Array(6);
+    var whyWouldYouAudio = Array(6);
+    var howCouldYouAudio = Array(6);
+    var howCanYouAudio = Array(6);
+
+    //Grade 1
+    var thatWouldBeAudio = Array(6);
+    var sorryToAudio = Array(6);
+    var whatIfAudio = Array(6);
+    var arentYouGonnaAudio = Array(6);
+    var thoughAudio = Array(6);
+    var theresNoPointInAudio = Array(6);
+    var theMoreTheMoreAudio = Array(6);
+    var iHaveNounPastParticipleAudio = Array(6);
+    var theresThingAudio = Array(6);
+    var theresGottaBeAudio = Array(6);
+    var makeSureToAudio = Array(6);
+    var justAudio = Array(6);
+    var just2Audio = Array(6);
+    var soundsLikeAudio = Array(6);
+    var seemsLikeAudio = Array(6);
+    var iWasWonderingIfWeICouldAudio = Array(6);
+    var iWasWonderingIfYouCouldAudio = Array(6);
+    var idAppreciateItIfYouCouldAudio = Array(6);
+    var theSuperlativeIveEverAudio = Array(6);
+    var asLongAsAudio = Array(6);
+    var isThereAnythingAudio = Array(6);
+    var youreSuchAAudio = Array(6);
+    var doIHaveToAudio = Array(6);
+    var areYouSureAudio = Array(6);
+    var itsJustThatAudio = Array(6);
+    var itsNotThatAudio = Array(6);
+    var theLastThingIWantToDoIsAudio = Array(6);
+    var justBecauseDoesntMeanAudio = Array(6);
+    var itsOnlyAMatterOfTimeAudio = Array(6);
+    var letsSayAudio = Array(6);
+    var sinceWhenAudio = Array(6);
+    var doYouHappenToAudio = Array(6);
+    var mindIfIAudio = Array(6);
+    var theresSomethingWrongWithAudio = Array(6);
+    var itTurnedOutAudio = Array(6);
+    var youAudio = Array(6);
+    var you2Audio = Array(6);
+    var you3Audio = Array(6);
+    var youWannaAudio = Array(6);
+
+    var answerAudio = new Audio('audio/answer.mp3');
+    for (let i = 0; i < 6; i++) {
+        //Grade 5
+        likeAudio[i] = new Audio('audio/grade5/like/' + (i + 1) + '.m4a');
+        wannaAudio[i] = new Audio('audio/grade5/wanna/' + (i + 1) + '.m4a');
+        wantedToAudio[i] = new Audio('audio/grade5/wantedTo/' + (i + 1) + '.m4a');
+        wantNounToAudio[i] = new Audio('audio/grade5/wantNounTo/' + (i + 1) + '.m4a');
+        wantedNounToAudio[i] = new Audio('audio/grade5/wantedNounTo/' + (i + 1) + '.m4a');
+        dontWannaAudio[i] = new Audio('audio/grade5/dontWanna/' + (i + 1) + '.m4a');
+        dontWantYouToAudio[i] = new Audio('audio/grade5/dontWantYouTo/' + (i + 1) + '.m4a');
+        youWannaAudio[i] = new Audio('audio/grade5/youWanna/' + (i + 1) + '.m4a');
+        idLikeAudio[i] = new Audio('audio/grade5/idLike/' + (i + 1) + '.m4a');
+        idLikeToAudio[i] = new Audio('audio/grade5/idLikeTo/' + (i + 1) + '.m4a');
+        wouldYouLikeAudio[i] = new Audio('audio/grade5/wouldYouLike/' + (i + 1) + '.m4a');
+        wouldYouLikeToAudio[i] = new Audio('audio/grade5/wouldYouLikeTo/' + (i + 1) + '.m4a');
+        iNeedAudio[i] = new Audio('audio/grade5/iNeed/' + (i + 1) + '.m4a');
+        iGottaAudio[i] = new Audio('audio/grade5/iGotta/' + (i + 1) + '.m4a');
+        imGonnaHaveToAudio[i] = new Audio('audio/grade5/imGonnaHaveTo/' + (i + 1) + '.m4a');
+        youDontHaveToAudio[i] = new Audio('audio/grade5/youDontHaveTo/' + (i + 1) + '.m4a');
+        iHaveAudio[i] = new Audio('audio/grade5/iHave/' + (i + 1) + '.m4a');
+        iDontHaveAudio[i] = new Audio('audio/grade5/iDontHave/' + (i + 1) + '.m4a');
+        doYouHaveAudio[i] = new Audio('audio/grade5/doYouHave/' + (i + 1) + '.m4a');
+        youKnowAudio[i] = new Audio('audio/grade5/youKnow/' + (i + 1) + '.m4a');
+        youCanAudio[i] = new Audio('audio/grade5/youCan/' + (i + 1) + '.m4a');
+        iCantYouCantAudio[i] = new Audio('audio/grade5/iCantYouCant/' + (i + 1) + '.m4a');
+        canYouCouldYouAudio[i] = new Audio('audio/grade5/canYouCouldYou/' + (i + 1) + '.m4a');
+        couldYouTellMeAudio[i] = new Audio('audio/grade5/couldYouTellMe/' + (i + 1) + '.m4a');
+        canICouldIAudio[i] = new Audio('audio/grade5/canICouldI/' + (i + 1) + '.m4a');
+        shouldIAudio[i] = new Audio('audio/grade5/shouldI/' + (i + 1) + '.m4a');
+        maybeIllAudio[i] = new Audio('audio/grade5/maybeIll/' + (i + 1) + '.m4a');
+        thenIllAudio[i] = new Audio('audio/grade5/thenIll/' + (i + 1) + '.m4a');
+        didYouKnowAudio[i] = new Audio('audio/grade5/didYouKnow/' + (i + 1) + '.m4a');
+        maybeYouShouldAudio[i] = new Audio('audio/grade5/maybeYouShould/' + (i + 1) + '.m4a');
+        maybeYouShouldntAudio[i] = new Audio('audio/grade5/maybeYouShouldnt/' + (i + 1) + '.m4a');
+        youMightWannaAudio[i] = new Audio('audio/grade5/youMightWanna/' + (i + 1) + '.m4a');
+
+        //Grade 4
+        mustBeAudio[i] = new Audio('audio/grade4/mustBe/' + (i + 1) + '.m4a');
+        mustHaveBeenAudio[i] = new Audio('audio/grade4/mustHaveBeen/' + (i + 1) + '.m4a');
+        imGonnaAudio[i] = new Audio('audio/grade4/imGonna/' + (i + 1) + '.m4a');
+        imNotGonnaAudio[i] = new Audio('audio/grade4/imNotGonna/' + (i + 1) + '.m4a');
+        gonnaQAudio[i] = new Audio('audio/grade4/gonnaQ/' + (i + 1) + '.m4a');
+        imIngAudio[i] = new Audio('audio/grade4/imIng/' + (i + 1) + '.m4a');
+        gladAudio[i] = new Audio('audio/grade4/glad/' + (i + 1) + '.m4a');
+        hopeAudio[i] = new Audio('audio/grade4/hope/' + (i + 1) + '.m4a');
+        illHaveAudio[i] = new Audio('audio/grade4/illHave/' + (i + 1) + '.m4a');
+        letMeAudio[i] = new Audio('audio/grade4/letMe/' + (i + 1) + '.m4a');
+        whyDontWeAudio[i] = new Audio('audio/grade4/whyDontWe/' + (i + 1) + '.m4a');
+        letsNotAudio[i] = new Audio('audio/grade4/letsNot/' + (i + 1) + '.m4a');
+        dontAudio[i] = new Audio('audio/grade4/dont/' + (i + 1) + '.m4a');
+        dontBeAudio[i] = new Audio('audio/grade4/dontBe/' + (i + 1) + '.m4a');
+        youCanAudio[i] = new Audio('audio/grade4/youCan/' + (i + 1) + '.m4a');
+        youCantAudio[i] = new Audio('audio/grade4/youCant/' + (i + 1) + '.m4a');
+        beCarefulNotToAudio[i] = new Audio('audio/grade4/beCarefulNotTo/' + (i + 1) + '.m4a');
+        thatSoundsAudio[i] = new Audio('audio/grade4/thatSounds/' + (i + 1) + '.m4a');
+        feelLikeIngAudio[i] = new Audio('audio/grade4/feelLikeIng/' + (i + 1) + '.m4a');
+        feelLikeSVAudio[i] = new Audio('audio/grade4/feelLikeSV/' + (i + 1) + '.m4a');
+        imThinkingOfAudio[i] = new Audio('audio/grade4/imThinkingOf/' + (i + 1) + '.m4a');
+        imStartingToAudio[i] = new Audio('audio/grade4/imStartingTo/' + (i + 1) + '.m4a');
+        gettingAudio[i] = new Audio('audio/grade4/getting/' + (i + 1) + '.m4a');
+        lookingForwardToAudio[i] = new Audio('audio/grade4/lookingForwardTo/' + (i + 1) + '.m4a');
+        youLookAudio[i] = new Audio('audio/grade4/youLook/' + (i + 1) + '.m4a');
+        itsHardToAudio[i] = new Audio('audio/grade4/itsHardTo/' + (i + 1) + '.m4a');
+        itsSoThatAudio[i] = new Audio('audio/grade4/itsSoThat/' + (i + 1) + '.m4a');
+        isItOkayIfIAudio[i] = new Audio('audio/grade4/isItOkayIfI/' + (i + 1) + '.m4a');
+
+        //Grade 3
+        whatAudio[i] = new Audio('audio/grade3/what/' + (i + 1) + '.m4a');
+        whatAAudio[i] = new Audio('audio/grade3/whatA/' + (i + 1) + '.m4a');
+        whatAboutAudio[i] = new Audio('audio/grade3/whatAbout/' + (i + 1) + '.m4a');
+        whatKindOfAudio[i] = new Audio('audio/grade3/whatKindOf/' + (i + 1) + '.m4a');
+        whatCanIAudio[i] = new Audio('audio/grade3/whatCanI/' + (i + 1) + '.m4a');
+        whereAudio[i] = new Audio('audio/grade3/where/' + (i + 1) + '.m4a');
+        whenAudio[i] = new Audio('audio/grade3/when/' + (i + 1) + '.m4a');
+        whatTimeAudio[i] = new Audio('audio/grade3/whatTime/' + (i + 1) + '.m4a');
+        whichAudio[i] = new Audio('audio/grade3/which/' + (i + 1) + '.m4a');
+        whoAudio[i] = new Audio('audio/grade3/who/' + (i + 1) + '.m4a');
+        whoseAudio[i] = new Audio('audio/grade3/whose/' + (i + 1) + '.m4a');
+        whyAudio[i] = new Audio('audio/grade3/why/' + (i + 1) + '.m4a');
+        whatMakesYouAudio[i] = new Audio('audio/grade3/whatMakesYou/' + (i + 1) + '.m4a');
+        whatDoYouThinkAudio[i] = new Audio('audio/grade3/whatDoYouThink/' + (i + 1) + '.m4a');
+        whyDontYouAudio[i] = new Audio('audio/grade3/whyDontYou/' + (i + 1) + '.m4a');
+        cuzIAudio[i] = new Audio('audio/grade3/cuzI/' + (i + 1) + '.m4a');
+        howAudio[i] = new Audio('audio/grade3/how/' + (i + 1) + '.m4a');
+        howIsAudio[i] = new Audio('audio/grade3/howIs/' + (i + 1) + '.m4a');
+        howMuchAudio[i] = new Audio('audio/grade3/howMuch/' + (i + 1) + '.m4a');
+        howManyAudio[i] = new Audio('audio/grade3/howMany/' + (i + 1) + '.m4a');
+        howLongAudio[i] = new Audio('audio/grade3/howLong/' + (i + 1) + '.m4a');
+        howOftenAudio[i] = new Audio('audio/grade3/howOften/' + (i + 1) + '.m4a');
+        howAboutAudio[i] = new Audio('audio/grade3/howAbout/' + (i + 1) + '.m4a');
+        iWishAudio[i] = new Audio('audio/grade3/iWish/' + (i + 1) + '.m4a');
+        imPrettySureAudio[i] = new Audio('audio/grade3/imPrettySure/' + (i + 1) + '.m4a');
+        iKnowAudio[i] = new Audio('audio/grade3/iKnow/' + (i + 1) + '.m4a');
+        iHappenToAudio[i] = new Audio('audio/grade3/iHappenTo/' + (i + 1) + '.m4a');
+        iCantBelieveAudio[i] = new Audio('audio/grade3/iCantBelieve/' + (i + 1) + '.m4a');
+        itTendToAudio[i] = new Audio('audio/grade3/itTendTo/' + (i + 1) + '.m4a');
+        cantBeBotheredToAudio[i] = new Audio('audio/grade3/cantBeBotheredTo/' + (i + 1) + '.m4a');
+        imNotSureAudio[i] = new Audio('audio/grade3/imNotSure/' + (i + 1) + '.m4a');
+        iDidntMeanToAudio[i] = new Audio('audio/grade3/iDidntMeanTo/' + (i + 1) + '.m4a');
+        iDidntExpectToAudio[i] = new Audio('audio/grade3/iDidntExpectTo/' + (i + 1) + '.m4a');
+        imSupposedToAudio[i] = new Audio('audio/grade3/imSupposedTo/' + (i + 1) + '.m4a');
+        thatsWhatAudio[i] = new Audio('audio/grade3/thatsWhat/' + (i + 1) + '.m4a');
+        thatsHowAudio[i] = new Audio('audio/grade3/thatsHow/' + (i + 1) + '.m4a');
+        thatsWhyAudio[i] = new Audio('audio/grade3/thatsWhy/' + (i + 1) + '.m4a');
+
+        //Grade 2
+        imNotSureIfAudio[i] = new Audio('audio/grade2/imNotSureIf/' + (i + 1) + '.m4a');
+        iDontKnowWhatAudio[i] = new Audio('audio/grade2/iDontKnowWhat/' + (i + 1) + '.m4a');
+        iDontKnowQuestionToAudio[i] = new Audio('audio/grade2/iDontKnowQuestionTo/' + (i + 1) + '.m4a');
+        iWonderWhatIfAudio[i] = new Audio('audio/grade2/iWonderWhatIf/' + (i + 1) + '.m4a');
+        iWonderQuestionAudio[i] = new Audio('audio/grade2/iWonderQuestion/' + (i + 1) + '.m4a');
+        youMeanAudio[i] = new Audio('audio/grade2/youMean/' + (i + 1) + '.m4a');
+        doYouHaveAnyIdeaAudio[i] = new Audio('audio/grade2/doYouHaveAnyIdea/' + (i + 1) + '.m4a');
+        noWonderAudio[i] = new Audio('audio/grade2/noWonder/' + (i + 1) + '.m4a');
+        iveAudio[i] = new Audio('audio/grade2/ive/' + (i + 1) + '.m4a');
+        iveBeenAudio[i] = new Audio('audio/grade2/iveBeen/' + (i + 1) + '.m4a');
+        iveNeverAudio[i] = new Audio('audio/grade2/iveNever/' + (i + 1) + '.m4a');
+        haveYouEverAudio[i] = new Audio('audio/grade2/haveYouEver/' + (i + 1) + '.m4a');
+        isntItWasntItAudio[i] = new Audio('audio/grade2/isntItWasntIt/' + (i + 1) + '.m4a');
+        didntYouDoesntItAudio[i] = new Audio('audio/grade2/didntYouDoesntIt/' + (i + 1) + '.m4a');
+        arentYouWerentYouAudio[i] = new Audio('audio/grade2/arentYouWerentYou/' + (i + 1) + '.m4a');
+        rightAudio[i] = new Audio('audio/grade2/right/' + (i + 1) + '.m4a');
+        youreIngRightAudio[i] = new Audio('audio/grade2/youreIngRight/' + (i + 1) + '.m4a');
+        theOneWhoAudio[i] = new Audio('audio/grade2/theOneWho/' + (i + 1) + '.m4a');
+        weShouldAudio[i] = new Audio('audio/grade2/weShould/' + (i + 1) + '.m4a');
+        maybeWeCouldAudio[i] = new Audio('audio/grade2/maybeWeCould/' + (i + 1) + '.m4a');
+        couldAudio[i] = new Audio('audio/grade2/could/' + (i + 1) + '.m4a');
+        shouldveAudio[i] = new Audio('audio/grade2/shouldve/' + (i + 1) + '.m4a');
+        didntITellYouAudio[i] = new Audio('audio/grade2/didntITellYou/' + (i + 1) + '.m4a');
+        didntYouSayAudio[i] = new Audio('audio/grade2/didntYouSay/' + (i + 1) + '.m4a');
+        whyDidntIAudio[i] = new Audio('audio/grade2/whyDidntI/' + (i + 1) + '.m4a');
+        whyWouldYouAudio[i] = new Audio('audio/grade2/whyWouldYou/' + (i + 1) + '.m4a');
+        howCouldYouAudio[i] = new Audio('audio/grade2/howCouldYou/' + (i + 1) + '.m4a');
+        howCanYouAudio[i] = new Audio('audio/grade2/howCanYou/' + (i + 1) + '.m4a');
+
+        //Grade 1
+        thatWouldBeAudio[i] = new Audio('audio/grade1/thatWouldBe/' + (i + 1) + '.m4a');
+        sorryToAudio[i] = new Audio('audio/grade1/sorryTo/' + (i + 1) + '.m4a');
+        whatIfAudio[i] = new Audio('audio/grade1/whatIf/' + (i + 1) + '.m4a');
+        arentYouGonnaAudio[i] = new Audio('audio/grade1/arentYouGonna/' + (i + 1) + '.m4a');
+        thoughAudio[i] = new Audio('audio/grade1/though/' + (i + 1) + '.m4a');
+        theresNoPointInAudio[i] = new Audio('audio/grade1/theresNoPointIn/' + (i + 1) + '.m4a');
+        theMoreTheMoreAudio[i] = new Audio('audio/grade1/theMoreTheMore/' + (i + 1) + '.m4a');
+        iHaveNounPastParticipleAudio[i] = new Audio('audio/grade1/iHaveNounPastParticiple/' + (i + 1) + '.m4a');
+        theresThingAudio[i] = new Audio('audio/grade1/theresThing/' + (i + 1) + '.m4a');
+        theresGottaBeAudio[i] = new Audio('audio/grade1/theresGottaBe/' + (i + 1) + '.m4a');
+        makeSureToAudio[i] = new Audio('audio/grade1/makeSureTo/' + (i + 1) + '.m4a');
+        justAudio[i] = new Audio('audio/grade1/just/' + (i + 1) + '.m4a');
+        just2Audio[i] = new Audio('audio/grade1/just2/' + (i + 1) + '.m4a');
+        soundsLikeAudio[i] = new Audio('audio/grade1/soundsLike/' + (i + 1) + '.m4a');
+        seemsLikeAudio[i] = new Audio('audio/grade1/seemsLike/' + (i + 1) + '.m4a');
+        iWasWonderingIfWeICouldAudio[i] = new Audio('audio/grade1/iWasWonderingIfWeICould/' + (i + 1) + '.m4a');
+        iWasWonderingIfYouCouldAudio[i] = new Audio('audio/grade1/iWasWonderingIfYouCould/' + (i + 1) + '.m4a');
+        idAppreciateItIfYouCouldAudio[i] = new Audio('audio/grade1/idAppreciateItIfYouCould/' + (i + 1) + '.m4a');
+        theSuperlativeIveEverAudio[i] = new Audio('audio/grade1/theSuperlativeIveEver/' + (i + 1) + '.m4a');
+        asLongAsAudio[i] = new Audio('audio/grade1/asLongAs/' + (i + 1) + '.m4a');
+        isThereAnythingAudio[i] = new Audio('audio/grade1/isThereAnything/' + (i + 1) + '.m4a');
+        youreSuchAAudio[i] = new Audio('audio/grade1/youreSuchA/' + (i + 1) + '.m4a');
+        doIHaveToAudio[i] = new Audio('audio/grade1/doIHaveTo/' + (i + 1) + '.m4a');
+        areYouSureAudio[i] = new Audio('audio/grade1/areYouSure/' + (i + 1) + '.m4a');
+        itsJustThatAudio[i] = new Audio('audio/grade1/itsJustThat/' + (i + 1) + '.m4a');
+        itsNotThatAudio[i] = new Audio('audio/grade1/itsNotThat/' + (i + 1) + '.m4a');
+        theLastThingIWantToDoIsAudio[i] = new Audio('audio/grade1/theLastThingIWantToDoIs/' + (i + 1) + '.m4a');
+        justBecauseDoesntMeanAudio[i] = new Audio('audio/grade1/justBecauseDoesntMean/' + (i + 1) + '.m4a');
+        itsOnlyAMatterOfTimeAudio[i] = new Audio('audio/grade1/itsOnlyAMatterOfTime/' + (i + 1) + '.m4a');
+        letsSayAudio[i] = new Audio('audio/grade1/letsSay/' + (i + 1) + '.m4a');
+        sinceWhenAudio[i] = new Audio('audio/grade1/sinceWhen/' + (i + 1) + '.m4a');
+        doYouHappenToAudio[i] = new Audio('audio/grade1/doYouHappenTo/' + (i + 1) + '.m4a');
+        mindIfIAudio[i] = new Audio('audio/grade1/mindIfI/' + (i + 1) + '.m4a');
+        theresSomethingWrongWithAudio[i] = new Audio('audio/grade1/theresSomethingWrongWith/' + (i + 1) + '.m4a');
+        itTurnedOutAudio[i] = new Audio('audio/grade1/itTurnedOut/' + (i + 1) + '.m4a');
+        youAudio[i] = new Audio('audio/grade1/you/' + (i + 1) + '.m4a');
+        you2Audio[i] = new Audio('audio/grade1/you2/' + (i + 1) + '.m4a');
+        you3Audio[i] = new Audio('audio/grade1/you3/' + (i + 1) + '.m4a');
+        youWannaAudio[i] = new Audio('audio/grade1/youWanna/' + (i + 1) + '.m4a');
+
+    }
+
+    audioJson[0] = {
+        "1. That would be": thatWouldBeAudio,
+        "2. Sorry to": sorryToAudio,
+        "3. What if": whatIfAudio,
+        "4. Aren't you gonna": arentYouGonnaAudio,
+        "5. though": thoughAudio,
+        "6. There's no point": theresNoPointInAudio,
+        "7. The more": theMoreTheMoreAudio,
+        "8. I had": iHaveNounPastParticipleAudio,
+        "9. There's [thing]": theresThingAudio,
+        "10. There’s gotta": theresGottaBeAudio,
+        "11. Make sure to": makeSureToAudio,
+        "12. just(1)": justAudio,
+        "13. just(2)": just2Audio,
+        "14. Sounds like": soundsLikeAudio,
+        "15. Seems like": seemsLikeAudio,
+        "16. I was wondering if we/I": iWasWonderingIfWeICouldAudio,
+        "17. I was wondering if you": iWasWonderingIfYouCouldAudio,
+        "18. I’d appreciate it": idAppreciateItIfYouCouldAudio,
+        "19. I've ever": theSuperlativeIveEverAudio,
+        "20. as long as": asLongAsAudio,
+        "21. Is there anything": isThereAnythingAudio,
+        "22. You are such": youreSuchAAudio,
+        "23. Do I have to": doIHaveToAudio,
+        "24. Are you sure": areYouSureAudio,
+        "25. It's just that": itsJustThatAudio,
+        "26. It's not that": itsNotThatAudio,
+        "27. The last thing I wanna": theLastThingIWantToDoIsAudio,
+        "28. Just because": justBecauseDoesntMeanAudio,
+        "29. It's only a matter": itsOnlyAMatterOfTimeAudio,
+        "30. Let's say": letsSayAudio,
+        "31. Since when": sinceWhenAudio,
+        "32. Do you happen to": doYouHappenToAudio,
+        "33. Mind if I": mindIfIAudio,
+        "34. There's something wrong": theresSomethingWrongWithAudio,
+        "35. It turned out": itTurnedOutAudio,
+        "36. You(1)": youAudio,
+        "37. You(2)": you2Audio,
+        "38. You(3)": you3Audio,
+        "39. You wanna": youWannaAudio
+    }
+
+    audioJson[1] = {
+        "1. I am not sure if": imNotSureIfAudio,
+        "2. I don't know what": iDontKnowWhatAudio,
+        "3. I don't know": iDontKnowQuestionToAudio,
+        "4. I wonder what": iWonderWhatIfAudio,
+        "5. I wonder": iWonderQuestionAudio,
+        "6. You mean": youMeanAudio,
+        "7. Do you have any idea": doYouHaveAnyIdeaAudio,
+        "8. No wonder": noWonderAudio,
+        "9. I have": iveAudio,
+        "10. I have been": iveBeenAudio,
+        "11. I've never": iveNeverAudio,
+        "12. Have you ever": haveYouEverAudio,
+        "13. Isn't it/Wasn't it": isntItWasntItAudio,
+        "14. Didn't you/Doesn't it": didntYouDoesntItAudio,
+        "15. Aren't you/Weren't you": arentYouWerentYouAudio,
+        "16. Right": rightAudio,
+        "17. You are -ing, right": youreIngRightAudio,
+        "18. The one who": theOneWhoAudio,
+        "19. We should": weShouldAudio,
+        "20. Maybe we could": maybeWeCouldAudio,
+        "21. Could": couldAudio,
+        "22. Should've": shouldveAudio,
+        "23. Didn't I tell you": didntITellYouAudio,
+        "24. Didn't you say": didntYouSayAudio,
+        "25. Why didn't I": whyDidntIAudio,
+        "26. Why would you": whyWouldYouAudio,
+        "27. How could you": howCouldYouAudio,
+        "28. How can you": howCanYouAudio,
+    }
+
+    audioJson[2] = {
+        "1. What": whatAudio,
+        "2. What a": whatAAudio,
+        "3. What about": whatAboutAudio,
+        "4. What kind of": whatKindOfAudio,
+        "5. What can I": whatCanIAudio,
+        "6. Where": whereAudio,
+        "7. When": whenAudio,
+        "8. What time": whatTimeAudio,
+        "9. Which": whichAudio,
+        "10. Who": whoAudio,
+        "11. Whose": whoseAudio,
+        "12. Why": whyAudio,
+        "13. What makes you": whatMakesYouAudio,
+        "14. What do you think": whatDoYouThinkAudio,
+        "15. Why don't you": whyDontYouAudio,
+        "16. cuz": cuzIAudio,
+        "17. How": howAudio,
+        "18. How is": howIsAudio,
+        "19. How much": howMuchAudio,
+        "20. How many": howManyAudio,
+        "21. How long": howLongAudio,
+        "22. How often": howOftenAudio,
+        "23. How about": howAboutAudio,
+        "24. I wish": iWishAudio,
+        "25. I'm pretty sure": imPrettySureAudio,
+        "26. I know": iKnowAudio,
+        "27. I happen to": iHappenToAudio,
+        "28. I can't believe": iCantBelieveAudio,
+        "29. I tend to": itTendToAudio,
+        "30. I can't be bothered to": cantBeBotheredToAudio,
+        "31. I'm not sure": imNotSureAudio,
+        "32. I didn't mean to": iDidntMeanToAudio,
+        "33. I didn't expect": iDidntExpectToAudio,
+        "34. I'm supposed to": imSupposedToAudio,
+        "35. That's what": thatsWhatAudio,
+        "36. That's how": thatsHowAudio,
+        "37. That's why": thatsWhyAudio,
+    }
+
+    audioJson[3] = {
+        "1. Must be": mustBeAudio,
+        "2. Must have been": mustHaveBeenAudio,
+        "3. I'm gonna": imGonnaAudio,
+        "4. I'm not gonna": imNotGonnaAudio,
+        "5. Gonna": gonnaQAudio,
+        "6. I'm -ing": imIngAudio,
+        "7. I'm glad": gladAudio,
+        "8. I hope": hopeAudio,
+        "9. I'll have": illHaveAudio,
+        "10. Let me": letMeAudio,
+        "11. Why don't we": whyDontWeAudio,
+        "12. Let's not": letsNotAudio,
+        "13. Don't": dontAudio,
+        "14. Don't be": dontBeAudio,
+        "15. You can": youCanAudio,
+        "16. You can't": youCantAudio,
+        "17. Be careful not": beCarefulNotToAudio,
+        "18. That sounds": thatSoundsAudio,
+        "19. Feel like -ing": feelLikeIngAudio,
+        "20. Feel like": feelLikeSVAudio,
+        "21. I'm thinking of": imThinkingOfAudio,
+        "22. I'm starting to": imStartingToAudio,
+        "23. Getting": gettingAudio,
+        "24. Look forward to": lookingForwardToAudio,
+        "25. You look": youLookAudio,
+        "26. It's hard to": itsHardToAudio,
+        "27. It's so that": itsSoThatAudio,
+        "28. Is it okay if I": isItOkayIfIAudio,
+    }
+
+    audioJson[4] = {
+        "1. I like to": likeAudio,
+        "2. I wanna": wannaAudio,
+        "3. I wanted to": wantedToAudio,
+        "4. I want you to": wantNounToAudio,
+        "5. I wanted you to": wantedNounToAudio,
+        "6. I don't wanna": dontWannaAudio,
+        "7. I don't want you to": dontWantYouToAudio,
+        "8. You wanna": youWannaAudio,
+        "9. I'd like": idLikeAudio,
+        "10. I'd like to": idLikeToAudio,
+        "11. Would you like": wouldYouLikeAudio,
+        "12. Would you like to": wouldYouLikeToAudio,
+        "13. I need": iNeedAudio,
+        "14. I gotta": iGottaAudio,
+        "15. I'm gonna have to": imGonnaHaveToAudio,
+        "16. You don't have to": youDontHaveToAudio,
+        "17. I have": iHaveAudio,
+        "18. I don't have": iDontHaveAudio,
+        "19. Do you have": doYouHaveAudio,
+        "20. You know": youKnowAudio,
+        "21. You can": youCanAudio,
+        "22. I can't/You can't": iCantYouCantAudio,
+        "23. Can you/Could you": canYouCouldYouAudio,
+        "24. Could you tell me": couldYouTellMeAudio,
+        "25. Can I/Could I": canICouldIAudio,
+        "26. Should I": shouldIAudio,
+        "27. Maybe I'll": maybeIllAudio,
+        "28. Then I'll": thenIllAudio,
+        "29. Did you know": didYouKnowAudio,
+        "30. Maybe you should": maybeYouShouldAudio,
+        "31. Maybe you shouldn't": maybeYouShouldntAudio,
+        "32. You might wanna": youMightWannaAudio,
+    };
+
+
+    function goFirst() {
+        firstPage.style.display = 'flex';
+        secondPage.style.display = 'none';
+        thirdPage.style.display = 'none';
+        fourthPage.style.display = 'none';
+        englishContent.style.display = "none";
+        contentOrder.textContent = "1/6";
+        randomArray = [];
+        totalJapaneseRandom = [];
+        totalEnglishRandom = [];
+        onceMore = [];
+        audioVar = new Audio('audio/grade4/mustBe/' + 1 + '.m4a')
+        totalRandomCount = 0;
+        totalAudioRandom = [];
+    }
+    function goGrade(index) {
+        firstPage.style.display = 'none';
+        secondPage.style.display = 'flex';
+        thirdPage.style.display = 'none';
+        fourthPage.style.display = 'none';
+        grade = index
+        gradeText1.textContent = 'Masa検' + grade + '級';
+        gradeText2.textContent = 'Masa検' + grade + '級';
+        gradeText3.textContent = 'Masa検' + grade + '級';
+    }
+
+    function goMain(index1, index2) {
+        var mainPageLength = mainPage.children.length
+        if (mainPageLength != 1) {
+            for (let i = 0; i < mainPageLength - 1; i++) {
+                mainPage.removeChild(mainPage.childNodes[3]);
+            }
+        }
+        firstPage.style.display = 'none';
+        secondPage.style.display = 'none';
+        thirdPage.style.display = 'flex';
+        if (index2 == 1) selectionTitle5.textContent = "順番通りに学習";
+        if (index2 == 2) selectionTitle5.textContent = "項目ランダムで学習";
+        if (index2 == 3) selectionTitle5.textContent = "完全ランダムで学習";
+
+        fourthPage.style.display = 'none';
+        japaneseContent.style.display = "block";
+        englishContent.style.display = "none";
+        successContent.style.display = "none";
+        finalContent.style.display = "none";
+        buttonGroup.style.display = "none";
+        buttonSide.style.display = "none";
+        randomArray = [];
+        clickCount = 0;
+        partCount = 0;
+        if (titleArray[grade - 1] && titleArray[grade - 1].length > 0 && index2 != 3) {
+            for (let i = 0; i < titleArray[grade - 1].length; i++) {
+                let div = document.createElement("div");
+                div.className = "select-item";
+                div.onclick = function () {
+                    goPractice(titleArray[grade - 1][i]);
+                };
+
+                let img = document.createElement("img");
+                img.src = "img/folder.png";
+                img.style.width = "60px";
+                img.style.height = "70px";
+
+                let p = document.createElement("p");
+                p.style.color = "black";
+                p.style.fontSize = "18px";
+                p.style.fontWeight = "600";
+                p.style.margin = "0px";
+                p.textContent = titleArray[grade - 1][i].substring(3);
+
+                div.appendChild(img);
+                div.appendChild(p);
+                mainPage.appendChild(div);
+            }
+        }
+        if (index2 == 3) {
+            goTotalRandom(0);
+        }
+    }
+
+    function generateRandomNumbers(count) {
+        const numbers = [];
+        while (numbers.length < count) {
+            const randomNumber = Math.floor(Math.random() * count);
+            if (!numbers.includes(randomNumber)) {
+                numbers.push(randomNumber);
+            }
+        }
+        return numbers;
+    }
+
+    var randomArray = [];
+
+    function goPractice(str) {
+        randomArray = generateRandomNumbers(6);
+        firstPage.style.display = 'none';
+        secondPage.style.display = 'none';
+        thirdPage.style.display = 'none';
+        fourthPage.style.display = 'flex';
+        buttonSide.style.display = 'none';
+        successContent.style.display = 'none';
+        japaneseContent.style.display = 'block';
+        subTitle5.textContent = str;
+        if (selectionTitle5.textContent == "項目ランダムで学習") contentOrder.textContent = order[randomArray[0]];
+        for (let i = 0; i < titleArray[grade - 1].length; i++) {
+            if (subTitle5.textContent == titleArray[grade - 1][i]) {
+                mainContent.textContent = japaneseContentJson[grade - 1][titleArray[grade - 1][i]][contentOrder.textContent];
+                break;
+            }
+        }
+    }
+
+    function goEnglishContent() {
+        englishContent.style.display = 'block';
+        japaneseContent.style.display = 'none';
+        buttonGroup.style.display = 'block';
+        englishContentOrder.textContent = contentOrder.textContent;
+        if (selectionTitle5.textContent != "完全ランダムで学習") {
+            for (let i = 0; i < titleArray[grade - 1].length; i++) {
+                if (subTitle5.textContent == titleArray[grade - 1][i]) {
+                    englishMainContent.textContent = englishContentJson[grade - 1][titleArray[grade - 1][i]][contentOrder.textContent];
+                    audioVar = audioJson[grade - 1][titleArray[grade - 1][i]][parseInt(contentOrder.textContent.substring(0, 1)) - 1];
+                    audioVar.volume = 0.3;
+                    audioVar.play();
+                    break;
+                }
+            }
+        }
+        else {
+            console.log(totalEnglishRandom[randomArray[totalRandomCount]]);
+            englishMainContent.textContent = totalEnglishRandom[randomArray[totalRandomCount]];
+            audioVar = totalAudioRandom[randomArray[totalRandomCount]];
+            audioVar.volume = 0.3;
+            audioVar.play();
+        }
+    }
+    function goJapaneseContent() {
+        if (isClicked == 0) {
+            englishContent.style.display = 'none';
+            japaneseContent.style.display = 'block';
+            buttonGroup.style.display = 'none';
+            if (selectionTitle5.textContent != "完全ランダムで学習") {
+                for (let i = 0; i < titleArray[grade - 1].length; i++) {
+                    if (subTitle5.textContent == titleArray[grade - 1][i]) {
+                        mainContent.textContent = japaneseContentJson[grade - 1][titleArray[grade - 1][i]][contentOrder.textContent];
+                        break;
+                    }
+                }
+            }
+            else {
+                englishMainContent.textContent = totalEnglishRandom[randomArray[totalRandomCount]];
+            }
+        }
+    }
+
+    var totalRandomCount = 0;
+
+    var clickCount = 0;
+    var successCount = 0;
+
+    document.getElementById("rightArrow").addEventListener('click', function () {
+        audioVar.pause();
+        audioVar.currentTime = 0;
+        answerAudio.volume = 0.1;
+        answerAudio.play();
+    })
+
+    function goNext() {
+        clickCount++;
+        let arrayOrder = 0;
+        if (selectionTitle5.textContent != "完全ランダムで学習") {
+            if (clickCount < 6) {
+                if (selectionTitle5.textContent == "順番通りに学習") arrayOrder = order.indexOf(contentOrder.textContent);
+                if (selectionTitle5.textContent == "項目ランダムで学習") arrayOrder = randomArray.indexOf(order.indexOf(contentOrder.textContent));
+            }
+            if (arrayOrder < 6 && clickCount < 6) {
+                englishContent.style.opacity = '0';
+                englishContent.style.transform = 'translateX(50%) rotate(30deg)'
+                setTimeout(() => {
+                    englishContent.style.display = 'none';
+                    japaneseContent.style.display = 'block';
+                    successCount++;
+                    englishContent.style.opacity = '1';
+                    englishContent.style.transform = 'translateX(0) rotate(0deg)';
+                }, 1000);
+                buttonGroup.style.display = 'none';
+                if (selectionTitle5.textContent == "順番通りに学習") contentOrder.textContent = order[arrayOrder + 1];
+                if (selectionTitle5.textContent == "項目ランダムで学習") contentOrder.textContent = order[randomArray[arrayOrder + 1]];
+                for (let i = 0; i < titleArray[grade - 1].length; i++) {
+                    if (subTitle5.textContent == titleArray[grade - 1][i]) {
+                        mainContent.textContent = japaneseContentJson[grade - 1][titleArray[grade - 1][i]][contentOrder.textContent];
+                        break;
+                    }
+                }
+            } else if (onceMore.length != 0) {
+                englishContent.style.opacity = '0';
+                englishContent.style.transform = 'translateX(50%) rotate(30deg)'
+                setTimeout(() => {
+                    englishContent.style.display = 'none';
+                    japaneseContent.style.display = 'block';
+                    successCount++;
+                    englishContent.style.opacity = '1';
+                    englishContent.style.transform = 'translateX(0) rotate(0deg)';
+                }, 1000);
+                buttonGroup.style.display = 'none';
+                if (clickCount != 6) onceMore.shift(onceMore[0]);
+                if (onceMore.length == 0) {
+                    if (partCount != japaneseContentJson[grade - 1].length - 1) {
+                        setTimeout(() => {
+                            englishContent.style.display = 'none';
+                            japaneseContent.style.display = 'none';
+                            successContent.style.display = 'block';
+                            buttonGroup.style.display = 'none';
+                            buttonSide.style.display = 'block';
+                            clickCount = 0;
+                            successCount = 0;
+                        }, 1000);
+                    }
+                    else {
+                        setTimeout(() => {
+                            englishContent.style.display = 'none';
+                            japaneseContent.style.display = 'none';
+                            successContent.style.display = 'none';
+                            buttonGroup.style.display = 'none';
+                            finalContent.style.display = 'block';
+                            buttonSide.style.display = 'none';
+                            subTitle5.textContent = "";
+                            clickCount = 0;
+                            partCount = 0;
+                            successCount = 0;
+                        }, 1000);
+                    }
+                }
+                contentOrder.textContent = order[onceMore[0]];
+                for (let i = 0; i < titleArray[grade - 1].length; i++) {
+                    if (subTitle5.textContent == titleArray[grade - 1][i]) {
+                        mainContent.textContent = japaneseContentJson[grade - 1][titleArray[grade - 1][i]][contentOrder.textContent];
+                        break;
+                    }
+                }
+            } else if (partCount != japaneseContentJson[grade - 1].length - 1) {
+                setTimeout(() => {
+                    englishContent.style.display = 'none';
+                    japaneseContent.style.display = 'none';
+                    successContent.style.display = 'block';
+                    buttonGroup.style.display = 'none';
+                    buttonSide.style.display = 'block';
+                    clickCount = 0;
+                    successCount = 0;
+                }, 1000);
+            } else {
+                setTimeout(() => {
+                    englishContent.style.display = 'none';
+                    japaneseContent.style.display = 'none';
+                    successContent.style.display = 'none';
+                    buttonGroup.style.display = 'none';
+                    finalContent.style.display = 'block';
+                    buttonSide.style.display = 'none';
+                    subTitle5.textContent = "";
+                    clickCount = 0;
+                    partCount = 0;
+                    successCount = 0;
+                }, 1000);
+            }
+        }
+        else {
+            if (clickCount < totalEnglishRandom.length) {
+                totalRandomCount++;
+                arrayOrder = totalRandomCount;
+            }
+            if (arrayOrder < totalEnglishRandom.length && clickCount < totalEnglishRandom.length) {
+                englishContent.style.opacity = '0';
+                englishContent.style.transform = 'translateX(50%) rotate(30deg)'
+                setTimeout(() => {
+                    englishContent.style.display = 'none';
+                    japaneseContent.style.display = 'block';
+                    successCount++;
+                    englishContent.style.opacity = '1';
+                    englishContent.style.transform = 'translateX(0) rotate(0deg)';
+                }, 1000);
+                buttonGroup.style.display = 'none';
+                contentOrder.textContent = `${arrayOrder + 1}/${totalEnglishRandom.length}`;
+                mainContent.textContent = totalJapaneseRandom[randomArray[arrayOrder]];
+            } else if (onceMore.length != 0) {
+                englishContent.style.opacity = '0';
+                englishContent.style.transform = 'translateX(50%) rotate(30deg)'
+                setTimeout(() => {
+                    englishContent.style.display = 'none';
+                    japaneseContent.style.display = 'block';
+                    successCount++;
+                    englishContent.style.opacity = '1';
+                    englishContent.style.transform = 'translateX(0) rotate(0deg)';
+                }, 1000);
+                buttonGroup.style.display = 'none';
+                if (clickCount != totalEnglishRandom.length) onceMore.shift(onceMore[0]);
+                if (onceMore.length == 0) {
+                    setTimeout(() => {
+                        englishContent.style.display = 'none';
+                        japaneseContent.style.display = 'none';
+                        successContent.style.display = 'none';
+                        buttonGroup.style.display = 'none';
+                        finalContent.style.display = 'block';
+                        buttonSide.style.display = 'none';
+                        subTitle5.textContent = "";
+                        clickCount = 0;
+                        partCount = 0;
+                        successCount = 0;
+                    }, 1000);
+                }
+                contentOrder.textContent = `${onceMore[0]}/${totalEnglishRandom.length}`;
+                mainContent.textContent = totalJapaneseRandom[randomArray[onceMore[0]]];
+            } else {
+                setTimeout(() => {
+                    englishContent.style.display = 'none';
+                    japaneseContent.style.display = 'none';
+                    successContent.style.display = 'none';
+                    buttonGroup.style.display = 'none';
+                    finalContent.style.display = 'block';
+                    buttonSide.style.display = 'none';
+                    subTitle5.textContent = "";
+                    clickCount = 0;
+                    partCount = 0;
+                    successCount = 0;
+                }, 1000);
+            }
+        }
+
+    }
+
+    function finishPractice() {
+        firstPage.style.display = 'none';
+        secondPage.style.display = 'flex';
+        thirdPage.style.display = 'none';
+        fourthPage.style.display = 'none';
+        contentOrder.textContent = "1/6";
+        finalContent.style.display = "none";
+    }
+
+    var partCount = 0;
+
+    function goNextPart() {
+        partCount++;
+        subTitle5.textContent = titleArray[grade - 1][titleArray[grade - 1].indexOf(subTitle5.textContent) + 1] ?? titleArray[grade - 1][0];
+        successContent.style.display = 'none';
+        buttonSide.style.display = 'none';
+        japaneseContent.style.display = "block";
+        if (selectionTitle5.textContent == "順番通りに学習") {
+            contentOrder.textContent = "1/6";
+            for (let i = 0; i < titleArray[grade - 1].length; i++) {
+                if (subTitle5.textContent == titleArray[grade - 1][i]) {
+                    mainContent.textContent = japaneseContentJson[grade - 1][titleArray[grade - 1][i]]['1/6'];
+                    break;
+                }
+            }
+        }
+        if (selectionTitle5.textContent == "項目ランダムで学習") {
+            randomArray = generateRandomNumbers(6);
+            contentOrder.textContent = order[randomArray[0]];
+            for (let i = 0; i < titleArray[grade - 1].length; i++) {
+                if (subTitle5.textContent == titleArray[grade - 1][i]) {
+                    mainContent.textContent = japaneseContentJson[grade - 1][titleArray[grade - 1][i]][order[randomArray[0]]];
+                    break;
+                }
+            }
+        }
+
+    }
+
+    document.getElementById("leftArrow").addEventListener('click', function () {
+        audioVar.pause();
+        audioVar.currentTime = 0;
+    })
+
+    function goOneMore() {
+        clickCount++;
+        let arrayOrder = 0;
+        if (selectionTitle5.textContent != "完全ランダムで学習") {
+            if (clickCount < 6) {
+                if (selectionTitle5.textContent == "順番通りに学習") arrayOrder = order.indexOf(contentOrder.textContent);
+                if (selectionTitle5.textContent == "項目ランダムで学習") arrayOrder = randomArray.indexOf(order.indexOf(contentOrder.textContent));
+            }
+            if (arrayOrder < 6 && clickCount < 7) {
+                onceMore.push(arrayOrder);
+                if (clickCount != 6) {
+                    englishContent.style.opacity = '0';
+                    englishContent.style.transform = 'translateX(-50%) rotate(-30deg)'
+                    setTimeout(() => {
+                        englishContent.style.display = 'none';
+                        japaneseContent.style.display = 'block';
+                        englishContent.style.opacity = '1';
+                        englishContent.style.transform = 'translateX(0) rotate(0deg)';
+                    }, 1000);
+                    buttonGroup.style.display = 'none';
+                    if (selectionTitle5.textContent == "順番通りに学習") contentOrder.textContent = order[arrayOrder + 1];
+                    if (selectionTitle5.textContent == "項目ランダムで学習") contentOrder.textContent = order[randomArray[arrayOrder + 1]];
+                    for (let i = 0; i < titleArray[grade - 1].length; i++) {
+                        if (subTitle5.textContent == titleArray[grade - 1][i]) {
+                            mainContent.textContent = japaneseContentJson[grade - 1][titleArray[grade - 1][i]][contentOrder.textContent];
+                            break;
+                        }
+                    }
+                } else {
+                    englishContent.style.opacity = '0';
+                    englishContent.style.transform = 'translateX(-50%) rotate(-30deg)'
+                    setTimeout(() => {
+                        englishContent.style.display = 'none';
+                        japaneseContent.style.display = 'block';
+                        englishContent.style.opacity = '1';
+                        englishContent.style.transform = 'translateX(0) rotate(0deg)';
+                    }, 1000);
+                    buttonGroup.style.display = 'none';
+                    contentOrder.textContent = order[onceMore[0]];
+                    for (let i = 0; i < titleArray[grade - 1].length; i++) {
+                        if (subTitle5.textContent == titleArray[grade - 1][i]) {
+                            mainContent.textContent = japaneseContentJson[grade - 1][titleArray[grade - 1][i]][contentOrder.textContent];
+                            break;
+                        }
+                    }
+                }
+            } else if (onceMore.length != 0) {
+                englishContent.style.display = 'none';
+                japaneseContent.style.display = 'block';
+                buttonGroup.style.display = 'none';
+                var temp = onceMore[0];
+                onceMore.shift(temp);
+                onceMore.push(temp);
+                contentOrder.textContent = order[onceMore[0]];
+                for (let i = 0; i < titleArray[grade - 1].length; i++) {
+                    if (subTitle5.textContent == titleArray[grade - 1][i]) {
+                        mainContent.textContent = japaneseContentJson[grade - 1][titleArray[grade - 1][i]][contentOrder.textContent];
+                        break;
+                    }
+                }
+            }
+        }
+        else {
+            if (clickCount < totalEnglishRandom.length) {
+                totalRandomCount++;
+                arrayOrder = totalRandomCount;
+            }
+            if (arrayOrder < totalEnglishRandom.length && clickCount < totalEnglishRandom.length + 1) {
+                onceMore.push(arrayOrder - 1);
+                if (clickCount != totalEnglishRandom.length) {
+                    englishContent.style.opacity = '0';
+                    englishContent.style.transform = 'translateX(-50%) rotate(-30deg)'
+                    setTimeout(() => {
+                        englishContent.style.display = 'none';
+                        japaneseContent.style.display = 'block';
+                        englishContent.style.opacity = '1';
+                        englishContent.style.transform = 'translateX(0) rotate(0deg)';
+                    }, 1000);
+                    buttonGroup.style.display = 'none';
+                    contentOrder.textContent = `${arrayOrder + 1}/${totalEnglishRandom.length}`;
+                    mainContent.textContent = totalJapaneseRandom[randomArray[arrayOrder]];
+                    console.log(onceMore);
+                } else {
+                    englishContent.style.opacity = '0';
+                    englishContent.style.transform = 'translateX(-50%) rotate(-30deg)'
+                    setTimeout(() => {
+                        englishContent.style.display = 'none';
+                        japaneseContent.style.display = 'block';
+                        englishContent.style.opacity = '1';
+                        englishContent.style.transform = 'translateX(0) rotate(0deg)';
+                    }, 1000);
+                    buttonGroup.style.display = 'none';
+                    contentOrder.textContent = `${onceMore[0]}/${totalEnglishRandom.length}`;
+                    mainContent.textContent = totalJapaneseRandom[randomArray[onceMore[0]]];
+                    console.log(onceMore);
+                }
+            } else if (onceMore.length != 0) {
+                englishContent.style.display = 'none';
+                japaneseContent.style.display = 'block';
+                buttonGroup.style.display = 'none';
+                var temp = onceMore[0];
+                onceMore.shift(temp);
+                onceMore.push(temp);
+                contentOrder.textContent = `${onceMore[0]}/${totalEnglishRandom.length}`;
+                mainContent.textContent = totalJapaneseRandom[randomArray[onceMore[0]]];
+            }
+        }
+    }
+
+    var totalJapaneseRandom = [];
+    var totalEnglishRandom = [];
+    var totalAudioRandom = [];
+
+    function goTotalRandom(index) {
+        console.log(grade);
+        if (index == 0) {
+            for (let i = 0; i < titleArray[grade - 1].length; i++) {
+                for (let j = 0; j < 6; j++) {
+                    totalJapaneseRandom.push(japaneseContentJson[grade - 1][titleArray[grade - 1][i]][order[j]]);
+                    totalEnglishRandom.push(englishContentJson[grade - 1][titleArray[grade - 1][i]][order[j]]);
+                    totalAudioRandom.push(audioJson[grade - 1][titleArray[grade - 1][i]][j]);
+                }
+            }
+        }
+        else {
+            for (let k = 0; k < (6 - index); k++) {
+                for (let i = 0; i < titleArray[4 - k].length; i++) {
+                    for (let j = 0; j < 6; j++) {
+                        totalJapaneseRandom.push(japaneseContentJson[4 - k][titleArray[4 - k][i]][order[j]]);
+                        totalEnglishRandom.push(englishContentJson[4 - k][titleArray[4 - k][i]][order[j]]);
+                        totalAudioRandom.push(audioJson[4 - k][titleArray[4 - k][i]][j]);
+                    }
+                }
+            }
+            gradeText3.textContent = 'Masa検' + index + '級テスト';
+            gradeText3.style.fontSize = '28px';
+        }
+        console.log(totalJapaneseRandom);
+        console.log(totalEnglishRandom);
+        console.log(totalAudioRandom.length);
+        randomArray = generateRandomNumbers(totalEnglishRandom.length);
+        console.log(randomArray);
+        firstPage.style.display = 'none';
+        secondPage.style.display = 'none';
+        thirdPage.style.display = 'none';
+        fourthPage.style.display = 'flex';
+        buttonSide.style.display = 'none';
+        successContent.style.display = 'none';
+        japaneseContent.style.display = 'block';
+        subTitle5.textContent = "";
+        selectionTitle5.textContent = "完全ランダムで学習";
+        contentOrder.textContent = `1/${totalJapaneseRandom.length}`;
+        mainContent.textContent = totalJapaneseRandom[randomArray[0]];
+    }
+
+    var audioVar;
+
+    document.getElementById('audioBtn').addEventListener('click', function () {
+        if (selectionTitle5.textContent != "完全ランダムで学習") {
+            for (let i = 0; i < titleArray[grade - 1].length; i++) {
+                if (subTitle5.textContent == titleArray[grade - 1][i]) {
+                    audioVar = audioJson[grade - 1][titleArray[grade - 1][i]][parseInt(contentOrder.textContent.substring(0, 1)) - 1];
+                    audioVar.volume = 0.3;
+                    audioVar.play();
+                    audioVar.loop = false;
+                    break;
+                }
+            }
+        }
+        else {
+            audioVar = totalAudioRandom[randomArray[totalRandomCount]];
+            audioVar.volume = 0.3;
+            audioVar.play();
+            audioVar.loop = false;
+        }
+    })
+
+    document.addEventListener('mousedown', handleMouseDown);
+    document.addEventListener('mousemove', handleMouseMove);
+    document.addEventListener('mouseup', handleMouseUp);
+
+    document.addEventListener('touchstart', handleTouchStart);
+    document.addEventListener('touchmove', handleTouchMove);
+    document.addEventListener('touchend', handleTouchEnd);
+
+    function handleMouseDown(e) {
+        isMouseDown = true;
+        isClicked = 0;
+        startX = e.clientX;
+    }
+
+    function handleMouseMove(e) {
+        if (!isMouseDown) return;
+        if (englishContent.style.display == 'block') {
+            isClicked = 1;
+        }
+    }
+
+    function handleMouseUp(e) {
+        isMouseDown = false;
+        endX = e.clientX;
+        const deltaX = endX - startX;
+        if (deltaX < 0 && englishContent.style.display == 'block') {
+            goOneMore();
+        }
+        if (deltaX > 1 && englishContent.style.display == 'block') {
+            goNext();
+        }
+    }
+
+    function handleTouchStart(e) {
+        isMouseDown = true;
+        var touch = e.touches[0];
+        isClicked = 0;
+        startX = touch.clientX;
+        endX = startX;
+    }
+
+    function handleTouchMove(e) {
+        if (!isMouseDown) return;
+        if (englishContent.style.display == 'block') {
+            isClicked = 1;
+            var touch = e.touches[0];
+            endX = touch.clientX;
+        }
+    }
+
+    function handleTouchEnd(e) {
+        isMouseDown = false;
+        const deltaX = endX - startX;
+        if (deltaX < 0 && englishContent.style.display == 'block') {
+            goOneMore();
+        }
+        if (deltaX > 1 && englishContent.style.display == 'block') {
+            goNext();
+        }
+    }
+
+
+</script>
+</html>
